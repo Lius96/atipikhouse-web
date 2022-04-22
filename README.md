@@ -1,6 +1,6 @@
-# peakn
+# Atipikhouse
 
-> My luminous Nuxt.js project
+> Projet de fin d'étude
 
 ## Build Setup
 

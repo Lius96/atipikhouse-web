@@ -16,11 +16,11 @@
 
                     <div class="col-lg-5 col-md-6">
                         <ul class="top-header-right-nav">
-                            
+                            <li><nuxt-link to="/cart">Panier</nuxt-link></li>
                             <li v-if="!$store.state.authUser"><nuxt-link to="/signup">Inscription</nuxt-link></li>
                             <li v-else>
                                 <nuxt-link v-if="$store.state.authUser.grade == 'administrator'" to="/admin"><i class="fa fa-user"></i></nuxt-link>
-                                <nuxt-link v-else to="/dashboard"><i class="fa fa-user"></i></nuxt-link>
+                                <nuxt-link v-else to="/dashboard"><i class="fa fa-user"></i> Mon compte</nuxt-link>
                             </li>
                             <li v-if="!$store.state.authUser">
                                 <nuxt-link to="/login">Connexion</nuxt-link>

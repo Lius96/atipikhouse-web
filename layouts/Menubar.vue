@@ -183,11 +183,11 @@
 
               <div class="others-option">
                 
-                <!-- <div class="option-item">
+                <div class="option-item">
                   <a @click.prevent="toggle" href="#">
                     Cart({{ cart.length }}) <i class="fas fa-shopping-bag"></i>
                   </a>
-                </div> -->
+                </div>
               </div>
             </b-collapse>
           </nav>

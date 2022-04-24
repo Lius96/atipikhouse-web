@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="col-lg-12">
-      <div class="table-responsive">
+      <div v-if="listData.length > 0" class="table-responsive">
         <v-grid
           theme="compact"
           :readonly="true"
@@ -22,6 +22,7 @@
           row-size="60"
         ></v-grid>
       </div>
+      <h3 v-else class="text-center">Aucune donnée disponible</h3>
     </div>
   </div>
 </template>

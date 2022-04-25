@@ -1,5 +1,5 @@
 <template>
-  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <nav class="col-md-2 col-sm-12 mb-4 bg-light sidebar">
     <div class="sidebar-sticky">
       <ul class="nav flex-column">
         <li class="nav-item">

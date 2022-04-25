@@ -268,4 +268,15 @@ export default {
     padding-top: 48px; /* Space for fixed navbar */
   }
 }
+
+
+@media only screen and (max-width: 600px){
+    .sidebar{
+      position: relative !important;
+    }
+    .sidebar-sticky{
+      height: auto !important;
+    }
+  }
+
 </style>

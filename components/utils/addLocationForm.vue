@@ -159,7 +159,7 @@
             <button
               type="submit"
               class="btn btn-primary"
-              style="width: 25%; display: inline-block"
+              style="width: 60%; display: inline-block"
               :disabled="formDisabled"
             >
               <span v-if="!btnLoader">Enregistrer</span>

@@ -6,8 +6,9 @@
       </div>
     </div>
     <div class="col-lg-12">
-      <div v-if="listData.length > 0" class="table-responsive">
+      <div v-if="tableDataReady" class="table-responsive">
         <v-grid
+        v-if="tableDataReady"
           theme="compact"
           :readonly="true"
           :canFocus="false"
@@ -150,6 +151,7 @@ export default {
       ],
       listData: [],
       toDelete: null,
+      tableDataReady: false
     }
   },
   methods: {
@@ -164,13 +166,14 @@ export default {
       
       if (await result) {
         this.listData = result
+        this.tableDataReady = true
         this.loading = false
       } else {
         this.loading = false
       }
     },
   },
-  async created() {
+  async beforeMount() {
     await this.updateDataList()
   },
 }

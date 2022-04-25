@@ -6,12 +6,12 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <b-button class="float-left" variant="danger" @click="confirmed"
+          <b-button class="float-left" variant="danger" @click="confirmed()"
             >Oui</b-button
           >
         </div>
         <div class="col-md-6">
-          <b-button class="float-right" variant="dark" @click="closeModal"
+          <b-button class="float-right" variant="dark" @click="closeModal()"
             >Non</b-button
           >
         </div>

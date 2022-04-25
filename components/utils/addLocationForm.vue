@@ -171,12 +171,12 @@
     </div>
     <div class="row mt-2">
       <div class="col-md-12">
-        <b-button v-if="provData.id" v-b-tooltip.hover title="Appuyez pour supprimer définitivement ce Bien" class="float-left" variant="danger" @click="deleteHouse(provData.id)"
+        <b-button v-if="provData.id" v-b-tooltip.hover title="Appuyez pour supprimer définitivement ce Bien" class="float-left" variant="danger" @click="showConfirmation()"
             >Supprimer</b-button
           >
       </div>
     </div>
-    <Confirmation v-if="provData.id" />
+    <Confirmation v-if="provData.id" @confirmation="delHouse" />
   </div>
 </template>
 <script>
@@ -184,6 +184,8 @@ import BLoader from '../../components/common/btnLoader.vue'
 import Confirmation from '../../components/modals/Confirmation'
 import formUtils from '../../mixins/form-utils'
 import users from '../../mixins/users'
+import houses from '../../mixins/houses'
+
 
 export default {
   props: {
@@ -203,7 +205,7 @@ export default {
   components: {
     BLoader, Confirmation
   },
-  mixins: [formUtils, users],
+  mixins: [formUtils, users, houses],
   data() {
     return {
       formError: null,
@@ -422,8 +424,30 @@ export default {
       this.files = null
       this.formDisabled = false
     },
-    deleteHouse(id){
+    showConfirmation(){
+      this.$bvModal.show('confirmation-modal');
+    },
+    async delHouse(conirmation){
 
+    if (!conirmation) {
+      this.$toast.danger('Une erreur est survenue. Veuillez réessayer plutard!')
+      return
+    }
+      const result = await this.deleteHouse(this.provData.id);
+
+      if (result) {
+        this.$toast.success('Bien supprimer avec succès.')
+        const that = this
+        setTimeout(()=>{
+          if(that.$store.state.authUser.grade == 'administrator'){
+            that.$router.push('/admin/locations-lists')
+          }else{
+            that.$router.push('/dashboard/locations-lists')
+          }
+        }, 600)
+      }else{
+        this.$toast.danger('Une erreur est survenue. Veuillez réessayer plutard!')
+      }
     }
   },
 }

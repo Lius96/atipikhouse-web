@@ -37,7 +37,7 @@
                 <input
                   class="grade-checkbox"
                   type="radio"
-                  value="ower"
+                  value="owner"
                   name="grade"
                   checked
                   v-model="user.grade"

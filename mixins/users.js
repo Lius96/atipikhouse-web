@@ -77,8 +77,10 @@ export default {
             )
             if (result.success) {
                 return result.data
+            }else{
+                return false
             }
-            return false
+            
         }
     }
 }

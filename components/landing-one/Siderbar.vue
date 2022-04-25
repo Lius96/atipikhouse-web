@@ -23,7 +23,7 @@
           </nuxt-link>
         </li>
         <li class="nav-item">
-          <a title="Modifier profile" class="nav-link" href="#">
+          <nuxt-link title="Modifier profile" class="nav-link" :to="`/dashboard/profile-edit/${$store.state.authUser.id}`" >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -42,9 +42,9 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
             Modifier profile
-          </a>
+          </nuxt-link>
         </li>
-        <li v-if="grade =='ower'" class="nav-item">
+        <li v-if="grade =='owner'" class="nav-item">
           <nuxt-link title="Ajouter une location" class="nav-link" to="/dashboard/add-location">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@
             Ajouter une location
           </nuxt-link>
         </li>
-        <li v-if="grade == 'ower'" class="nav-item">
+        <li v-if="grade == 'owner'" class="nav-item">
           <nuxt-link title="Vos locations" class="nav-link" to="/dashboard/locations-lists">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ export default {
  props: {
    grade: {
      type: String,
-     default: 'ower'
+     default: 'owner'
    }
  }
 }

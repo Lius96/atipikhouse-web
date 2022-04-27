@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!loading">
     <Nuxt />
     <Footer></Footer>
     <BackToTop></BackToTop>
@@ -21,19 +21,25 @@ export default {
  
   data() {
     return {
+      loading: true
     }
   },
   watch: {
     $route(pathUrl) {
-      
-      // this.$nuxt.$loading.start()
-      // setTimeout(() => this.$nuxt.$loading.finish(), 600)
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 600)
     },
   },
   mounted() {
+    const that = this;
     this.$nextTick(() => {
-      // this.$nuxt.$loading.start()
-      // setTimeout(() => this.$nuxt.$loading.finish(), 600)
+      that.$nuxt.$loading.start()
+      setTimeout(()=>{
+        that.loading = false
+      }, 500)
+      setTimeout(()=>{
+        that.$nuxt.$loading.finish()
+      },600)
     })
   },
   async beforeCreate(){

@@ -1,6 +1,6 @@
 <template>
   <div>
-      <a class="btn btn-light m-2 btn-mini" v-b-tooltip.hover title="Modifier" @click="goToEdit(model.id)" ><i class="fas fa-pencil-alt"></i></a>
+      <a class="btn btn-light m-2 btn-mini" title="Modifier" @click="goToEdit(model.id)" ><i class="fas fa-pencil-alt"></i></a>
   </div>
 </template>
 <script>

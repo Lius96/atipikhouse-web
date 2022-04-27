@@ -52,7 +52,41 @@ export default {
                 return { success: true, message: 'Compte créer avec succès!' }
             }
         },
-        edit(user) {},
+        async edit(user, user_id) {
+            let getTokken = this.$store.state.authUser.login_session_token
+            return await this.$axios.$put(
+                `${this.baseUrl}/api/v1/users/${user_id}`,
+                user,
+                {
+                    withCredentials: false,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        authorization: getTokken
+                    }
+                }
+            )
+        },
+
+        async deleteUser(id){
+            let getTokken = this.$store.state.authUser.login_session_token
+            return await this.$axios.$delete(
+                `${this.baseUrl}/api/v1/users/${id}`,
+                {
+                    withCredentials: false,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        authorization: getTokken
+                    }
+                }
+            )
+        },
+
+        async login(email, password){
+            return await this.$axios.$post(this.baseUrl + '/api/v1/login/', {
+                email,
+                password
+            })
+        },
 
         async sendmail(to, from = 'Atipikhouse', subject, body) {
             return await this.$axios.$post(this.baseUrl + '/api/v1/mail/', {
@@ -77,10 +111,20 @@ export default {
             )
             if (result.success) {
                 return result.data
-            }else{
+            } else {
                 return false
             }
-            
+        },
+
+        async updateUserPass(id, password){
+            let getTokken = this.$store.state.authUser.login_session_token
+            return await this.$axios.$put(`${this.baseUrl}/api/v1/users/pass/${id}`, {password},{
+                withCredentials: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    authorization: getTokken
+                }
+            })
         }
     }
 }

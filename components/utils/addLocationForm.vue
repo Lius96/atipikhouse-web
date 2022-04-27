@@ -427,10 +427,9 @@ export default {
     showConfirmation(){
       this.$bvModal.show('confirmation-modal');
     },
-    async delHouse(conirmation){
+    async delHouse(confirmation){
 
-    if (!conirmation) {
-      this.$toast.danger('Une erreur est survenue. Veuillez réessayer plutard!')
+    if (!confirmation) {
       return
     }
       const result = await this.deleteHouse(this.provData.id);
@@ -446,7 +445,7 @@ export default {
           }
         }, 600)
       }else{
-        this.$toast.danger('Une erreur est survenue. Veuillez réessayer plutard!')
+        this.$toast.error('Une erreur est survenue. Veuillez réessayer plutard!')
       }
     }
   },

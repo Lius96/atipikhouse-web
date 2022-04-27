@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div class="">
+    <div class="mb-5">
       <div v-if="!admin" class="section-title">
         <h2><span class="dot"></span>Modifier le profile</h2>
       </div>
 
-      <form class="signup-form" @submit.prevent="edit">
+      <form class="signup-form" @submit.prevent="editUser">
         <p v-if="formError" class="error">
           {{ formError }}
         </p>
@@ -38,7 +38,7 @@
           </div>
           <div class="col-lg-6 col-md-12">
             <div class="form-group">
-              <label>Téléphone</label>
+              <label>Téléphone *</label>
               <input
                 type="text"
                 class="form-control"
@@ -68,7 +68,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Entrer votre profile"
+                placeholder="Lien de votre profile"
                 id="fblink"
                 name="fblink"
                 v-model="user.social_link[0]"
@@ -81,7 +81,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Entrer votre profile"
+                placeholder="Lien de votre profile"
                 id="instalink"
                 name="instalink"
                 v-model="user.social_link[1]"
@@ -94,7 +94,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Entrer votre profile"
+                placeholder="Lien de votre profile"
                 id="inlink"
                 name="onlink"
                 v-model="user.social_link[2]"
@@ -107,7 +107,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Entrer votre profile"
+                placeholder="Lien de votre profile"
                 id="twlink"
                 name="twlink"
                 v-model="user.social_link[3]"
@@ -148,6 +148,70 @@
         </div>
       </form>
     </div>
+    <div class="mt-5 mb-5">
+      <div v-if="!admin" class="section-title">
+        <h2><span class="dot"></span>Modifier le mot de passe</h2>
+      </div>
+
+      <form class="signup-form" @submit.prevent="updatePass" id="change-password">
+        <p v-if="password.formError" class="error">
+          {{ password.formError }}
+        </p>
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="form-group">
+              <label>Ancien mot de passe *</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Ancien mot de passe"
+                id="oldpass"
+                name="oldpass"
+                v-model="password.data.oldPass"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+              <label>Nouveau mot de passe *</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Nouveau mot de passe"
+                id="newpass"
+                name="newpass"
+                v-model="password.data.newPass"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+              <label>Confirmation du mot de passe *</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Confirmation du mot de passe"
+                id="cnewpass"
+                name="cnewpass"
+                v-model="password.data.cNewPass"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 60%; display: inline-block"
+              :disabled="password.formDisabled"
+            >
+              <span v-if="!password.btnLoader">Modifier</span>
+              <BLoader v-else loaderColor="#fff" />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
     <div class="row mt-2">
       <div class="col-md-12">
         <b-button
@@ -161,7 +225,10 @@
         >
       </div>
     </div>
-    <Confirmation v-if="$store.state.authUser.grade == 'administrator'" @confirmation="delHouse" />
+    <Confirmation
+      v-if="$store.state.authUser.grade == 'administrator'"
+      @confirmation="delUser"
+    />
   </div>
 </template>
 <script>
@@ -216,20 +283,133 @@ export default {
               ? this.provData.social_link[2]
               : '',
         },
-        grade: this.provData.grade ? this.provData.grade : '',
+        grade: this.provData.grade ? this.provData.grade : 'customer',
       },
       disableForm: false,
       btnLoader: false,
       formDisabled: false,
+      password: {
+        formError: null,
+        disableForm: false,
+        btnLoader: false,
+        formDisabled: false,
+        data: {
+          oldPass: '',
+          newPass: '',
+          cNewPass: '',
+        },
+      },
     }
   },
   methods: {
-    async edit() {},
-    resetForm() {},
+    async editUser() {
+      let result = null
+      this.formError = null
+      if (
+        !this.validateRequiredField(this.user.lastname) ||
+        !this.validateRequiredField(this.user.firstname) ||
+        !this.validateRequiredField(this.user.address) ||
+        !this.validateRequiredField(this.user.grade)
+      ) {
+        this.formError =
+          'Un ou plusieurs champs requis! veuillez remplir tout les champs comportant *'
+        this.scrollToTop()
+        return
+      }
+
+      if (!this.validatePhone(this.user.phone)) {
+        this.formError = 'Veuillez entrer un numéro de téléphone valide'
+        this.scrollToTop()
+        return
+      }
+
+      this.btnLoader = true
+      this.formDisabled = true
+
+      result = await this.edit(this.user, this.provData.id)
+      if (await result.success) {
+        this.btnLoader = false
+        this.formDisabled = false
+        this.$toast.success('Informations modifier avec succès.')
+        this.formError = null
+      } else {
+        this.btnLoader = false
+        this.formDisabled = false
+        this.$toast.error('Une erreur est survenue lors de la modification.')
+        this.formError = null
+      }
+    },
+    async updatePass(){
+      let result = null
+      this.password.formError = null
+      if (
+        !this.validateRequiredField(this.password.data.oldPass) ||
+        !this.validateRequiredField(this.password.data.newPass)
+      ) {
+        this.password.formError =
+          'Un ou plusieurs champs requis! veuillez remplir tout les champs comportant *'
+        return
+      }
+
+      if (!this.validatePassword(this.password.data.newPass)) {
+        this.password.formError =
+          'Veuillez saisir un mot de passe valide de plus 8 caratères!'
+        return
+      }
+
+      if(!this.validateConfirmPass(this.password.data.newPass, this.password.data.cNewPass)){
+        this.password.formError =
+          'Les mots de passse entrés ne correspondent pas'
+        return
+      }
+      this.password.btnLoader = true
+      this.password.formDisabled = true
+      const checkoldPass = await this.login(this.provData.email, this.password.data.oldPass)
+
+      if (checkoldPass.success) {
+        result = await this.updateUserPass(this.provData.id, this.password.data.newPass)
+        if (result.success) {
+          this.password.btnLoader = false
+          this.password.formDisabled = false
+          this.$toast.success('Mot de passe modifier avec succès.')
+          this.password.formError=null
+          this.resetForm()
+        }else{
+          this.password.btnLoader = false
+          this.password.formDisabled = false
+          this.password.formError=null
+          this.$toast.error('Une erreur est survenue lors de la modification.')
+        }
+      }else{
+        this.password.btnLoader = false
+        this.password.formDisabled = false
+        this.password.formError=null
+        this.$toast.error('Ancien mot de passe incorrect.')
+      }
+
+    },
+    resetForm() {
+      this.password.data = {
+        oldPass: '',
+        newPass: '',
+        cNewPass: '',
+      }
+    },
     showConfirmation() {
       this.$bvModal.show('confirmation-modal')
     },
-    async delHouse(conirmation) {},
+    async delUser(confirmation) {
+      if(!confirmation){
+        return;
+      }
+      const result = this.deleteUser(this.provData.id)
+      if (result) {
+        this.$toast.success('Utiliateur supprimer avec succès.')
+        that.$router.push('/admin')
+      }else{
+        this.$toast.error('Une erreur est survenue. Veuillez réessayer plutard!')
+      }
+    },
   },
 }
 </script>

@@ -185,7 +185,7 @@
                 
                 <div class="option-item">
                   <a @click.prevent="toggle" href="#">
-                    Cart({{ cart.length }}) <i class="fas fa-shopping-bag"></i>
+                    Panier({{ cart.length }}) <i class="fas fa-shopping-bag"></i>
                   </a>
                 </div>
               </div>

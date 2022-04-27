@@ -1,15 +1,13 @@
 <template>
     <div v-if="loading" class="pre-loader">
-        <!-- <h1>Loading...</h1> -->
         <img src="~assets/img/Infinity.svg" alt="Loading" />
-        
     </div>
 </template>
 
 <script>
  export default {
     data: () => ({
-      loading: false
+      loading: false,
     }),
     methods: {
       start() {
@@ -17,8 +15,8 @@
       },
       finish() {
         this.loading = false
-      }
-    }
+      },
+    },
   }
 </script>
 

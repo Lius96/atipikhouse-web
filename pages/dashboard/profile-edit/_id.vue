@@ -47,7 +47,7 @@ export default {
         user_id: params.id,
       }
     } else {
-      error({ statusCode: 404, message: 'Biens non trouvé' })
+      error({ statusCode: 404, message: 'Utilisateur non trouvé' })
     }
   },
 }

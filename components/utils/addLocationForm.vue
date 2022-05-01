@@ -297,10 +297,9 @@ export default {
           if (response.success) {
             if (that.notify) {
               that.sendmail(
-                'admin@mail.com',
-                'Atipikhouse',
+                process.env.ADMINEMAIL,
                 `Nouveau bien`,
-                `Nouveau bien ajouter par ${that.$store.state.authUser.first_name} ${that.$store.state.authUser.last_name}`
+                `Nouveau bien ajouter par ${that.$store.state.authUser.first_name} ${that.$store.state.authUser.last_name}`,
               )
             }
             that.fileProgressBar.inProgress = false

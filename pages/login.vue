@@ -55,7 +55,7 @@
                   ><BLoader v-else loaderColor="#fff" />
                 </button>
 
-                <nuxt-link to="/" class="forgot-password"
+                <nuxt-link to="/update-password" class="forgot-password"
                   >Mot de passe oublier?</nuxt-link
                 >
               </form>

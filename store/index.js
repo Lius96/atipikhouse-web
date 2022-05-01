@@ -9,7 +9,7 @@ const state = () => ({
     totalQuantity: 0,
     orders: [],
     apiBaseUrl: baseUrl,
-    authUser: Cookies.get(defaultCookieName) ? JSON.parse(Cookies.get(defaultCookieName)) : null
+    authUser: Cookies.get(defaultCookieName) ? JSON.parse(Cookies.get(defaultCookieName)) : null,
 })
 
 export const totals = paylodArr => {

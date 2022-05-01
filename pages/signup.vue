@@ -216,7 +216,7 @@ export default {
       this.btnLoader = true
       let userdata = this.user
       delete userdata.confirmPass
-      const result = await this.add(userdata, false)
+      const result = await this.add(userdata, true)
       if (result.success == true) {
         this.btnLoader = false
         this.user = {

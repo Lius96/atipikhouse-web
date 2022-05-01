@@ -367,7 +367,8 @@ export default {
       const checkoldPass = await this.login(this.provData.email, this.password.data.oldPass)
 
       if (checkoldPass.success) {
-        result = await this.updateUserPass(this.provData.id, this.password.data.newPass)
+        let getTokken = this.$store.state.authUser.login_session_token
+        result = await this.updateUserPass(getTokken, this.provData.id, this.password.data.newPass)
         if (result.success) {
           this.password.btnLoader = false
           this.password.formDisabled = false

@@ -30,9 +30,9 @@ export default {
                     }
                 const mail = await this.sendMail(
                     userdata.data.email,
-                    'Atipikhouse',
                     'Confirmation de compte',
-                    `veuillez confirmer votre compte: `
+                    `veuillez confirmer votre compte via le lien suivant: ${window.location.host}/confirmation/${userdata.data.confirmation_token}`,
+                    'Atipikhouse',
                 )
 
                 if (mail.success) {
@@ -52,6 +52,7 @@ export default {
                 return { success: true, message: 'Compte créer avec succès!' }
             }
         },
+
         async edit(user, user_id) {
             let getTokken = this.$store.state.authUser.login_session_token
             return await this.$axios.$put(
@@ -88,7 +89,7 @@ export default {
             })
         },
 
-        async sendmail(to, from = 'Atipikhouse', subject, body) {
+        async sendmail(to, subject, body, from = 'Atipikhouse') {
             return await this.$axios.$post(this.baseUrl + '/api/v1/mail/', {
                 from,
                 to,
@@ -116,13 +117,22 @@ export default {
             }
         },
 
-        async updateUserPass(id, password){
-            let getTokken = this.$store.state.authUser.login_session_token
+        async updateUserPass(token, id, password){
+            
             return await this.$axios.$put(`${this.baseUrl}/api/v1/users/pass/${id}`, {password},{
                 withCredentials: false,
                 headers: {
                     'Access-Control-Allow-Origin': '*',
-                    authorization: getTokken
+                    authorization: token
+                }
+            })
+        },
+
+        async getUserByEmail(email){
+            return await this.$axios.$post(`${this.baseUrl}/api/v1/users/pass/`, {email},{
+                withCredentials: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
                 }
             })
         }

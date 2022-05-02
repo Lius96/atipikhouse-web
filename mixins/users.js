@@ -5,7 +5,7 @@ export default {
         }
     },
     methods: {
-        async add(user, sendMail = false) {
+        async add(user, Mailler = false) {
             let result = await this.$axios
                 .$post(this.baseUrl + '/api/v1/users/', user)
                 .catch(error => {
@@ -18,7 +18,7 @@ export default {
                     }
                 })
             if (!result.success) return result
-            if (sendMail) {
+            if (Mailler) {
                 const userdata = await this.$axios.$get(
                     this.baseUrl + '/api/v1/users/' + result.data
                 )

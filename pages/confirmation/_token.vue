@@ -14,18 +14,22 @@
     <div class="login-area ptb-60">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-12"></div>
-          <div class="col-lg-6 col-md-12">
-            <div class="login-content">
+          <div class="col-md-12">
+            <div class="login-content text-center">
               <h3>
                   {{
-
+                    message
                   }}
               </h3>
+
+              <nuxt-link
+                to="/login"
+                class="btn btn-primary btn-mini"
+                >Connexion</nuxt-link
+              >
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-12"></div>
         </div>
       </div>
     </div>

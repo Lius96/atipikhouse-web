@@ -5,6 +5,14 @@ export default {
         }
     },
     methods: {
+        async sendmail(to, subject, body, from = 'Atipikhouse') {
+            return await this.$axios.$post(this.baseUrl + '/api/v1/mail/', {
+                from,
+                to,
+                subject,
+                body
+            })
+        },
         async add(user, Mailler = false) {
             let result = await this.$axios
                 .$post(this.baseUrl + '/api/v1/users/', user)
@@ -28,12 +36,12 @@ export default {
                         message:
                             'Une erreur est survenue lors de la creation de votre compte veuillez réessayer ultérieurement.'
                     }
-                const mail = await this.sendMail(
-                    userdata.data.email,
-                    'Confirmation de compte',
-                    `veuillez confirmer votre compte via le lien suivant: ${window.location.host}/confirmation/${userdata.data.confirmation_token}`,
-                    'Atipikhouse',
-                )
+                const mail = await this.$axios.$post(this.baseUrl + '/api/v1/mail/', {
+                    from: 'Atipikhouse',
+                    to: userdata.data.email,
+                    subject: 'Confirmation de compte',
+                    body: `veuillez confirmer votre compte via le lien suivant: ${window.location.protocol}//${window.location.host}/confirmation/${userdata.data.confirmation_token}`,
+                })
 
                 if (mail.success) {
                     return {
@@ -68,7 +76,7 @@ export default {
             )
         },
 
-        async deleteUser(id){
+        async deleteUser(id) {
             let getTokken = this.$store.state.authUser.login_session_token
             return await this.$axios.$delete(
                 `${this.baseUrl}/api/v1/users/${id}`,
@@ -82,19 +90,10 @@ export default {
             )
         },
 
-        async login(email, password){
+        async login(email, password) {
             return await this.$axios.$post(this.baseUrl + '/api/v1/login/', {
                 email,
                 password
-            })
-        },
-
-        async sendmail(to, subject, body, from = 'Atipikhouse') {
-            return await this.$axios.$post(this.baseUrl + '/api/v1/mail/', {
-                from,
-                to,
-                subject,
-                body
             })
         },
 
@@ -117,24 +116,31 @@ export default {
             }
         },
 
-        async updateUserPass(token, id, password){
-            
-            return await this.$axios.$put(`${this.baseUrl}/api/v1/users/pass/${id}`, {password},{
-                withCredentials: false,
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    authorization: token
+        async updateUserPass(token, id, password) {
+            return await this.$axios.$put(
+                `${this.baseUrl}/api/v1/users/pass/${id}`,
+                { password },
+                {
+                    withCredentials: false,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        authorization: token
+                    }
                 }
-            })
+            )
         },
 
-        async getUserByEmail(email){
-            return await this.$axios.$post(`${this.baseUrl}/api/v1/users/pass/`, {email},{
-                withCredentials: false,
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
+        async getUserByEmail(email) {
+            return await this.$axios.$post(
+                `${this.baseUrl}/api/v1/users/pass/`,
+                { email },
+                {
+                    withCredentials: false,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    }
                 }
-            })
+            )
         }
     }
 }

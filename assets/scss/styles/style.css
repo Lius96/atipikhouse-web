@@ -3468,7 +3468,7 @@ Products QuickView Modal Area CSS
 .productQuickView .modal-content button.close {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 50px;
   outline: 0;
   opacity: 1;
   color: #222222;

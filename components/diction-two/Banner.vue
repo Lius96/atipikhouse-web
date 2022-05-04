@@ -17,7 +17,7 @@
                 <div class="container">
                   <div class="main-banner-content">
                     <span>Yourt</span>
-                    <h1>Maison à vendre</h1>
+                    <h1>Yourt à vendre</h1>
 
                     <a href="#" class="btn btn-primary">Location</a>
                   </div>
@@ -34,7 +34,7 @@
                 <div class="container">
                   <div class="main-banner-content">
                     <span>Tente</span>
-                    <h1>Maison à vendre</h1>
+                    <h1>Tente à vendre</h1>
 
                     <a href="#" class="btn btn-primary">Location</a>
                   </div>

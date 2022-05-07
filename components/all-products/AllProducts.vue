@@ -46,23 +46,7 @@
         :className="`col-lg-6 col-md-6 products-col-item`"
       ></ProductItem>
     </div>
-
-    <!-- <nav class="woocommerce-pagination">
-      <ul>
-        <li><a href="#" class="page-numbers">1</a></li>
-        <li><span class="page-numbers current">2</span></li>
-        <li><a href="#" class="page-numbers">3</a></li>
-        <li><a href="#" class="page-numbers">4</a></li>
-        <li><span class="page-numbers dots">…</span></li>
-        <li><a href="#" class="page-numbers">11</a></li>
-        <li><a href="#" class="page-numbers">12</a></li>
-        <li>
-          <a href="#" class="next page-numbers"
-            ><i class="fas fa-chevron-right"></i
-          ></a>
-        </li>
-      </ul>
-    </nav> -->
+    
     <Paginations
       v-if="pagination.total > pagination.perPage"
       :perPage="pagination.perPage"
@@ -98,7 +82,7 @@ export default {
         currentsProducts: [],
       pagination: {
         default: 1,
-        total: 25,
+        total: 0,
         perPage: 6,
       },
     }
@@ -124,6 +108,9 @@ export default {
     products() {
       return this.$store.state.products.all
     },
+  },
+  async created(){
+
   },
 }
 </script>

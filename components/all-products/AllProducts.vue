@@ -1,52 +1,22 @@
 <template>
   <div class="col-lg-8 col-md-12">
     <div class="products-filter-options">
-      <div class="row align-items-center">
-        <div class="col d-flex">
-          <p>Showing 22 of 102 results</p>
-        </div>
-
-        <div class="col d-flex">
-          <span>Show:</span>
-
-          <div class="show-products-number">
-            <select>
-              <option value="1">22</option>
-              <option value="2">32</option>
-              <option value="3">42</option>
-              <option value="4">52</option>
-              <option value="5">62</option>
-            </select>
-          </div>
-
-          <span>Sort:</span>
-
-          <div class="products-ordering-list">
-            <select>
-              <option value="1">Featured</option>
-              <option value="2">Best Selling</option>
-              <option value="3">Price Ascending</option>
-              <option value="4">Price Descending</option>
-              <option value="5">Date Ascending</option>
-              <option value="6">Date Descending</option>
-              <option value="7">Name Ascending</option>
-              <option value="8">Name Descending</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      <div class="row align-items-center"></div>
     </div>
 
     <div id="products-filter" class="products-collections-listing row">
       <ProductItem
-        v-for="(product, index) in products"
+        v-for="(product, index) in currentsProducts"
         :product="product"
         :key="index"
         @clicked="toggle"
         :className="`col-lg-6 col-md-6 products-col-item`"
       ></ProductItem>
+      <div v-if="currentsProducts.length == 0" class="col-12 text-center">
+        <h3>Location non trouvé</h3>
+      </div>
     </div>
-    
+
     <Paginations
       v-if="pagination.total > pagination.perPage"
       :perPage="pagination.perPage"
@@ -55,7 +25,7 @@
       @input="changePage"
     />
 
-    <QuckView />
+    <QuckView :product="quickViewProduct" />
   </div>
 </template>
 
@@ -70,6 +40,10 @@ export default {
       type: String,
       default: '',
     },
+    priceRange: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   components: {
     QuckView,
@@ -78,8 +52,10 @@ export default {
   },
   data() {
     return {
-        allProducts: [],
-        currentsProducts: [],
+      quickViewProduct: null,
+      allProducts: [],
+      filteredProducts: [],
+      currentsProducts: [],
       pagination: {
         default: 1,
         total: 0,
@@ -88,29 +64,66 @@ export default {
     }
   },
   methods: {
-    toggle() {
+    toggle(item) {
+      this.quickViewProduct = item
       mutations.toggleQuickView()
     },
-    async updateGoodsList(){
-        let self = this
-        let { success, data } = await self.$axios.$get(`${self.$store.state.apiBaseUrl}/api/v1/houses/`);
+    async updateGoodsList() {
+      let self = this
+      let { success, data } = await self.$axios.$get(
+        `${self.$store.state.apiBaseUrl}/api/v1/houses/`
+      )
+
+      if (success) {
+        let publishHouse = data.filter((item) => {
+          return item.status == 'publish'
+        })
+        this.allProducts = publishHouse
+        this.filteredProducts = publishHouse
+        this.currentsProducts = publishHouse.slice(0, 6)
+        this.pagination.total = publishHouse.length
+      }
     },
     changePage(page) {
       let start, end
       let self = this
       start = (page - 1) * self.pagination.perPage
       end = self.pagination.perPage * page
-      self.currentsProducts = self.allProducts.slice(start, end)
+      self.currentsProducts = self.filteredProducts.slice(start, end)
       self.pagination.default = page
     },
   },
-  computed: {
-    products() {
-      return this.$store.state.products.all
+  watch: {
+    type: function (newVal) {
+      if (newVal != '') {
+        this.filteredProducts = this.allProducts.filter((item) => {
+          return item.type.toLowerCase().includes(newVal)
+        })
+        this.currentsProducts = this.filteredProducts.slice(0, 6)
+        this.pagination.total = this.filteredProducts.length
+      } else {
+        this.filteredProducts = this.allProducts
+        this.currentsProducts = this.filteredProducts.slice(0, 6)
+        this.pagination.total = this.filteredProducts.length
+      }
+    },
+    priceRange: function (newVal) {
+      if (newVal.max && newVal.min) {
+        this.filteredProducts = this.allProducts.filter((item) => {
+          console.log(newVal.min)
+          return item.price >= newVal.min && item.price < newVal.max
+        })
+        this.currentsProducts = this.filteredProducts.slice(0, 6)
+        this.pagination.total = this.filteredProducts.length
+      } else {
+        this.filteredProducts = this.allProducts
+        this.currentsProducts = this.filteredProducts.slice(0, 6)
+        this.pagination.total = this.filteredProducts.length
+      }
     },
   },
-  async created(){
-
+  async created() {
+    await this.updateGoodsList()
   },
 }
 </script>

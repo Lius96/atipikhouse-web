@@ -21,8 +21,8 @@
         </div>
 
         <div class="row">
-          <Sidebar />
-          <AllProducts />
+          <Sidebar @typeFiltered="updateTypeFilter" @priceFiltered="updatePriceFilter" />
+          <AllProducts :type="typeFilter" :priceRange="priceFilter" />
         </div>
       </div>
     </div>
@@ -43,5 +43,19 @@ export default {
     Sidebar,
     AllProducts,
   },
+  data(){
+    return {
+      typeFilter: '',
+      priceFilter: {}
+    }
+  },
+  methods: {
+    updateTypeFilter(type){
+      this.typeFilter = type
+    },
+    updatePriceFilter(price){
+      this.priceFilter = price
+    }
+  }
 }
 </script>

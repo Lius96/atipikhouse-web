@@ -7,9 +7,9 @@
                         :bullets = "false"
                     >
                         <vueper-slide
-                            v-for="(img, i) in images"
+                            v-for="(img, i) in imagesList"
                             :key="i"
-                            :image="img[i]" />
+                            :image="img.image" />
                     </vueper-slides>
                 </div>
             </div>
@@ -22,11 +22,23 @@ export default {
     props:{
         images: {
             type: Object,
-            default: ()=>({
-                0: '',
-                1: ''
-            })
         },
     },
+    data(){
+        return {
+            imagesList: []
+        }
+    },
+    created(){
+        let returned = []
+
+        if(this.images[0]){
+            for (const img in this.images){
+                returned.push({id: img, image: this.images[img]})
+            }
+        }
+        this.imagesList = returned
+        console.log(this.imagesList)
+    }
 }
 </script>

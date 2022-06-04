@@ -21,7 +21,7 @@
           <Details
             :house="house"
           />
-          <DetailsInfo :description="house.description" />
+          <DetailsInfo :description="house.description" :house="house.id" :comments="comments" />
           <RelatedProducts :type="house.type" />
         </div>
       </div>
@@ -39,6 +39,7 @@ import Details from '../../components/products/Details'
 import DetailsInfo from '../../components/products/DetailsInfo'
 import RelatedProducts from '../../components/products/RelatedProducts'
 import users from '../../mixins/users'
+import comments from '../../mixins/comments'
 export default {
   validate({ params }) {
     return !isNaN(+params.id)
@@ -75,7 +76,7 @@ export default {
     DetailsInfo,
     RelatedProducts,
   },
-  mixins: [users],
+  mixins: [users, comments],
   async asyncData({ params, error, $axios, store }) {
     const data = await $axios.$get(
       `${store.state.apiBaseUrl}/api/v1/houses/${params.id}`
@@ -84,10 +85,19 @@ export default {
       return {
         house: data.data,
         house_id: params.id,
+        comments: []
       }
     } else {
       error({ statusCode: 404, message: 'Biens non trouvé' })
     }
   },
+
+  async created(){
+    const data = await this.getHouseComment(this.$route.params.id)
+
+    if (data) {
+      this.comments = data
+    }
+  }
 }
 </script>

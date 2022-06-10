@@ -122,9 +122,10 @@ export default {
       const product = [
         {
           id: this.house.id,
-          name: this.house.title,
+          title: this.house.title,
           price: this.house.price,
           photos: this.house.photos,
+          off_days: this.house.off_days,
           quantity: 1,
         },
       ]

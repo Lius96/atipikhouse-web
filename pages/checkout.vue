@@ -2,7 +2,7 @@
   <div>
     <TopHeader />
     <Menubar />
-    <CheckoutItem />
+    <CheckoutItem v-if="payIntent.length > 0" :intentKey="payIntent" :user="$store.state.authUser" />
   </div>
 </template>
 
@@ -40,5 +40,40 @@ export default {
     Menubar,
     CheckoutItem,
   },
+  data(){
+    return{
+      payIntent: '',
+    }
+  },
+  methods:{
+    async generatePaymentIntent() {
+      const getTokken = this.$store.state.authUser.login_session_token
+      let data = {
+        amount: this.$store.getters.totalAmount,
+        currency: 'eur',
+        paymentType: 'card',
+      }
+      const result = await this.$axios.$post(
+        `${process.env.APIBASEURI}/api/v1/booking/payintentment/`,
+        data,
+        {
+          withCredentials: false,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            authorization: getTokken,
+          },
+        }
+      )
+      if (result.success) {
+       return  result.data
+      }else{
+        return false
+      }
+    },
+  },
+  async created(){
+    this.payIntent = await this.generatePaymentIntent();
+    console.log(this.payIntent)
+  }
 }
 </script>

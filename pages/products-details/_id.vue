@@ -96,7 +96,9 @@ export default {
     const data = await this.getHouseComment(this.$route.params.id)
 
     if (data) {
-      this.comments = data
+      this.comments = data.filter((item) => {
+          return item.status == 'publish'
+        })
     }
   }
 }

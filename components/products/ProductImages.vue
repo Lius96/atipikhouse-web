@@ -38,7 +38,6 @@ export default {
             }
         }
         this.imagesList = returned
-        console.log(this.imagesList)
     }
 }
 </script>

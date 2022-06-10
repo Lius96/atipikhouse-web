@@ -1,3 +1,4 @@
+
 export default {
     methods: {
         validateEmail(email) {
@@ -101,6 +102,33 @@ export default {
             }else{
                 return true;
             }
-        }
+        },
+        getDatesInRange(startDate, endDate) {
+            const date = new Date(startDate.getTime());
+          
+            const dates = [];
+          
+            while (date <= endDate) {
+              dates.push(parseInt(date.getTime()/1000));
+              date.setDate(date.getDate() + 1);
+            }
+            return dates;
+          },
+        getOffDayObject(timeStamp){
+            return {
+                start: new Date(timeStamp*1000),
+                end: new Date(timeStamp*1000),
+            }
+        },
+        getCalendarOffDays($timestampOffDays=[]){
+            let $return = [],
+            self = this;
+            if (Array.isArray($timestampOffDays)) {
+                $timestampOffDays.forEach(el => {
+                    $return.push(self.getOffDayObject(el))
+                })
+            }
+            return $return;
+        },
     }
 }

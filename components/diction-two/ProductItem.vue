@@ -89,6 +89,7 @@ export default {
                     title: item.title,
                     price: item.price,
                     photos: item.photos,
+                    off_days: item.off_days,
                     quantity: 1,
                 },
             ]

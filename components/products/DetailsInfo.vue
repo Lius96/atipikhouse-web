@@ -21,7 +21,7 @@
                 style="cursor: pointer"
               >
                 <div class="dot"></div>
-                Avis
+                Avis{{ comments.length > 0 ? `(${comments.length})` : '' }}
               </a>
             </li>
           </ul>
@@ -80,7 +80,7 @@
                       Souhaitez-vous ajouter un commentaire ? Connectez-vous
                       pour le faire.
                     </h6>
-                    <nuxt-link to="/login" class="btn btn-primary"
+                    <nuxt-link to="/login" class="btn btn-primary mt-3"
                       >Connexion</nuxt-link
                     >
                   </div>

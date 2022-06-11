@@ -16,7 +16,7 @@
       <div class="container">
         <div class="row">
           <div
-            v-if="!$store.state.authUser.login_session_token"
+            v-if="!$store.state.authUser && $store.state.authUser.login_session_token"
             class="col-12 text-center"
           >
             <h6>Veuillez vous connectez pour effectuer votre réservation</h6>

@@ -333,6 +333,8 @@ export default {
               : '',
         },
         grade: this.provData.grade ? this.provData.grade : 'customer',
+        city: this.provData.city ? this.provData.city : '',
+        country: this.provData.country ? this.provData.country : '',
         confirmPass: '',
         password: '',
         email: '',

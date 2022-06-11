@@ -131,25 +131,26 @@ export default {
       ]
 
       if (this.cart.length > 0) {
-        let id = this.id
-        let cartIndex = this.cart.findIndex((cart) => {
-          return cart.id == id
-        })
+         this.$toast.info('Vous ne pouvez pas ajouter plus d\'un élément dans votre panier');
+        // let id = this.id
+        // let cartIndex = this.cart.findIndex((cart) => {
+        //   return cart.id == id
+        // })
 
-        if (cartIndex == -1) {
-          this.$store.dispatch('addToCart', product)
-          this.$toast('Ajouté au panier', {
-            icon: 'fas fa-cart-plus',
-          })
-        } else {
-          this.$store.dispatch('updateCart', {
-            id,
-            unit: 1,
-            cart: this.cart,
-          })
-          this.getExistPId = true
-          this.$toast.info('Déjà ajouté  au panier')
-        }
+        // if (cartIndex == -1) {
+        //   this.$store.dispatch('addToCart', product)
+        //   this.$toast('Ajouté au panier', {
+        //     icon: 'fas fa-cart-plus',
+        //   })
+        // } else {
+        //   this.$store.dispatch('updateCart', {
+        //     id,
+        //     unit: 1,
+        //     cart: this.cart,
+        //   })
+        //   this.getExistPId = true
+        //   this.$toast.info('Déjà ajouté  au panier')
+        // }
       } else {
         this.$store.dispatch('addToCart', product)
         this.$toast('Ajouté au panier', {

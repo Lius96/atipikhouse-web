@@ -87,12 +87,11 @@
                     >
                     <vc-date-picker
                       color="green"
-                      :value="null"
                       :columns="$screens({ default: 1, laptop: 2, desktop: 2 })"
                       is-range
                       :attributes="calendarAttrs"
                       :disabled-dates="offDays"
-                      :v-model="personDetails.bookingDate"
+                      v-model="personDetails.bookingDate"
                     />
                   </div>
                 </div>
@@ -174,6 +173,7 @@
                   href="javascript:void(0)"
                   @click="add"
                   class="btn btn-primary order-btn"
+                  :disabled="formDisabled"
                   ><span v-if="!btnLoader">RESERVER</span
                   ><BLoader v-else loaderColor="#fff"
                 /></a>
@@ -246,6 +246,7 @@ export default {
         },
       ],
       offDays: [],
+      formDisabled: false,
     }
   },
   computed: {
@@ -261,13 +262,100 @@ export default {
   },
   methods: {
     async add() {
-      // this.$toast.success(`Thanks for the order`, {
-      //   icon: 'fas fa-cart-plus',
-      // })
-      // this.$refs.paymentRef.submit()
-      // this.$store.dispatch('cartEmpty')
-      // this.$router.push('/')
-      await this.validatePay()
+      this.formError = null
+      if (
+        !this.validateRequiredField(this.personDetails.fullName) ||
+        !this.validateRequiredField(this.personDetails.address) ||
+        !this.validateRequiredField(this.personDetails.email) ||
+        !this.validateRequiredField(this.personDetails.phone)
+      ) {
+        this.formError =
+          'Un ou plusieurs champs requis! veuillez remplir tout les champs comportant *'
+        this.scrollToTop()
+        return
+      }
+
+      if (
+        this.personDetails.bookingDate.start == null ||
+        this.personDetails.bookingDate.end == null
+      ) {
+        console.log(this.personDetails.bookingDate.end)
+        this.formError = 'Veuillez selectionner une date de réservation'
+        this.scrollToTop()
+        return
+      }
+      this.btnLoader = true
+      this.formDisabled = true
+      const payValidate = await this.validatePay()
+      if (payValidate) {
+        let datar = {
+          price: `${this.cartTotal}`,
+          start_date: this.$moment(this.personDetails.bookingDate.start).unix(),
+          end_date: this.$moment(this.personDetails.bookingDate.end).unix(),
+          house: this.cart[0].id,
+          user_id: this.user.id,
+          reserved_names: this.personDetails.fullName,
+          billing_details: this.personDetails,
+        }
+        const getTokken = this.$store.state.authUser.login_session_token,
+          self = this
+        this.$axios
+          .$post(`${process.env.APIBASEURI}/api/v1/booking`, datar, {
+            withCredentials: false,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              authorization: getTokken,
+            },
+          })
+          .then((response) => {
+            if (response.success == true) {
+              self.$toast.success(
+                `Réservation effectuer avec succès! Merci pour votre commande`,
+                {
+                  icon: 'fas fa-cart-plus',
+                }
+              )
+              self.btnLoader = false
+              self.formDisabled = false
+              self.$store.dispatch('cartEmpty')
+              self.$router.push('/')
+            } else {
+              self.btnLoader = false
+              self.formDisabled = false
+              self.$toast.error(
+                `Une erreur s'est produite lors de la réservation. Veuillez réessayer plus tard.`,
+                {
+                  icon: 'fas fa-times',
+                }
+              )
+            }
+          })
+
+        // if ((await result.success) == true) {
+        //   self.$toast.success(
+        //     `Réservation effectuer avec succès! Merci pour votre commande`,
+        //     {
+        //       icon: 'fas fa-cart-plus',
+        //     }
+        //   )
+        //   self.btnLoader = false
+        //   self.formDisabled = false
+        //   self.$store.dispatch('cartEmpty')
+        //   self.$router.push('/')
+        // } else {
+        //   self.btnLoader = false
+        //   self.formDisabled = false
+        //   self.$toast.error(
+        //     `Une erreur s'est produite lors de la réservation. Veuillez réessayer plus tard.`,
+        //     {
+        //       icon: 'fas fa-times',
+        //     }
+        //   )
+        // }
+      } else {
+        this.btnLoader = false
+        this.formDisabled = false
+      }
     },
     async validatePay() {
       const { error, paymentIntent } = await this.$stripe.confirmCardPayment(
@@ -283,7 +371,7 @@ export default {
           },
         }
       )
-      if (error) {
+      if (error && error != null) {
         switch (error.code) {
           case 'payment_intent_unexpected_state':
             this.$toast.error(
@@ -311,14 +399,6 @@ export default {
               }
             )
             return false
-          default:
-            this.$toast.error(
-              `Une erreur s'est produite lors du paiement. Vérifiez les informations de votre carte.`,
-              {
-                icon: 'fas fa-times',
-              }
-            )
-            return false
             break
         }
       }
@@ -331,7 +411,6 @@ export default {
       let ofd = []
       this.$store.getters.cart.forEach((element) => {
         if (Array.isArray(element.off_days)) {
-          
           ofd = ofd.concat(element.off_days)
         }
       })

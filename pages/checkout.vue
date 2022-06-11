@@ -3,6 +3,7 @@
     <TopHeader />
     <Menubar />
     <CheckoutItem v-if="payIntent.length > 0" :intentKey="payIntent" :user="$store.state.authUser" />
+    <CheckoutNotLogged v-else />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import TopHeader from '../layouts/TopHeader'
 import Menubar from '../layouts/Menubar'
 import CheckoutItem from '../components/cart/CheckoutItem'
+import CheckoutNotLogged from '../components/cart/CheckoutNotLogged'
 export default {
   head() {
     return {
@@ -39,6 +41,7 @@ export default {
     TopHeader,
     Menubar,
     CheckoutItem,
+    CheckoutNotLogged,
   },
   data(){
     return{
@@ -72,8 +75,10 @@ export default {
     },
   },
   async created(){
-    this.payIntent = await this.generatePaymentIntent();
-    console.log(this.payIntent)
+    if(this.$store.state.authUser){
+      this.payIntent = await this.generatePaymentIntent();
+      console.log(this.payIntent)
+    }
   }
 }
 </script>

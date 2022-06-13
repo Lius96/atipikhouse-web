@@ -1,5 +1,5 @@
 <template>
-  <div class="col-lg-6 col-md-6">
+  <div class="col-lg-4 col-md-4">
     <div class="product-details-content">
       <h3>{{ house.title }}</h3>
 

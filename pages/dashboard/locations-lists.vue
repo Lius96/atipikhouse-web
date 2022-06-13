@@ -16,7 +16,7 @@
     <div class="container-fluid pt-5">
       <div class="row">
         <Sidebar />
-        <div class="col-md-12 ml-sm-auto col-lg-10 px-4">
+        <div class="col-md-12 ml-sm-auto col-lg-10 p-0">
           <LocationList />
         </div>
       </div>

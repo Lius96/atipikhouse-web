@@ -166,7 +166,16 @@
                       <div id="card-error"></div>
                     </div>
                   </div>
-                  <p></p>
+                  <div class="row">
+                    <div class="col-12 form-group">
+                      <label for="">
+                        <input type="checkbox" name="terms" v-model="terms" />
+                        j'ai lu et accepté les
+                        <a href="/cgv" id="term-link" target="_blank">conditions générales</a>
+                        <span class="required" style="color: red;">*</span>
+                      </label>
+                    </div>
+                  </div>
                 </div>
 
                 <a
@@ -194,6 +203,11 @@
     <!-- End Checkout Area -->
   </div>
 </template>
+<style scoped>
+  #terms-link{
+    display: inherit;
+  }
+</style>
 
 <script>
 import BLoader from '../../components/common/btnLoader'
@@ -247,6 +261,7 @@ export default {
       ],
       offDays: [],
       formDisabled: false,
+      terms: false,
     }
   },
   computed: {
@@ -267,7 +282,8 @@ export default {
         !this.validateRequiredField(this.personDetails.fullName) ||
         !this.validateRequiredField(this.personDetails.address) ||
         !this.validateRequiredField(this.personDetails.email) ||
-        !this.validateRequiredField(this.personDetails.phone)
+        !this.validateRequiredField(this.personDetails.phone) ||
+        this.terms == false
       ) {
         this.formError =
           'Un ou plusieurs champs requis! veuillez remplir tout les champs comportant *'

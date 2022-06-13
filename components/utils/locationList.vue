@@ -1,14 +1,14 @@
 <template>
-  <div class="container">
+  <div class="container-fluid p-0">
     <div class="">
       <div v-if="!admin" class="section-title">
         <h2><span class="dot"></span>Listes des biens</h2>
       </div>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 p-0">
       <div v-if="tableDataReady" class="table-responsive">
         <v-grid
-        v-if="tableDataReady"
+          v-if="tableDataReady"
           theme="compact"
           :readonly="true"
           :canFocus="false"
@@ -19,9 +19,16 @@
           :autoSizeColumn="{
             mode: 'autoSizeOnTextOverlap',
           }"
-          style="min-height: 100vh; width: 100%"
+          style="min-height: 72vh; width: 100%"
           row-size="60"
         ></v-grid>
+        <Paginations
+          v-if="pagination.total > pagination.perPage"
+          :perPage="pagination.perPage"
+          :total="pagination.total"
+          :value="pagination.default"
+          @input="changePage"
+        />
       </div>
       <h3 v-else class="text-center">Aucune donnée disponible</h3>
     </div>
@@ -34,6 +41,7 @@ import statusFormatedTemplate from '../tableCommon/locations-parts/statusFormate
 import actionTemplate from '../tableCommon/locations-parts/actionTemplate'
 import titleTemplate from '../tableCommon/locations-parts/titleTemplate'
 import houses from '../../mixins/houses'
+import Paginations from '../../components/common/Paginations'
 export default {
   props: {
     admin: {
@@ -41,7 +49,7 @@ export default {
       default: false,
     },
   },
-  components: { VGrid },
+  components: { VGrid, Paginations },
   mixins: [houses],
   data() {
     return {
@@ -55,7 +63,7 @@ export default {
           cellProperties: () => {
             return {
               class: {
-                "p-2": true,
+                'p-2': true,
               },
             }
           },
@@ -69,7 +77,7 @@ export default {
           cellProperties: () => {
             return {
               class: {
-                "p-2": true,
+                'p-2': true,
               },
             }
           },
@@ -82,7 +90,7 @@ export default {
           cellProperties: () => {
             return {
               class: {
-                "p-2": true,
+                'p-2': true,
               },
             }
           },
@@ -98,7 +106,7 @@ export default {
           cellProperties: () => {
             return {
               class: {
-                "p-2": true,
+                'p-2': true,
               },
             }
           },
@@ -118,7 +126,7 @@ export default {
           cellProperties: () => {
             return {
               class: {
-                "p-2": true,
+                'p-2': true,
               },
             }
           },
@@ -138,7 +146,7 @@ export default {
           cellProperties: () => {
             return {
               class: {
-                "p-2": true,
+                'p-2': true,
               },
             }
           },
@@ -150,28 +158,43 @@ export default {
           cellTemplate: VGridVueTemplate(actionTemplate),
         },
       ],
+      allData: [],
       listData: [],
       toDelete: null,
-      tableDataReady: false
+      tableDataReady: false,
+      pagination: {
+        default: 1,
+        total: 0,
+        perPage: 10,
+      },
     }
   },
   methods: {
     async updateDataList() {
       this.loading = true
       let result = false
-      if(this.admin){
+      if (this.admin) {
         result = await this.getHouses()
-      }else{
+      } else {
         result = await this.getUserHouse()
       }
-      
+
       if (await result) {
-        this.listData = result
+        this.listData = result.slice(0, 10)
+        this.allData = result
+        this.pagination.total = result.length
         this.tableDataReady = true
         this.loading = false
       } else {
         this.loading = false
       }
+    },
+    changePage(page) {
+      let start, end
+      start = (page - 1) * this.pagination.perPage
+      end = this.pagination.perPage * page
+      this.listData = this.allData.slice(start, end)
+      this.pagination.default = page
     },
   },
   async beforeMount() {

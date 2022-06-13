@@ -16,11 +16,8 @@
       <div class="row">
         <Sidebar />
         <div class="col-md-12 ml-sm-auto col-lg-10 px-4">
-          <div>
-            <h4>
-              <i>Aucune réservations en cours</i>
-            </h4>
-          </div>
+          <BookkingsList  />
+          
         </div>
       </div>
     </div>
@@ -32,6 +29,7 @@ import Menubar from '../../layouts/Menubar'
 import Sidebar from '../../components/landing-one/Siderbar.vue'
 import auth from '../../middleware/auth'
 import checkGrade from '../../middleware/checkGrade'
+import BookkingsList from '../../components/utils/bookingLists.vue'
 
 export default {
   head() {
@@ -58,7 +56,7 @@ export default {
       ],
     }
   },
-  components: { TopHeader, Menubar, Sidebar },
+  components: { TopHeader, Menubar, Sidebar, BookkingsList },
   middleware: [auth, checkGrade],
 }
 </script>

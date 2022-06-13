@@ -2,7 +2,7 @@
   <div class="container-fluid p-0">
     <div class="">
       <div v-if="!admin" class="section-title">
-        <h2><span class="dot"></span>Listes des commentaires</h2>
+        <h2><span class="dot"></span>Listes des réservations</h2>
       </div>
     </div>
     <div class="col-lg-12 p-0">
@@ -30,18 +30,15 @@
           @input="changePage"
         />
       </div>
-      <h3 v-else class="text-center">Aucune donnée disponible</h3>
+      <h4 v-else class="text-center">Aucune réservations en cours</h4>
     </div>
   </div>
 </template>
 
 <script>
-import VGrid, { VGridVueTemplate } from '@revolist/vue-datagrid'
-import statusFormatedTemplate from '../tableCommon/comments-parts/statusTemplate'
-import actionTemplate from '../tableCommon/comments-parts/actionTemplate'
-import comments from '../../mixins/comments'
+import VGrid from '@revolist/vue-datagrid'
+import booking from '../../mixins/booking'
 import Paginations from '../../components/common/Paginations'
-
 export default {
   props: {
     admin: {
@@ -50,14 +47,14 @@ export default {
     },
   },
   components: { VGrid, Paginations },
-  mixins: [comments],
+  mixins: [booking],
   data() {
     return {
       columns: [
         {
-          prop: 'content',
-          name: 'Commentatire',
-          sortable: false,
+          prop: 'title',
+          name: 'Titre',
+          sortable: true,
           size: 250,
           cellProperties: () => {
             return {
@@ -68,11 +65,13 @@ export default {
           },
         },
         {
-          name: 'Status',
-          prop: 'status',
-          size: 120,
+          name: 'Prix (€)',
+          prop: 'price',
           sortable: true,
-          cellTemplate: VGridVueTemplate(statusFormatedTemplate),
+          size: 100,
+          cellTemplate: (createElement, props) => {
+            return createElement('span', {}, props.model.price + ' €')
+          },
           cellProperties: () => {
             return {
               class: {
@@ -82,20 +81,7 @@ export default {
           },
         },
         {
-          name: 'Biens',
-          prop: 'title',
-          sortable: true,
-          size: 150,
-          cellProperties: () => {
-            return {
-              class: {
-                'p-2': true,
-              },
-            }
-          },
-        },
-        {
-          name: 'Créer par',
+          name: 'Réserver par',
           prop: 'last_name',
           sortable: true,
           size: 180,
@@ -115,15 +101,15 @@ export default {
           },
         },
         {
-          name: 'Créer le',
-          prop: 'created_date',
+          name: 'Date de début',
+          prop: 'start_date',
           sortable: true,
           size: 100,
           cellTemplate: (createElement, props) => {
             return createElement(
               'span',
               {},
-              this.$moment.unix(props.model.created_date).format('L')
+              this.$moment.unix(props.model.start_date).format('L')
             )
           },
           cellProperties: () => {
@@ -135,10 +121,46 @@ export default {
           },
         },
         {
-          prop: 'id',
-          name: 'Actions',
-          filter: false,
-          cellTemplate: VGridVueTemplate(actionTemplate),
+          name: 'Date de fin',
+          prop: 'end_date',
+          sortable: true,
+          size: 100,
+          cellTemplate: (createElement, props) => {
+            return createElement(
+              'span',
+              {},
+              this.$moment.unix(props.model.end_date).format('L')
+            )
+          },
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
+          name: 'Créer le',
+          prop: 'created_at',
+          sortable: true,
+          size: 100,
+          cellTemplate: (createElement, props) => {
+            return createElement(
+              'span',
+              {},
+              props.model.created_at != null
+                ? this.$moment.unix(props.model.created_at).format('L')
+                : '--'
+            )
+          },
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
         },
       ],
       allData: [],
@@ -157,7 +179,13 @@ export default {
       this.loading = true
       let result = false
       if (this.admin) {
-        result = await this.getComments()
+        result = await this.getBookings()
+      } else {
+        if (this.$store.state.authUser.grade == 'owner') {
+          result = await this.getOwnerBookings()
+        } else {
+          result = await this.getUserBookings()
+        }
       }
 
       if (await result) {

@@ -1,6 +1,6 @@
 <template>
     <client-only>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-8 col-md-4">
             <div class="products-page-gallery">
                 <div class="product-page-gallery-main">
                     <vueper-slides v-if="images[0]"

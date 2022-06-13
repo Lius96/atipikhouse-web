@@ -20,14 +20,8 @@
               
             </div>
           </div>
-
-          <div v-if="ordersData.length > 0">
-            <OrderPerson v-for="(data, i) in ordersData" :key="i" :data="data" />
-          </div>
-          <div v-else>
-            <h3 class="text-center">
-              There are no orders right now!!
-            </h3>
+          <div class="col-12 p-0">
+              <BookingsList :admin="true" />
           </div>
         </main>
       </div>
@@ -40,11 +34,13 @@ import OrderPerson from '../../components/admin/OrderPerson'
 import Sidebar from '../../components/admin/Sidebar'
 import auth from '../../middleware/auth'
 import checkAdminGrade from '../../middleware/ckeckAdminGrade'
+import BookingsList  from '../../components/utils/bookingLists'
 export default {
   layout: 'admin',
   components: {
     OrderPerson,
-    Sidebar
+    Sidebar,
+    BookingsList
   },
   middleware: [auth, checkAdminGrade],
   data() {

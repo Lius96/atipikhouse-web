@@ -82,6 +82,7 @@ export default {
         let publishHouse = data.filter((item) => {
           return item.status == 'publish'
         })
+        this.allProducts = publishHouse
         if (this.defaultType != null && this.defaultType.length > 0) {
           this.filteredProducts = publishHouse.filter((item) => {
             return item.type.toLowerCase().includes(this.defaultType)
@@ -89,7 +90,6 @@ export default {
           this.currentsProducts = this.filteredProducts.slice(0, 6)
           this.pagination.total = this.filteredProducts.length
         } else {
-          this.allProducts = publishHouse
           this.filteredProducts = publishHouse
           this.currentsProducts = publishHouse.slice(0, 6)
           this.pagination.total = publishHouse.length

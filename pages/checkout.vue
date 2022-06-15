@@ -2,7 +2,11 @@
   <div>
     <TopHeader />
     <Menubar />
-    <CheckoutItem v-if="payIntent.length > 0" :intentKey="payIntent" :user="$store.state.authUser" />
+    <CheckoutItem
+      v-if="payIntent.length > 0"
+      :intentKey="payIntent"
+      :user="$store.state.authUser"
+    />
     <CheckoutNotLogged v-else />
   </div>
 </template>
@@ -15,25 +19,52 @@ import CheckoutNotLogged from '../components/cart/CheckoutNotLogged'
 export default {
   head() {
     return {
-      title: 'Atypikhouse - Panier',
+      title: 'Atypikhouse - Caisse',
       meta: [
+        { hid: 'title', name: 'title', content: 'Atypikhouse - Caisse' },
         {
           hid: 'keywords',
           name: 'keywords',
           content:
-            'Atypikhouse, Locations, Habitation, En location, Paiement sécuriser, Votre panier, Panier AtypikHouse',
+            'Atypikhouse, Caisse, Payer votre location, Payer, Paiement en ligne',
         },
         {
           hid: 'description',
           name: 'description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content: 'Payer la réservation de votre location en ligne.',
         },
-        { property: 'og:type', content: 'website' },
         {
-          property: 'og:description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - Caisse',
         },
-        { property: 'og:image', content: '/icon.png' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Payer la réservation de votre location en ligne.',
+        },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - Caisse',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: 'Payer la réservation de votre location en ligne.',
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },
@@ -43,12 +74,12 @@ export default {
     CheckoutItem,
     CheckoutNotLogged,
   },
-  data(){
-    return{
+  data() {
+    return {
       payIntent: '',
     }
   },
-  methods:{
+  methods: {
     async generatePaymentIntent() {
       const getTokken = this.$store.state.authUser.login_session_token
       let data = {
@@ -68,17 +99,17 @@ export default {
         }
       )
       if (result.success) {
-       return  result.data
-      }else{
+        return result.data
+      } else {
         return false
       }
     },
   },
-  async created(){
-    if(this.$store.state.authUser){
-      this.payIntent = await this.generatePaymentIntent();
+  async created() {
+    if (this.$store.state.authUser) {
+      this.payIntent = await this.generatePaymentIntent()
       console.log(this.payIntent)
     }
-  }
+  },
 }
 </script>

@@ -25,7 +25,7 @@
                                     <span>{{ cubeCount }} location(s)</span>
                                 </div>
 
-                                <a href="#"></a>
+                                <nuxt-link to="/products?cat=cube"></nuxt-link>
                             </div>
                         </slide>
 
@@ -38,7 +38,7 @@
                                     <span>{{ tenteCount }} location(s)</span>
                                 </div>
 
-                                <a href="#"></a>
+                                <nuxt-link to="/products?cat=tente"></nuxt-link>
                             </div>
                         </slide>
 
@@ -51,7 +51,7 @@
                                     <span>{{ tinyCount }} location(s)</span>
                                 </div>
 
-                                <a href="#"></a>
+                                <nuxt-link to="/products?cat=tiny"></nuxt-link>
                             </div>
                         </slide>
                             
@@ -64,7 +64,7 @@
                                     <span>{{yourtCount}} location(s)</span>
                                 </div>
 
-                                <a href="#"></a>
+                                <nuxt-link to="/products?cat=yourt"></nuxt-link>
                             </div>
                         </slide>
 

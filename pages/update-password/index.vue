@@ -76,22 +76,52 @@ export default {
       title: 'Atypikhouse - Réinitialisation de mot de passe',
       meta: [
         {
+          hid: 'title',
+          name: 'title',
+          content: 'Atypikhouse - Réinitialisation de mot de passe',
+        },
+        {
           hid: 'keywords',
           name: 'keywords',
-          content:
-            'Atypikhouse, Locations, Habitation, En location, Réinitialisation',
+          content: 'Atypikhouse, Mot de passe',
         },
         {
           hid: 'description',
           name: 'description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content: 'Réinitialisation de mot de passe',
         },
-        { property: 'og:type', content: 'website' },
         {
-          property: 'og:description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - Réinitialisation de mot de pass',
         },
-        { property: 'og:image', content: '/icon.png' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Réinitialisation de mot de passe',
+        },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - Réinitialisation de mot de pass',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: 'Réinitialisation de mot de passe',
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },

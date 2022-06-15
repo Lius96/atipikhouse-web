@@ -156,11 +156,17 @@ export default {
     return {
       title: 'Atypikhouse - Inscription',
       meta: [
-        { hid: 'keywords', name: 'keywords', content: 'Atypikhouse, Locations, Habitation, En location, Propriétaire, Louer vos biens sur AtypikHouse' },
-        { hid: 'description', name: 'description', content: 'Atypikhouse louez vos biens en ligne!' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:description', content: 'Atypikhouse vendez vos louez en ligne!' },
-        { property: 'og:image', content: '/icon.png' }
+        { hid: 'title', name: 'title', content: 'Atypikhouse - Inscription' },
+        { hid: 'keywords', name: 'keywords', content: 'Atypikhouse, Inscription, Espace utilisateur, Mon compte' },
+        { hid: 'description', name: 'description', content: 'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.' },
+        { hid: 'og:title', property: 'og:title',  content: 'Atypikhouse - Inscription' },
+        { hid: 'og:type', property: 'og:type',  content: 'website' },
+        { hid: 'og:description', property: 'og:description',  content: 'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.' },
+        { hid: 'og:image', property: 'og:image',  content: '/icon.png' },
+        { hid: 'twitter:card', property: 'twitter:card',  content: 'summary_large_image' },
+        { hid: 'twitter:title', property: 'twitter:title',  content: 'Atypikhouse - Inscription' },
+        { hid: 'twitter:description', property: 'twitter:description',  content: 'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.' },
+        { hid: 'twitter:image', property: 'twitter:image',  content: '/icon.png' },
       ],
     }
   },

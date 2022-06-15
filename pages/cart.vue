@@ -24,24 +24,48 @@ import CartItems from '../components/cart/CartItems'
 export default {
   head() {
     return {
-      title: 'Atypikhouse',
+      title: 'Atypikhouse - Panier',
       meta: [
+        { hid: 'title', name: 'title', content: 'Atypikhouse - Panier' },
         {
           hid: 'keywords',
           name: 'keywords',
-          content: 'Atypikhouse, Locations, Habitation, En location',
+          content:
+            'Atypikhouse, Panier, Liste des locations, Location choisi, vos locations',
         },
+        { hid: 'description', name: 'description', content: 'Panier' },
         {
-          hid: 'description',
-          name: 'description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - Panier',
         },
-        { property: 'og:type', content: 'website' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
         {
+          hid: 'og:description',
           property: 'og:description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content: 'Panier',
         },
-        { property: 'og:image', content: '/icon.png' },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - Panier',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: 'Panier',
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },

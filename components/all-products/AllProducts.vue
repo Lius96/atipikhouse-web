@@ -44,6 +44,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    defaultType: {
+      type: String,
+      default: null,
+    },
   },
   components: {
     QuckView,
@@ -78,10 +82,18 @@ export default {
         let publishHouse = data.filter((item) => {
           return item.status == 'publish'
         })
-        this.allProducts = publishHouse
-        this.filteredProducts = publishHouse
-        this.currentsProducts = publishHouse.slice(0, 6)
-        this.pagination.total = publishHouse.length
+        if (this.defaultType != null && this.defaultType.length > 0) {
+          this.filteredProducts = publishHouse.filter((item) => {
+            return item.type.toLowerCase().includes(this.defaultType)
+          })
+          this.currentsProducts = this.filteredProducts.slice(0, 6)
+          this.pagination.total = this.filteredProducts.length
+        } else {
+          this.allProducts = publishHouse
+          this.filteredProducts = publishHouse
+          this.currentsProducts = publishHouse.slice(0, 6)
+          this.pagination.total = publishHouse.length
+        }
       }
     },
     changePage(page) {
@@ -110,7 +122,6 @@ export default {
     priceRange: function (newVal) {
       if (newVal.max && newVal.min) {
         this.filteredProducts = this.allProducts.filter((item) => {
-          console.log(newVal.min)
           return item.price >= newVal.min && item.price < newVal.max
         })
         this.currentsProducts = this.filteredProducts.slice(0, 6)

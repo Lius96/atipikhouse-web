@@ -164,22 +164,53 @@ export default {
       title: 'Atypikhouse - Contactez-nous',
       meta: [
         {
+          hid: 'title',
+          name: 'title',
+          content: 'Atypikhouse - Contactez-nous',
+        },
+        {
           hid: 'keywords',
           name: 'keywords',
           content:
-            'Atypikhouse, Locations, Habitation, En location, Ecrivez-nous, Contacts, Contacts AtypikHouse',
+            'Atypikhouse, Contact, informations sur Atypikhouse, Nous contacté, Nos contact',
         },
         {
           hid: 'description',
           name: 'description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content: 'Pour tout informations contactez-nous via le formulaire',
         },
-        { property: 'og:type', content: 'website' },
         {
-          property: 'og:description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - Contactez-nous',
         },
-        { property: 'og:image', content: '/icon.png' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Pour tout informations contactez-nous via le formulaire',
+        },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - Contactez-nous',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: 'Pour tout informations contactez-nous via le formulaire',
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },
@@ -226,8 +257,10 @@ export default {
       }
 
       this.btnLoader = true
-      const {success} = await this.sendmail(
-        process.env.ADMINEMAIL, `Message de ${this.mailData.name}`, ` Message envoyez depuis le formulaire de contact \n
+      const { success } = await this.sendmail(
+        process.env.ADMINEMAIL,
+        `Message de ${this.mailData.name}`,
+        ` Message envoyez depuis le formulaire de contact \n
         Noms: ${this.mailData.name}\n
         email: ${this.mailData.email}\n
         Téléphone: ${this.mailData.phone}\n
@@ -237,27 +270,25 @@ export default {
         'no-reply'
       )
 
-      if(success){
-        this.resetForm();
+      if (success) {
+        this.resetForm()
         this.btnLoader = false
-        this.$toast.success(
-          "Message envoyé avec succès"
-        )
-      }else{
-        this.btnLoader=false
+        this.$toast.success('Message envoyé avec succès')
+      } else {
+        this.btnLoader = false
         this.$toast.error(
           "Une erreur s'est produite lors de l'envoie veuillez réessayer ultérieurement"
         )
       }
     },
-    resetForm(){
+    resetForm() {
       this.mailData = {
         name: '',
         phone: '',
         email: '',
         message: '',
       }
-    }
+    },
   },
 }
 </script>

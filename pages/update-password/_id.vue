@@ -97,22 +97,52 @@ export default {
       title: 'Atypikhouse - Réinitialisation de mot de passe',
       meta: [
         {
+          hid: 'title',
+          name: 'title',
+          content: 'Atypikhouse - Réinitialisation de mot de passe',
+        },
+        {
           hid: 'keywords',
           name: 'keywords',
-          content:
-            'Atypikhouse, Locations, Habitation, En location, Réinitialisation',
+          content: 'Atypikhouse, Mot de passe',
         },
         {
           hid: 'description',
           name: 'description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content: 'Réinitialisation de mot de passe',
         },
-        { property: 'og:type', content: 'website' },
         {
-          property: 'og:description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - Réinitialisation de mot de pass',
         },
-        { property: 'og:image', content: '/icon.png' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Réinitialisation de mot de passe',
+        },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - Réinitialisation de mot de pass',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: 'Réinitialisation de mot de passe',
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },
@@ -148,24 +178,26 @@ export default {
       }
 
       this.btnLoader = true
-      const result = await this.updateUserPass( this.user.login_session_token ,this.user.id, this.newPass)
+      const result = await this.updateUserPass(
+        this.user.login_session_token,
+        this.user.id,
+        this.newPass
+      )
       if (result.success) {
         this.$toast.success('Mot de passe modifier avec succès!')
         this.newPass = ''
         this.cNewPass = ''
-        const that = this;
+        const that = this
         Cookies.remove(`tempUser_${this.$route.params.id}`)
-        setTimeout(()=>{
+        setTimeout(() => {
           that.btnLoader = false
           that.$router.push('/login')
         }, 800)
-        
       } else {
         this.btnLoader = false
         this.$toast.error(
           "Une erreur s'est produite veuillez reessayer plutard"
         )
-        
       }
     },
   },

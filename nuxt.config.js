@@ -1,5 +1,5 @@
 export default {
-    mode: 'universal',
+    // mode: 'universal',
     /*
      ** Headers of the page
      */
@@ -15,10 +15,15 @@ export default {
                 content: 'width=device-width, initial-scale=1'
             },
             {
-                hid: 'description',
-                name: 'description',
-                content: process.env.npm_package_description || ''
-            }
+                hid: 'apple-mobile-web-app-title',
+                name: 'apple-mobile-web-app-title',
+                content: 'Atypikhouse'
+            },
+            {
+                hid: 'og:site_name',
+                name: 'og:site_name',
+                content: 'Atypikhouse'
+            },
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },

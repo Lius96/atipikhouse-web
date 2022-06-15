@@ -18,10 +18,12 @@
       <div class="container">
         <div class="row">
           <ProductImages :images="house.photos" />
-          <Details
-            :house="house"
+          <Details :house="house" />
+          <DetailsInfo
+            :description="house.description"
+            :house="house.id"
+            :comments="comments"
           />
-          <DetailsInfo :description="house.description" :house="house.id" :comments="comments" />
           <RelatedProducts :type="house.type" />
         </div>
       </div>
@@ -46,25 +48,64 @@ export default {
   },
   head() {
     return {
-      title: 'Atypikhouse - '+ this.house.title,
+      title: 'Atypikhouse - ' + this.house.title,
       meta: [
+        {
+          hid: 'title',
+          name: 'title',
+          content: 'Atypikhouse - ' + this.house.title,
+        },
         {
           hid: 'keywords',
           name: 'keywords',
-          content:
-            'Atypikhouse, Locations, Habitation, En location, Réinitialisation',
+          content: 'Atypikhouse, Location, Détail de location',
         },
         {
           hid: 'description',
           name: 'description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content:
+            this.house.description.length > 250
+              ? this.house.description.substr(0, n - 1) + '&hellip;'
+              : this.house.description,
         },
-        { property: 'og:type', content: 'website' },
         {
-          property: 'og:description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - ' + this.house.title,
         },
-        { property: 'og:image', content: '/icon.png' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            this.house.description.length > 250
+              ? this.house.description.substr(0, n - 1) + '&hellip;'
+              : this.house.description,
+        },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - ' + this.house.title,
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content:
+            this.house.description.length > 250
+              ? this.house.description.substr(0, n - 1) + '&hellip;'
+              : this.house.description,
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },
@@ -85,21 +126,21 @@ export default {
       return {
         house: data.data,
         house_id: params.id,
-        comments: []
+        comments: [],
       }
     } else {
       error({ statusCode: 404, message: 'Biens non trouvé' })
     }
   },
 
-  async created(){
+  async created() {
     const data = await this.getHouseComment(this.$route.params.id)
 
     if (data) {
       this.comments = data.filter((item) => {
-          return item.status == 'publish'
-        })
+        return item.status == 'publish'
+      })
     }
-  }
+  },
 }
 </script>

@@ -20,11 +20,7 @@
                 <h2><span class="dot"></span> Connexion</h2>
               </div>
 
-              <form
-                class="login-form"
-                v-if="!authUser"
-                @submit.prevent="login"
-              >
+              <form class="login-form" v-if="!authUser" @submit.prevent="login">
                 <p v-if="formError" class="error">
                   {{ formError }}
                 </p>
@@ -85,10 +81,7 @@
                 Creer un compte pour avoir accès au logement, les commentés ou
                 les reservés
               </p>
-              <nuxt-link
-                v-if="!authUser"
-                to="/signup"
-                class="btn btn-light"
+              <nuxt-link v-if="!authUser" to="/signup" class="btn btn-light"
                 >Créer un compte</nuxt-link
               >
               <nuxt-link
@@ -115,15 +108,56 @@ import formUtils from '../mixins/form-utils'
 import BLoader from '../components/common/btnLoader.vue'
 
 export default {
-  head () {
+  head() {
     return {
       title: 'Atypikhouse - Connexion',
       meta: [
-        { hid: 'keywords', name: 'keywords', content: 'Atypikhouse, connexion, page de connexion, Connexion à votre space atypik' },
-        { hid: 'description', name: 'description', content: 'Atypikhouse louez vos biens en ligne!' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:description', content: 'Atypikhouse louez vos biens en ligne!' },
-        { property: 'og:image', content: '/icon.png' }
+        { hid: 'title', name: 'title', content: 'Atypikhouse - Connexion' },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'Atypikhouse, Connexion, Espace utilisateur, Mon compte',
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - Connexion',
+        },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
+        },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - Connexion',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content:
+            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },
@@ -190,9 +224,9 @@ export default {
     },
   },
   computed: {
-    authUser (){
+    authUser() {
       return this.$store.state.authUser
-    }
+    },
   },
 }
 </script>

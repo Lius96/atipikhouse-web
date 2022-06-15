@@ -21,8 +21,15 @@
         </div>
 
         <div class="row">
-          <Sidebar @typeFiltered="updateTypeFilter" @priceFiltered="updatePriceFilter" />
-          <AllProducts :type="typeFilter" :priceRange="priceFilter" />
+          <Sidebar
+            @typeFiltered="updateTypeFilter"
+            @priceFiltered="updatePriceFilter"
+          />
+          <AllProducts
+            :defaultType="defaultType"
+            :type="typeFilter"
+            :priceRange="priceFilter"
+          />
         </div>
       </div>
     </div>
@@ -37,15 +44,54 @@ import Sidebar from '../components/all-products/Sidebar'
 import AllProducts from '../components/all-products/AllProducts'
 
 export default {
-  head () {
+  head() {
     return {
       title: 'Atypikhouse - Biens',
       meta: [
-        { hid: 'keywords', name: 'keywords', content: 'Atypikhouse, Locations, Habitation, Biens à louez, A louer, Listes de locations' },
-        { hid: 'description', name: 'description', content: 'Atypikhouse louez vos biens en ligne!' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:description', content: 'Atypikhouse louez vos biens en ligne!' },
-        { property: 'og:image', content: '/icon.png' }
+        { hid: 'title', name: 'title', content: 'Atypikhouse - Biens' },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'Atypikhouse, Locations, Appartement à louer, Tiny, Cube, Yourt, Tente, Location en ligne',
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Liste des locations de tout type et par prix',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - Biens',
+        },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Liste des locations de tout type et par prix',
+        },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - Biens',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: 'Liste des locations de tout type et par prix',
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },
@@ -55,19 +101,25 @@ export default {
     Sidebar,
     AllProducts,
   },
-  data(){
+  data() {
     return {
       typeFilter: '',
-      priceFilter: {}
+      priceFilter: {},
+      defaultType: '',
     }
   },
   methods: {
-    updateTypeFilter(type){
+    updateTypeFilter(type) {
       this.typeFilter = type
     },
-    updatePriceFilter(price){
+    updatePriceFilter(price) {
       this.priceFilter = price
+    },
+  },
+  created() {
+    if (this.$route.query.cat && this.$route.query.cat != '') {
+      this.defaultType = this.$route.query.cat
     }
-  }
+  },
 }
 </script>

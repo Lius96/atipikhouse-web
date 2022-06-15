@@ -1,3 +1,5 @@
 module.exports = {
-    preset: '@nuxt/test-utils'
+    preset: '@nuxt/test-utils',
+    verbose: false,
+
 }

@@ -3,10 +3,10 @@
   <div class="products-offer-area bg-image2 ptb-60">
     <div class="container">
       <div class="products-offer-content">
-        <span>Limited Time Offer</span>
-        <h1>-40% Off</h1>
-        <p>Get The Best Deals Now</p>
-        <a href="#" class="btn btn-primary">Discover Now</a>
+        <span>Offre à durée limitée</span>
+        <h1>-40%</h1>
+        <p></p>
+        <a href="/products" class="btn btn-primary">Réserver</a>
       </div>
     </div>
   </div>

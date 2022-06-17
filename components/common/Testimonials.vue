@@ -43,25 +43,25 @@ export default {
         {
           id: 1,
           name: 'Jason Statham',
-          position: 'Actor at Crank',
+          position: 'Salarié',
           feedback:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
+            'La navigation est fluide, facile à comprendre, le processus de paiement a été lui aussi efficace, je suis satisfaite et je compte réserver sur ce même site pour mes prochaines escapades !',
           image: require('../../assets/img/client1.jpg'),
         },
         {
           id: 2,
-          name: 'Jason Statham',
-          position: 'CEO at Assmble',
+          name: 'William Val',
+          position: 'CEO',
           feedback:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
+            'Site très facile d\'utilisation (de nombreuses informations sont données pour indiquer la démarche à suivre) et Service Client très à l\'écoute des demandes particulières. Formulation de confirmation de réservation très amusante : "dites à votre enfant que dans 60 dodos, il pourra vivre une expérience insolite...". Je recommande',
           image: require('../../assets/img/client1.jpg'),
         },
         {
           id: 3,
-          name: 'Jason Statham',
-          position: 'Founder at Kramble',
+          name: 'Gilles Ferrie',
+          position: 'Salarié',
           feedback:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
+            'Équipe très réactive et dispo pour répondre en moins de 24h. Tellement hate de vivre une belle expérience avec AtypikHouse.',
           image: require('../../assets/img/client1.jpg'),
         },
       ],

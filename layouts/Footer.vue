@@ -43,8 +43,8 @@
                         <h3>Contact</h3>
 
                         <ul class="footer-contact-info">
-                            <li><i class="fas fa-map-marker-alt"></i> Adresse: Rue Napoléon, 60350 Pierrefonds</li>
-                            <li><i class="fas fa-phone"></i> Téléphone: <a href="tel:(+123) 456-7898">(+123) 456-7898</a></li>
+                            <li><i class="fas fa-map-marker-alt"></i> Adresse: 10 Rue Napoléon, 60350 Pierrefonds France</li>
+                            <li><i class="fas fa-phone"></i> Téléphone: <a href="tel:(+123) 456-7898">+33 (0) 630609000</a></li>
                             <li><i class="far fa-envelope"></i> Email Us: <a href="mailto:atypikhouse@f2i-dev26-dj.fr">atypikhouse@f2i-dev26-dj.fr</a></li>
                         </ul>
                     </div>

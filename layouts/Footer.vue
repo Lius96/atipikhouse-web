@@ -33,6 +33,7 @@
                             <li><nuxt-link to="/signup">Inscription</nuxt-link></li>
                             <li><nuxt-link to="/politique-de-confidentialite">Politique de confidentialité</nuxt-link></li>
                             <li><nuxt-link to="/mentions-legales">Mentions légales</nuxt-link></li>
+                            <li><nuxt-link to="/cgv">CGV</nuxt-link></li>
                         </ul>
                     </div>
                 </div>

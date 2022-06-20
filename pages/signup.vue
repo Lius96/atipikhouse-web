@@ -81,6 +81,28 @@
               />
             </div>
 
+            <div class="form-group" v-if="user.grade == 'owner'">
+              <label>Ville</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Entrer votre ville"
+                id="city"
+                name="city"
+                v-model="user.city"
+              />
+            </div>
+            <div class="form-group" v-if="user.grade == 'owner'">
+              <label>Pays</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Entrer votre adresse"
+                id="country"
+                name="country"
+                v-model="user.country"
+              />
+            </div>
             <div class="form-group">
               <label>Adresse</label>
               <input
@@ -152,21 +174,56 @@ import users from '../mixins/users'
 import BLoader from '../components/common/btnLoader.vue'
 
 export default {
-  head () {
+  head() {
     return {
       title: 'Atypikhouse - Inscription',
       meta: [
         { hid: 'title', name: 'title', content: 'Atypikhouse - Inscription' },
-        { hid: 'keywords', name: 'keywords', content: 'Atypikhouse, Inscription, Espace utilisateur, Mon compte' },
-        { hid: 'description', name: 'description', content: 'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.' },
-        { hid: 'og:title', property: 'og:title',  content: 'Atypikhouse - Inscription' },
-        { hid: 'og:type', property: 'og:type',  content: 'website' },
-        { hid: 'og:description', property: 'og:description',  content: 'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.' },
-        { hid: 'og:image', property: 'og:image',  content: '/icon.png' },
-        { hid: 'twitter:card', property: 'twitter:card',  content: 'summary_large_image' },
-        { hid: 'twitter:title', property: 'twitter:title',  content: 'Atypikhouse - Inscription' },
-        { hid: 'twitter:description', property: 'twitter:description',  content: 'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.' },
-        { hid: 'twitter:image', property: 'twitter:image',  content: '/icon.png' },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'Atypikhouse, Inscription, Espace utilisateur, Mon compte',
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Atypikhouse - Inscription',
+        },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.',
+        },
+        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Atypikhouse - Inscription',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content:
+            'Atypikhouse louez vos biens en ligne! Inscrivez vous et louer la location de votre choix.',
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/icon.png',
+        },
       ],
     }
   },
@@ -189,7 +246,7 @@ export default {
         password: '',
         confirmPass: '',
         city: '',
-        country: ''
+        country: '',
       },
       formError: null,
       btnLoader: false,
@@ -213,6 +270,17 @@ export default {
         return
       }
 
+      if (this.user.grade == 'owner') {
+        if (
+          !this.validateRequiredField(this.user.city) ||
+          !this.validateRequiredField(this.user.country)
+        ) {
+          this.formError = 'Veuillez renseigner votre ville et pays'
+          this.scrollToTop()
+          return
+        }
+      }
+
       if (!this.validatePhone(this.user.phone)) {
         this.formError = 'Veuillez entrer un numero de téléphone valide'
         this.scrollToTop()
@@ -222,7 +290,7 @@ export default {
       if (!this.validatePassword(this.user.password)) {
         this.formError =
           'Mot de passe trop court! Veuillez entrer un mot de passe valide de 8 charactères minimum!'
-          this.scrollToTop()
+        this.scrollToTop()
         return
       }
 
@@ -250,18 +318,14 @@ export default {
           password: '',
           confirmPass: '',
         }
-        this.$toast.success(
-          result.message
-        )
+        this.$toast.success(result.message)
         const that = this
-        setTimeout(()=>{
+        setTimeout(() => {
           that.$route.push('/login')
         }, 3500)
       } else {
         this.btnLoader = false
-        this.$toast.error(
-          result.message
-        )
+        this.$toast.error(result.message)
       }
     },
   },

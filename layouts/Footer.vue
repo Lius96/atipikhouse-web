@@ -7,7 +7,7 @@
                         <div class="logo">
                             <nuxt-link to="/"><img src="../assets/img/logo.png" alt="logo"></nuxt-link>
                         </div>
-                        <p>Vendez et achetez des habitats facilement et rapidement!</p>
+                        <p>Louer et Reserver des habitats facilement et rapidement!</p>
                     </div>
                 </div>
 

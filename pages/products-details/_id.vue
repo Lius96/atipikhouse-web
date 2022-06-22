@@ -65,7 +65,7 @@ export default {
           name: 'description',
           content:
             this.house.description.length > 250
-              ? this.house.description.substr(0, n - 1) + '&hellip;'
+              ? this.house.description.substr(0, this.house.description.length - 1) + '&hellip;'
               : this.house.description,
         },
         {
@@ -79,7 +79,7 @@ export default {
           property: 'og:description',
           content:
             this.house.description.length > 250
-              ? this.house.description.substr(0, n - 1) + '&hellip;'
+              ? this.house.description.substr(0, this.house.description.length - 1) + '&hellip;'
               : this.house.description,
         },
         { hid: 'og:image', property: 'og:image', content: '/icon.png' },
@@ -98,7 +98,7 @@ export default {
           property: 'twitter:description',
           content:
             this.house.description.length > 250
-              ? this.house.description.substr(0, n - 1) + '&hellip;'
+              ? this.house.description.substr(0, this.house.description.length - 1) + '&hellip;'
               : this.house.description,
         },
         {

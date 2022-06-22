@@ -171,8 +171,10 @@
                       <label for="">
                         <input type="checkbox" name="terms" v-model="terms" />
                         j'ai lu et accepté les
-                        <a href="/cgv" id="term-link" target="_blank">conditions générales</a>
-                        <span class="required" style="color: red;">*</span>
+                        <a href="/cgv" target="_blank" style="display: inline"
+                          >conditions générales</a
+                        >
+                        <span class="required" style="color: red">*</span>
                       </label>
                     </div>
                   </div>
@@ -203,11 +205,7 @@
     <!-- End Checkout Area -->
   </div>
 </template>
-<style scoped>
-  #terms-link{
-    display: inherit;
-  }
-</style>
+
 
 <script>
 import BLoader from '../../components/common/btnLoader'
@@ -346,28 +344,6 @@ export default {
               )
             }
           })
-
-        // if ((await result.success) == true) {
-        //   self.$toast.success(
-        //     `Réservation effectuer avec succès! Merci pour votre commande`,
-        //     {
-        //       icon: 'fas fa-cart-plus',
-        //     }
-        //   )
-        //   self.btnLoader = false
-        //   self.formDisabled = false
-        //   self.$store.dispatch('cartEmpty')
-        //   self.$router.push('/')
-        // } else {
-        //   self.btnLoader = false
-        //   self.formDisabled = false
-        //   self.$toast.error(
-        //     `Une erreur s'est produite lors de la réservation. Veuillez réessayer plus tard.`,
-        //     {
-        //       icon: 'fas fa-times',
-        //     }
-        //   )
-        // }
       } else {
         this.btnLoader = false
         this.formDisabled = false

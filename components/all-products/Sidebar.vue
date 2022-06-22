@@ -28,13 +28,11 @@
                 <b-collapse visible id="collapse-5">
                     <ul class="price-list-row">
                         <li :class="{active: priceFilterSelected == 0}"><a href="javascript:void(0)" @click="filterPrice({}, 0)">Tout</a></li>
-                        <li :class="{active: priceFilterSelected == 1}"><a href="javascript:void(0)" @click="filterPrice({min: 500, max: 1500}, 1)">500€ - 1500€</a></li>
-                        <li :class="{active: priceFilterSelected == 2}"><a href="javascript:void(0)" @click="filterPrice({min: 1500, max: 2500}, 2)">1500€ - 2500€</a></li>
-                        <li :class="{active: priceFilterSelected == 3}"><a href="javascript:void(0)" @click="filterPrice({min: 2500, max: 3000}, 3)">2500€ - 3000€</a></li>
-                        <li :class="{active: priceFilterSelected == 4}"><a href="javascript:void(0)" @click="filterPrice({min: 3000, max: 4500}, 4)">3000€ - 4500€</a></li>
-                        <li :class="{active: priceFilterSelected == 5}"><a href="javascript:void(0)" @click="filterPrice({min: 4500, max: 6000}, 5)">4500€ - 6000€</a></li>
-                        <li :class="{active: priceFilterSelected == 6}"><a href="javascript:void(0)" @click="filterPrice({min: 6000, max: 10000}, 6)">6000€ - 10000€</a></li>
-                        <li :class="{active: priceFilterSelected == 7}"><a href="javascript:void(0)" @click="filterPrice({min: 10000, max: 9999999999}, 7)">10000€ - plus</a></li>
+                        <li :class="{active: priceFilterSelected == 1}"><a href="javascript:void(0)" @click="filterPrice({min: 50, max: 100}, 1)">50€ - 100€</a></li>
+                        <li :class="{active: priceFilterSelected == 2}"><a href="javascript:void(0)" @click="filterPrice({min: 100, max: 200}, 2)">100€ - 200€</a></li>
+                        <li :class="{active: priceFilterSelected == 3}"><a href="javascript:void(0)" @click="filterPrice({min: 200, max: 300}, 3)">200€ - 300€</a></li>
+                        <li :class="{active: priceFilterSelected == 4}"><a href="javascript:void(0)" @click="filterPrice({min: 300, max: 400}, 4)">300€ - 400€</a></li>
+                        <li :class="{active: priceFilterSelected == 5}"><a href="javascript:void(0)" @click="filterPrice({min: 400, max: 9999999999}, 5)">4500€ - plus</a></li>
                     </ul>
                 </b-collapse>
             </div>

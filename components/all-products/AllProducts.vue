@@ -48,6 +48,10 @@ export default {
       type: String,
       default: null,
     },
+    query: {
+      type: String,
+      default: ''
+    }
   },
   components: {
     QuckView,
@@ -132,6 +136,21 @@ export default {
         this.pagination.total = this.filteredProducts.length
       }
     },
+    query: function (newVal){
+      if (newVal != ''){
+        this.filteredProducts = this.allProducts.filter((item) => {
+          if (item.title.toLowerCase().includes(newVal) || item.description.toLowerCase().includes(newVal)) {
+            return item.title.toLowerCase().includes(newVal)
+          }
+        })
+        this.currentsProducts = this.filteredProducts.slice(0, 6)
+        this.pagination.total = this.filteredProducts.length
+      }else{
+        this.filteredProducts = this.allProducts
+        this.currentsProducts = this.filteredProducts.slice(0, 6)
+        this.pagination.total = this.filteredProducts.length
+      }
+    }
   },
   async created() {
     await this.updateGoodsList()

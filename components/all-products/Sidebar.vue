@@ -2,6 +2,12 @@
     <div class="col-lg-4 col-md-12">
         <div class="woocommerce-sidebar-area">
             <div class="collapse-widget collections-list-widget">
+                <div class="col-lg-8 form-group">
+                    <input type="text" placeholder="Entre un nom" class="form-control" v-model="searchQuery" @change="filterQuery">
+                </div>
+            </div>
+
+            <div class="collapse-widget collections-list-widget">
                 <h3 v-b-toggle.collapse-2 class="collapse-widget-title">
                     Type
 
@@ -44,7 +50,8 @@ export default {
     data(){
         return {
             typeFilterSelected: 0,
-            priceFilterSelected: 0
+            priceFilterSelected: 0,
+            searchQuery: ''
         }
     },
     methods:{
@@ -55,6 +62,16 @@ export default {
         filterType(type, selector){
             this.typeFilterSelected = selector
             this.$emit('typeFiltered', type)
+        },
+        filterQuery(){
+             this.$emit('handlehQuery', this.searchQuery)
+        }
+    },
+    watch:{
+        searchQuery: function(newVal){
+            if (newVal != '') {
+                this.$emit('handlehQuery', newVal)
+            }
         }
     }
 }

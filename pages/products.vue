@@ -24,11 +24,13 @@
           <Sidebar
             @typeFiltered="updateTypeFilter"
             @priceFiltered="updatePriceFilter"
+            @handlehQuery="updateSearchQuery"
           />
           <AllProducts
             :defaultType="defaultType"
             :type="typeFilter"
             :priceRange="priceFilter"
+            :query="searchQuery"
           />
         </div>
       </div>
@@ -106,6 +108,7 @@ export default {
       typeFilter: '',
       priceFilter: {},
       defaultType: '',
+      searchQuery: '',
     }
   },
   methods: {
@@ -115,6 +118,9 @@ export default {
     updatePriceFilter(price) {
       this.priceFilter = price
     },
+    updateSearchQuery(text){
+      this.searchQuery = text
+    }
   },
   created() {
     if (this.$route.query.cat && this.$route.query.cat != '') {

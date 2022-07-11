@@ -114,12 +114,12 @@
                     <tbody>
                       <tr v-for="(cart, i) in cart" :key="i">
                         <td class="product-name">
-                          <a href="#">{{ cart.title }}</a>
+                          <a href="#">{{ cart.title }} * {{ bookingsDaysCount }} jour(s)</a>
                         </td>
 
                         <td class="product-total">
                           <span class="subtotal-amount"
-                            >{{ cart.price * cart.quantity }}€</span
+                            >{{ cart.price * bookingsDaysCount }}€</span
                           >
                         </td>
                       </tr>
@@ -131,7 +131,7 @@
 
                         <td class="order-subtotal-price">
                           <span class="order-subtotal-amount"
-                            >${{ cartTotal }}</span
+                            >{{ cartTotal * bookingsDaysCount}} €</span
                           >
                         </td>
                       </tr>
@@ -141,7 +141,7 @@
                         </td>
 
                         <td class="product-subtotal">
-                          <span class="subtotal-amount">${{ cartTotal }}</span>
+                          <span class="subtotal-amount">{{ cartTotal * bookingsDaysCount}} €</span>
                         </td>
                       </tr>
                     </tbody>
@@ -211,6 +211,7 @@
 import BLoader from '../../components/common/btnLoader'
 import formUtils from '../../mixins/form-utils'
 import booking from '../../mixins/booking'
+import { totals } from '~/store'
 export default {
   props: {
     intentKey: {
@@ -238,6 +239,7 @@ export default {
           end: null,
         },
       },
+      bookingsDaysCount: 1,
       elementsOptions: {
         clientSecret: this.intentKey,
         appearance: {},
@@ -293,7 +295,6 @@ export default {
         this.personDetails.bookingDate.start == null ||
         this.personDetails.bookingDate.end == null
       ) {
-        console.log(this.personDetails.bookingDate.end)
         this.formError = 'Veuillez selectionner une date de réservation'
         this.scrollToTop()
         return
@@ -303,7 +304,7 @@ export default {
       const payValidate = await this.validatePay()
       if (payValidate) {
         let datar = {
-          price: `${this.cartTotal}`,
+          price: `${this.cartTotal * this.bookingsDaysCount}`,
           start_date: this.$moment(this.personDetails.bookingDate.start).unix(),
           end_date: this.$moment(this.personDetails.bookingDate.end).unix(),
           house: this.cart[0].id,
@@ -443,6 +444,17 @@ export default {
     this.cardNumber.destroy()
     this.cardExpiry.destroy()
     this.cardCvc.destroy()
+  },
+  watch: {
+    'personDetails.bookingDate.end': function(newVal){
+      let diff = newVal.getTime() - this.personDetails.bookingDate.start
+      console.log(diff)
+      let TotalDays = Math.ceil(diff / (1000 * 3600 * 24));
+      if (TotalDays > 0) {
+        this.bookingsDaysCount = TotalDays;
+      }
+      
+    },
   },
 }
 </script>

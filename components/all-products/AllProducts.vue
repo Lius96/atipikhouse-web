@@ -50,8 +50,8 @@ export default {
     },
     query: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   components: {
     QuckView,
@@ -90,6 +90,18 @@ export default {
         if (this.defaultType != null && this.defaultType.length > 0) {
           this.filteredProducts = publishHouse.filter((item) => {
             return item.type.toLowerCase().includes(this.defaultType)
+          })
+          this.currentsProducts = this.filteredProducts.slice(0, 6)
+          this.pagination.total = this.filteredProducts.length
+        } else if (this.query != '' && this.query.length > 0) {
+          this.filteredProducts = this.allProducts.filter((item) => {
+            if (
+              item.title.toLowerCase().includes(this.query) ||
+              item.description.toLowerCase().includes(this.query) ||
+              (!!item.location && item.location.toLowerCase().includes(this.query))
+            ) {
+              return item
+            }
           })
           this.currentsProducts = this.filteredProducts.slice(0, 6)
           this.pagination.total = this.filteredProducts.length
@@ -136,21 +148,25 @@ export default {
         this.pagination.total = this.filteredProducts.length
       }
     },
-    query: function (newVal){
-      if (newVal != ''){
+    query: function (newVal) {
+      if (newVal != '') {
         this.filteredProducts = this.allProducts.filter((item) => {
-          if (item.title.toLowerCase().includes(newVal) || item.description.toLowerCase().includes(newVal)) {
-            return item.title.toLowerCase().includes(newVal)
+          if (
+            item.title.toLowerCase().includes(newVal) ||
+            item.description.toLowerCase().includes(newVal) ||
+            (!!item.location && item.location.toLowerCase().includes(newVal))
+          ) {
+            return item
           }
         })
         this.currentsProducts = this.filteredProducts.slice(0, 6)
         this.pagination.total = this.filteredProducts.length
-      }else{
+      } else {
         this.filteredProducts = this.allProducts
         this.currentsProducts = this.filteredProducts.slice(0, 6)
         this.pagination.total = this.filteredProducts.length
       }
-    }
+    },
   },
   async created() {
     await this.updateGoodsList()

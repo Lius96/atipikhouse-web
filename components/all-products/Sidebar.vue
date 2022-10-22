@@ -3,7 +3,7 @@
         <div class="woocommerce-sidebar-area">
             <div class="collapse-widget collections-list-widget">
                 <div class="col-lg-8 form-group">
-                    <input type="text" placeholder="Entre un nom" class="form-control" v-model="searchQuery" @change="filterQuery">
+                    <input type="text" placeholder="Entre un(e) nom/lieu/description" class="form-control" v-model="searchQuery" @change="filterQuery">
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
                         <li :class="{active: priceFilterSelected == 2}"><a href="javascript:void(0)" @click="filterPrice({min: 100, max: 200}, 2)">100€ - 200€</a></li>
                         <li :class="{active: priceFilterSelected == 3}"><a href="javascript:void(0)" @click="filterPrice({min: 200, max: 300}, 3)">200€ - 300€</a></li>
                         <li :class="{active: priceFilterSelected == 4}"><a href="javascript:void(0)" @click="filterPrice({min: 300, max: 400}, 4)">300€ - 400€</a></li>
-                        <li :class="{active: priceFilterSelected == 5}"><a href="javascript:void(0)" @click="filterPrice({min: 400, max: 9999999999}, 5)">4500€ - plus</a></li>
+                        <li :class="{active: priceFilterSelected == 5}"><a href="javascript:void(0)" @click="filterPrice({min: 400, max: 9999999999}, 5)">400€ - plus</a></li>
                     </ul>
                 </b-collapse>
             </div>

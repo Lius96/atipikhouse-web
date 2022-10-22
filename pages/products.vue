@@ -126,6 +126,10 @@ export default {
     if (this.$route.query.cat && this.$route.query.cat != '') {
       this.defaultType = this.$route.query.cat
     }
+
+    if (this.$route.query.crn && this.$route.query.crn != '') {
+      this.searchQuery = this.$route.query.crn
+    }
   },
 }
 </script>

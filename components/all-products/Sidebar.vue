@@ -20,6 +20,7 @@
                         <li :class="{active: typeFilterSelected == 2}"><a href="javascript:void(0)" @click="filterType('tente', 2)">Tente</a></li>
                         <li :class="{active: typeFilterSelected == 3}"><a href="javascript:void(0)" @click="filterType('tiny', 3)">Tiny House</a></li>
                         <li :class="{active: typeFilterSelected == 4}"><a href="javascript:void(0)" @click="filterType('cube', 4)">Le cube</a></li>
+                        <li :class="{active: typeFilterSelected == 5}"><a href="javascript:void(0)" @click="filterType('cabane', 5)">Cabane</a></li>
                     </ul>
                 </b-collapse>
             </div>

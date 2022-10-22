@@ -52,14 +52,14 @@
           <div class="col-lg-6 col-md-12">
             <div class="form-group">
               <label>type</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Entrer le type"
-                id="htype"
-                name="htype"
-                v-model="house.type"
-              />
+              <select class="form-control" name="htype" id="htype" v-model="house.type">
+                <option value="" disabled >Séléctionner le type</option>
+                <option value="tente">Tente</option>
+                <option value="cube">Cube</option>
+                <option value="tiny">Tiny House</option>
+                <option value="yourt">Yourt</option>
+                <option value="cabane">Cabane</option>
+              </select>
             </div>
           </div>
           <div class="col-lg-6 col-md-12">

@@ -11,6 +11,12 @@ export default {
                 case 'pending':
                     return 'En attente'
                     break;
+                case 'reject':
+                    return 'Rejeté'
+                    break;
+                case 'approve':
+                    return 'Approuvé'
+                    break;
             
                 default:
                     return '---'
@@ -22,7 +28,13 @@ export default {
                 case 'ban':
                     return 'danger'
                     break;
+                case 'reject':
+                    return 'danger'
+                    break;
                 case 'publish':
+                    return 'success'
+                    break;
+                case 'approve':
                     return 'success'
                     break;
                 case 'pending':

@@ -36,21 +36,29 @@
 </template>
 
 <script>
-import VGrid from '@revolist/vue-datagrid'
+import VGrid, { VGridVueTemplate } from '@revolist/vue-datagrid'
 import booking from '../../mixins/booking'
 import Paginations from '../../components/common/Paginations'
+import statusFormatedTemplate from '../tableCommon/comments-parts/statusTemplate'
+import actionTemplate from '../tableCommon/bookings-parts/actionTemplate'
+
+
 export default {
   props: {
     admin: {
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Boolean,
+      default: false,
+    }
   },
   components: { VGrid, Paginations },
   mixins: [booking],
   data() {
     return {
-      columns: [
+      columns: this.owner == true ? [
         {
           prop: 'title',
           name: 'Titre',
@@ -81,10 +89,156 @@ export default {
           },
         },
         {
+          name: 'Status',
+          prop: 'status',
+          size: 80,
+          sortable: true,
+          cellTemplate: VGridVueTemplate(statusFormatedTemplate),
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
           name: 'Réserver par',
           prop: 'last_name',
           sortable: true,
-          size: 180,
+          size: 150,
+          cellTemplate: (createElement, props) => {
+            return createElement(
+              'span',
+              {},
+              props.model.first_name + ' ' + props.model.last_name
+            )
+          },
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
+          name: 'Date de début',
+          prop: 'start_date',
+          sortable: true,
+          size: 100,
+          cellTemplate: (createElement, props) => {
+            return createElement(
+              'span',
+              {},
+              this.$moment.unix(props.model.start_date).format('L')
+            )
+          },
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
+          name: 'Date de fin',
+          prop: 'end_date',
+          sortable: true,
+          size: 100,
+          cellTemplate: (createElement, props) => {
+            return createElement(
+              'span',
+              {},
+              this.$moment.unix(props.model.end_date).format('L')
+            )
+          },
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
+          name: 'Créer le',
+          prop: 'created_at',
+          sortable: true,
+          size: 100,
+          cellTemplate: (createElement, props) => {
+            return createElement(
+              'span',
+              {},
+              props.model.created_at != null
+                ? this.$moment.unix(props.model.created_at).format('L')
+                : '--'
+            )
+          },
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
+          prop: 'id',
+          name: 'Actions',
+          filter: false,
+          cellTemplate: VGridVueTemplate(actionTemplate),
+        },
+      ] : [
+        {
+          prop: 'title',
+          name: 'Titre',
+          sortable: true,
+          size: 250,
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
+          name: 'Prix (€)',
+          prop: 'price',
+          sortable: true,
+          size: 100,
+          cellTemplate: (createElement, props) => {
+            return createElement('span', {}, props.model.price + ' €')
+          },
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
+          name: 'Status',
+          prop: 'status',
+          size: 80,
+          sortable: true,
+          cellTemplate: VGridVueTemplate(statusFormatedTemplate),
+          cellProperties: () => {
+            return {
+              class: {
+                'p-2': true,
+              },
+            }
+          },
+        },
+        {
+          name: 'Réserver par',
+          prop: 'last_name',
+          sortable: true,
+          size: 150,
           cellTemplate: (createElement, props) => {
             return createElement(
               'span',

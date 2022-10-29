@@ -77,5 +77,23 @@ export default {
             }
 
         },
+
+        async updateStatus(id, status){
+            const getTokken = this.$store.state.authUser.login_session_token
+            const result = await this.$axios.$put(`${this.baseUrl}/api/v1/booking/status/${id}`, {status}, {
+                withCredentials: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    authorization: getTokken
+                }
+            })
+            
+            if (result.success) {
+                return result.data
+            }else{
+                return false
+            }
+
+        },
     }
 }

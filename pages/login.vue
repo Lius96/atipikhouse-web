@@ -46,6 +46,10 @@
                   />
                 </div>
 
+                <div class="pl-4p pr-4p form-group">
+                  <recaptcha />
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                   <span v-if="!btnLoader">Connexion</span
                   ><BLoader v-else loaderColor="#fff" />
@@ -192,6 +196,12 @@ export default {
           'Mot de passe trop court! Veuillez entrer un mot de passe valide!'
         return
       }
+      const cpvalid = await this.validateCaptcha()
+      if (cpvalid == false){
+        this.formError =
+          'Captcha invalide'
+        return
+      }
 
       try {
         this.btnLoader = true
@@ -230,3 +240,14 @@ export default {
   },
 }
 </script>
+
+<style scope>
+  .pl-4p { 
+    padding-left: 20%; 
+  }
+
+  .pr-4p {
+    padding-right: 20%;
+  }
+
+</style>

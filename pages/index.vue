@@ -27,6 +27,7 @@ import Facility from '../components/common/Facility'
 import BestSellers from '../components/diction-two/BestSellers'
 import Testimonials from '../components/common/Testimonials'
 import Subscribe from '../components/common/Subscribe'
+import cacheControl from '../middleware/cacheControl'
 
 export default {
   components: {
@@ -86,6 +87,10 @@ export default {
       ],
     }
   },
+  middleware: cacheControl({
+    'max-age': 60,
+    'stale-when-revalidate': 5
+  }),
   async asyncData({ error, $axios, store }) {
     let { success, data } = await $axios.$get(
         `${store.state.apiBaseUrl}/api/v1/houses/`

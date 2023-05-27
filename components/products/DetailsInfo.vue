@@ -66,6 +66,10 @@
                       >
                     </div>
                     <div class="form-group">
+                      <recaptcha />
+                    </div>
+
+                    <div class="form-group">
                       <button class="btn btn-primary" @click="sendComment($store.state.authUser.id)">
                         <span v-if="!btnLoader">Envoyer</span
                         ><BLoader v-else loaderColor="#fff" />
@@ -115,6 +119,7 @@ h6.user-name span.time{
 <script>
 import BLoader from '../../components/common/btnLoader.vue'
 import comments from '../../mixins/comments'
+import formUtils from '../../mixins/form-utils'
 
 export default {
   props: {
@@ -129,7 +134,7 @@ export default {
     house: Number,
   },
   components: { BLoader },
-  mixins: [comments],
+  mixins: [comments, formUtils],
   data() {
     return {
       tabs: {
@@ -159,6 +164,12 @@ export default {
         this.formError = 'Veuillez saisir votre commentaire'
         return
       }
+      let cpvalid = await this.validateCaptcha()
+      if(cpvalid == false){
+        this.formError = 'Captcha invalide'
+        return
+      }
+
       let data = {
         content: this.commentMsg,
         status: 'pending',

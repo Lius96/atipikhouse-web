@@ -134,10 +134,14 @@
                       ></textarea>
                     </div>
                   </div>
-
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <recaptcha />
+                    </div>
+                  </div>
                   <div class="col-lg-12 col-md-12">
                     <button type="submit" class="btn btn-primary">
-                      <span v-if="!btnLoader">S'inscrire</span
+                      <span v-if="!btnLoader">Envoyer</span
                       ><BLoader v-else loaderColor="#fff" />
                     </button>
                   </div>
@@ -255,6 +259,12 @@ export default {
         this.scrollToTop()
         return
       }
+      let validcp = await this.validateCaptcha()
+      if (validcp == false){
+        this.formError = 'Captcha invalide'
+        this.scrollToTop()
+        return
+      }
 
       this.btnLoader = true
       const { success } = await this.sendmail(
@@ -292,3 +302,13 @@ export default {
   },
 }
 </script>
+<style scope>
+  .pl-4p { 
+    padding-left: 20%; 
+  }
+
+  .pr-4p {
+    padding-right: 20%;
+  }
+
+</style>

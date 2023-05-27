@@ -73,7 +73,11 @@ export default {
         // dotenv
         '@nuxtjs/dotenv',
         // moment
-        '@nuxtjs/moment'
+        '@nuxtjs/moment',
+        // sitemap
+        '@nuxtjs/sitemap',
+        // recaptcha
+        '@nuxtjs/recaptcha'
     ],
     /**
      * PWA config
@@ -112,6 +116,32 @@ export default {
         proxy: true,
         baseUrl: 'http://localhost:4000',
         browserBaseURL: 'http://localhost:4000',
+    },
+    /**
+     * 
+     * Sitemap config
+     */
+    sitemap: {
+        hostname: process.env.BASE_URL_SITEMAP,
+        gzip: true,
+        exclude: [
+            '/admin',
+          '/admin/**'
+        ],
+        // routes: []
+    },
+    /**
+     * recpatcha options
+     * 
+     */
+
+    recaptcha: {
+        hideBadge: false, 
+        language: 'fr',   
+        mode: 'base',       
+        siteKey: process.env.RECPATCHA_PK,    
+        version: 2,    
+        size: 'normal'
     },
     /*
      ** Globally configure <nuxt-link> default active class.

@@ -131,6 +131,38 @@ export default {
                 })
             }
             return $return
+        },
+
+        async validateCaptcha(){
+            try {
+                const token = await this.$recaptcha.getResponse()
+                const verifiedStatus = await this.$axios.$get(`https://www.google.com/recaptcha/api/siteverify`, {
+                    params: {
+                        secret: process.env.RECPATCHA_SK,
+                        response: token
+                    },
+                    withCredentials: true,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                    }
+                })
+
+                if (verifiedStatus.success){
+                    await this.$recaptcha.reset()
+                    return True
+                }else{
+                    await this.$recaptcha.reset()
+                    return false
+                    
+                }
+                
+            } catch (error) {
+                if (process.env.ENV == 'production'){
+                    return false
+                }else{
+                    return true
+                }
+            }
         }
     }
 }

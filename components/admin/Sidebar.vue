@@ -244,7 +244,7 @@
           <a
             v-b-tooltip.hover
             title="Déconnexion"
-            class="nav-link"
+            class="pointed nav-link"
             @click="logout"
           >
             <svg
@@ -293,3 +293,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+ .pointed{ 
+   cursor: pointer;
+ }
+</style>

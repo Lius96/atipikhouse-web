@@ -16,6 +16,7 @@ import TopHeader from '../layouts/TopHeader'
 import Menubar from '../layouts/Menubar'
 import CheckoutItem from '../components/cart/CheckoutItem'
 import CheckoutNotLogged from '../components/cart/CheckoutNotLogged'
+import cacheControl from '../middleware/cacheControl'
 export default {
   head() {
     return {
@@ -74,6 +75,10 @@ export default {
     CheckoutItem,
     CheckoutNotLogged,
   },
+  middleware: cacheControl({
+    'max-age': 60,
+    'stale-when-revalidate': 5
+  }),
   data() {
     return {
       payIntent: '',

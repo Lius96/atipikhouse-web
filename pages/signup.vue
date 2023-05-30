@@ -176,6 +176,7 @@ import Menubar from '../layouts/Menubar'
 import formUtils from '../mixins/form-utils'
 import users from '../mixins/users'
 import BLoader from '../components/common/btnLoader.vue'
+import cacheControl from '../middleware/cacheControl'
 
 export default {
   head() {
@@ -236,6 +237,10 @@ export default {
     Menubar,
     BLoader,
   },
+  middleware: cacheControl({
+    'max-age': 60,
+    'stale-when-revalidate': 5
+  }),
   mixins: [formUtils, users],
   data() {
     return {

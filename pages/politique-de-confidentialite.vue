@@ -587,6 +587,7 @@
 <script>
 import TopHeader from '../layouts/TopHeader'
 import Menubar from '../layouts/Menubar'
+import cacheControl from '../middleware/cacheControl'
 
 export default {
   head() {
@@ -651,5 +652,9 @@ export default {
     TopHeader,
     Menubar,
   },
+  middleware: cacheControl({
+    'max-age': 60,
+    'stale-when-revalidate': 5
+  }),
 }
 </script>

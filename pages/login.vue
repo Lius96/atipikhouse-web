@@ -110,6 +110,7 @@ import TopHeader from '../layouts/TopHeader'
 import Menubar from '../layouts/Menubar'
 import formUtils from '../mixins/form-utils'
 import BLoader from '../components/common/btnLoader.vue'
+import cacheControl from '../middleware/cacheControl'
 
 export default {
   head() {
@@ -179,6 +180,10 @@ export default {
     }
   },
   mixins: [formUtils],
+  middleware: cacheControl({
+    'max-age': 60,
+    'stale-when-revalidate': 5
+  }),
   methods: {
     async login() {
       this.formError = null

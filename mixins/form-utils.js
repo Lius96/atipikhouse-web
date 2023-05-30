@@ -107,11 +107,11 @@ export default {
         },
         getDatesInRange(startDate, endDate) {
             const date = new Date(startDate.getTime())
-
+            const endDates = new Date(endDate.getTime())
             const dates = []
-
-            while (date <= endDate) {
-                dates.push(parseInt(date.getTime() / 1000))
+            self = this
+            while (date <= endDates) {
+                dates.push(self.$moment(date).unix())
                 date.setDate(date.getDate() + 1)
             }
             return dates

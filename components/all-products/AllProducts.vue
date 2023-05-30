@@ -34,6 +34,7 @@ import QuckView from '../modals/QuckView'
 import { mutations } from '../../utils/sidebar-util'
 import ProductItem from '../landing-one/ProductItem'
 import Paginations from '../common/Paginations'
+import formUltis from '../../mixins/form-utils'
 export default {
   props: {
     type: {
@@ -52,12 +53,17 @@ export default {
       type: String,
       default: '',
     },
+    availablesDates:{
+      type: Object,
+      default: () => ({})
+    }
   },
   components: {
     QuckView,
     ProductItem,
     Paginations,
   },
+  mixins:[formUltis],
   data() {
     return {
       quickViewProduct: null,
@@ -167,6 +173,41 @@ export default {
         this.pagination.total = this.filteredProducts.length
       }
     },
+    availablesDates: function(newVal){
+      const self = this
+      if (newVal.start && newVal.end && newVal.start != null && newVal.end != null ){
+        let dates = this.getDatesInRange(newVal.start, newVal.end)
+        this.filteredProducts = this.allProducts.filter((item) => {
+          if (
+            Array.isArray(item.off_days) && item.off_days.length > 0
+          ) {
+            let inDates = false
+            for (let i = 0; i < item.off_days.length; i++){
+              for (let y =0; y < dates.length; y++){
+                if (self.$moment.unix(item.off_days[i]).isSame(self.$moment.unix(dates[y]), 'date')) {
+                  inDates = true
+                  break
+                }
+              }
+              if (inDates == true) {
+                break
+              }
+            }
+            
+            if (inDates == false) {
+              return item
+            }
+          }
+        })
+        this.currentsProducts = this.filteredProducts.slice(0, 6)
+        this.pagination.total = this.filteredProducts.length
+      }else{
+        this.filteredProducts = this.allProducts
+        this.currentsProducts = this.filteredProducts.slice(0, 6)
+        this.pagination.total = this.filteredProducts.length
+      }
+    },
+
   },
   async created() {
     await this.updateGoodsList()

@@ -25,12 +25,14 @@
             @typeFiltered="updateTypeFilter"
             @priceFiltered="updatePriceFilter"
             @handlehQuery="updateSearchQuery"
+            @dateFiltered="updateAvailableDate"
           />
           <AllProducts
             :defaultType="defaultType"
             :type="typeFilter"
             :priceRange="priceFilter"
             :query="searchQuery"
+            :availablesDates="dateFilter"
           />
         </div>
       </div>
@@ -109,6 +111,7 @@ export default {
       priceFilter: {},
       defaultType: '',
       searchQuery: '',
+      dateFilter: {}
     }
   },
   methods: {
@@ -120,6 +123,9 @@ export default {
     },
     updateSearchQuery(text){
       this.searchQuery = text
+    },
+    updateAvailableDate(datess){
+      this.dateFilter = datess
     }
   },
   created() {

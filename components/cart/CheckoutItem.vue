@@ -211,7 +211,6 @@
 import BLoader from '../../components/common/btnLoader'
 import formUtils from '../../mixins/form-utils'
 import booking from '../../mixins/booking'
-import { totals } from '~/store'
 export default {
   props: {
     intentKey: {
@@ -448,7 +447,6 @@ export default {
   watch: {
     'personDetails.bookingDate.end': function(newVal){
       let diff = newVal.getTime() - this.personDetails.bookingDate.start
-      console.log(diff)
       let TotalDays = Math.ceil(diff / (1000 * 3600 * 24));
       if (TotalDays > 0) {
         this.bookingsDaysCount = TotalDays;

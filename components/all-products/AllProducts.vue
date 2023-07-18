@@ -56,7 +56,7 @@ export default {
     availablesDates:{
       type: Object,
       default: () => ({})
-    }
+    },
   },
   components: {
     QuckView,
@@ -198,7 +198,7 @@ export default {
               return item
             }
           }
-        })
+        }) 
         this.currentsProducts = this.filteredProducts.slice(0, 6)
         this.pagination.total = this.filteredProducts.length
       }else{

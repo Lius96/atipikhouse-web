@@ -111,7 +111,8 @@ export default {
       priceFilter: {},
       defaultType: '',
       searchQuery: '',
-      dateFilter: {}
+      dateFilter: {},
+      resetFilter: false
     }
   },
   methods: {
@@ -126,7 +127,7 @@ export default {
     },
     updateAvailableDate(datess){
       this.dateFilter = datess
-    }
+    },
   },
   created() {
     if (this.$route.query.cat && this.$route.query.cat != '') {

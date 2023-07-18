@@ -2,7 +2,7 @@
   <div class="col-lg-4 col-md-12">
     <div class="woocommerce-sidebar-area">
       <div class="collapse-widget collections-list-widget">
-        <div class="col-lg-8 form-group">
+        <div class="col form-group pl-0">
           <input
             type="text"
             placeholder="Entre un(e) nom/lieu/description"
@@ -16,7 +16,6 @@
       <div class="collapse-widget collections-list-widget">
         <h3 v-b-toggle.collapse-2 class="collapse-widget-title">
           Type
-
           <i class="fas fa-angle-up"></i>
         </h3>
         <b-collapse visible id="collapse-2">
@@ -112,7 +111,6 @@
 
         <b-collapse visible id="collapse-6" class="pt-4">
           <vc-date-picker
-            
             color="green"
             :columns="$screens({ default: 1 })"
             is-range
@@ -126,6 +124,7 @@
   </div>
 </template>
 <script>
+
 export default {
   data() {
     return {
@@ -152,16 +151,19 @@ export default {
     filterPrice(price, selector) {
       this.priceFilterSelected = selector
       this.$emit('priceFiltered', price)
+      
     },
     filterType(type, selector) {
       this.typeFilterSelected = selector
       this.$emit('typeFiltered', type)
+      
     },
     filterQuery() {
       this.$emit('handlehQuery', this.searchQuery)
     },
     filterDates(){
-        this.$emit('dateFiltered', this.availableDates)
+      this.$emit('dateFiltered', this.availableDates)
+      
     },
   },
   watch: {

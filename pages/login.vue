@@ -176,6 +176,7 @@ export default {
       formError: null,
       formEmail: '',
       formPassword: '',
+      cpvalid: false,
       btnLoader: false,
     }
   },
@@ -201,8 +202,8 @@ export default {
           'Mot de passe trop court! Veuillez entrer un mot de passe valide!'
         return
       }
-      const cpvalid = await this.validateCaptcha()
-      if (cpvalid == false){
+      this.cpvalid = await this.validateCaptcha()
+      if (!this.cpvalid){
         this.formError =
           'Captcha invalide'
         return

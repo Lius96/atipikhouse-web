@@ -54,7 +54,7 @@ export default {
     )
     if (data.success) {
         return {
-            message: 'Votre a été confirmé avec succès! Vous pouvez vous connectez a votre compte.',
+            message: 'Votre compte a été confirmé avec succès! Vous pouvez vous connectez a votre compte.',
         }
     }else{
         error({ statusCode: 404, message: 'Utilisateur non trouvé' })

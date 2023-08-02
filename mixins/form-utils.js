@@ -149,7 +149,7 @@ export default {
 
                 if (verifiedStatus.success){
                     await this.$recaptcha.reset()
-                    return True
+                    return true
                 }else{
                     await this.$recaptcha.reset()
                     return false

@@ -49,11 +49,16 @@
               />
             </div>
           </div>
-          <div class="col-lg-6 col-md-12">
+          <div class="col-lg-12 col-md-12">
             <div class="form-group">
               <label>type</label>
-              <select class="form-control" name="htype" id="htype" v-model="house.type">
-                <option value="" disabled >Séléctionner le type</option>
+              <select
+                class="form-control"
+                name="htype"
+                id="htype"
+                v-model="house.type"
+              >
+                <option value="" disabled>Séléctionner le type</option>
                 <option value="tente">Tente</option>
                 <option value="cube">Cube</option>
                 <option value="tiny">Tiny House</option>
@@ -108,6 +113,35 @@
                   >
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+              <label>Equipements</label>
+              <multiselect
+                class="form-control no-padding"
+                v-model="house.equipements"
+                placeholder="Sélection d'équipement"
+                label="name"
+                track-by="id"
+                :options="equipementsOptions"
+                :multiple="true"
+                :searchable="true"
+                :loading="equipementsIsLoading"
+                :internal-search="true"
+                :close-on-select="false"
+                :preserve-search="true"
+                :show-no-results="false"
+                :clear-on-select="false"
+                :preselect-first="true"
+                selectLabel="Appuyez Entré pour selectionner"
+                selectedLabel="Sélectionné"
+                :limit="equipLimit"
+                :limitText="limiTexte"
+                :max="equipMax"
+              >
+                
+              </multiselect>
             </div>
           </div>
           <div class="col-lg-12 col-md-12">
@@ -224,9 +258,11 @@
 <script>
 import BLoader from '../../components/common/btnLoader.vue'
 import Confirmation from '../../components/modals/Confirmation'
+import Multiselect from 'vue-multiselect'
 import formUtils from '../../mixins/form-utils'
 import users from '../../mixins/users'
 import houses from '../../mixins/houses'
+import equipment from '~/mixins/equipment'
 
 export default {
   props: {
@@ -246,8 +282,9 @@ export default {
   components: {
     BLoader,
     Confirmation,
+    Multiselect,
   },
-  mixins: [formUtils, users, houses],
+  mixins: [formUtils, users, houses, equipment],
   data() {
     return {
       formError: null,
@@ -265,6 +302,7 @@ export default {
         user_id: this.$store.state.authUser.id,
         location: this.provData.location ? this.provData.location : '',
         off_days: this.provData.off_days ? this.provData.off_days : [],
+        equipements: this.provData.equipements ? this.provData.equipements : [],
       },
       disableForm: false,
       btnLoader: false,
@@ -291,6 +329,10 @@ export default {
         start: null,
         end: null,
       },
+      equipementsOptions: [],
+      equipementsIsLoading: false,
+      equipLimit: 3,
+      equipMax: 6,
     }
   },
   methods: {
@@ -352,13 +394,6 @@ export default {
         )
         .then((response) => {
           if (response.success) {
-            if (that.notify) {
-              that.sendmail(
-                process.env.ADMINEMAIL,
-                `Nouveau bien`,
-                `Nouveau bien ajouter par ${that.$store.state.authUser.first_name} ${that.$store.state.authUser.last_name}`
-              )
-            }
             that.fileProgressBar.inProgress = false
             that.fileProgressBar.isFinished = true
             for (let index = 0; index < response.files.length; index++) {
@@ -449,6 +484,13 @@ export default {
         this.btnLoader = false
         this.formDisabled = false
         if (!this.provData.id) {
+          if (that.notify) {
+            that.sendmail(
+              process.env.ADMINEMAIL,
+              `Nouveau bien`,
+              `Nouveau bien ajouter par ${that.$store.state.authUser.first_name} ${that.$store.state.authUser.last_name}`
+            )
+          }
           this.$toast.success('Votre location a été créer avec succès.')
           this.resetForm()
         } else {
@@ -505,12 +547,23 @@ export default {
         )
       }
     },
-  },
-  created() {
-    if (Array.isArray(this.house.off_days) && this.house.off_days.length > 0) {
-      this.callendarOffdays.start = new Date(Math.min(...this.house.off_days) * 1000)
-      this.callendarOffdays.end = new Date(Math.max(...this.house.off_days) * 1000)
+    limiTexte(count){
+      return `et ${count} en plus...`
     }
+  },
+  async created() {
+    if (Array.isArray(this.house.off_days) && this.house.off_days.length > 0) {
+      this.callendarOffdays.start = new Date(
+        Math.min(...this.house.off_days) * 1000
+      )
+      this.callendarOffdays.end = new Date(
+        Math.max(...this.house.off_days) * 1000
+      )
+    }
+    this.equipementsIsLoading = true
+    let re = await this.getEquipments()
+    if (re) this.equipementsOptions = re
+    this.equipementsIsLoading = false
   },
   watch: {
     callendarOffdays() {
@@ -522,11 +575,27 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style>
 img.thumbnail-img {
   display: inline;
   margin: 15px 7px;
   width: 80px;
   height: 80px;
+}
+.multiselect__content-wrapper .multiselect__content{
+  list-style-type: none !important;
+}
+
+.multiselect__tags{
+  height: 45px !important;
+  padding: 12px 0px;
+  background: #f5f5f5 !important;
+}
+.multiselect__element{
+  padding: 8px 0;
+}
+.no-padding{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 </style>

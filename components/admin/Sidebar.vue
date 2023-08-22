@@ -118,6 +118,37 @@
         </li>
         <li class="nav-item">
           <nuxt-link
+            title="Ajouter un équipement"
+            class="nav-link"
+            to="/admin/add-equipment"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-sliders"
+            >
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+            Ajouter un équipement
+          </nuxt-link>
+        </li>
+        <li class="nav-item">
+          <nuxt-link
             title="Locations"
             class="nav-link"
             to="/admin/locations-lists"
@@ -143,6 +174,35 @@
               <polyline points="10 9 9 9 8 9"></polyline>
             </svg>
             Listes des locations
+          </nuxt-link>
+        </li>
+        <li class="nav-item">
+          <nuxt-link
+            title="Equipements"
+            class="nav-link"
+            to="/admin/equipment/list"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-file-text"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              ></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            Listes des équipements
           </nuxt-link>
         </li>
         <li class="nav-item">
@@ -177,16 +237,7 @@
       </ul>
 
       <h6
-        class="
-          sidebar-heading
-          d-flex
-          justify-content-between
-          align-items-center
-          px-3
-          mt-4
-          mb-1
-          text-muted
-        "
+        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
       >
         <span>Options</span>
         <a
@@ -216,12 +267,7 @@
       </h6>
       <ul class="nav flex-column mb-2">
         <li class="nav-item">
-          <nuxt-link
-            v-b-tooltip.hover
-            title="Accueil"
-            class="nav-link"
-            to="/"
-          >
+          <nuxt-link v-b-tooltip.hover title="Accueil" class="nav-link" to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -294,7 +340,7 @@ export default {
 }
 </script>
 <style scoped>
- .pointed{ 
-   cursor: pointer;
- }
+.pointed {
+  cursor: pointer;
+}
 </style>

@@ -106,7 +106,8 @@ export default {
         './assets/scss/styles/fontawesome.min.css',
         './assets/scss/styles/style.css',
         './assets/scss/styles/admin.css',
-        './assets/scss/styles/responsive.css'
+        './assets/scss/styles/responsive.css',
+        './assets/scss/styles/multiselect.css'
     ],
     /** Axios module configuration
      ** See https://axios.nuxtjs.org/options

@@ -19,7 +19,7 @@
                     <span>Yourt</span>
                     <h1 style="color: #fff;">Yourt à louer</h1>
 
-                    <a href="#" class="btn btn-primary">Location</a>
+                    <a href="#" class="btn btn-primary text-center">Location</a>
                   </div>
                 </div>
               </div>
@@ -36,7 +36,7 @@
                     <span>Tente</span>
                     <h1 style="color: #fff;">Tente à louer</h1>
 
-                    <a href="#" class="btn btn-primary">Location</a>
+                    <a href="#" class="btn btn-primary text-center">Location</a>
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@
                     <span>Le cude</span>
                     <h1 style="color: #fff;">Maison à louer</h1>
 
-                    <a href="#" class="btn btn-primary">Location</a>
+                    <a href="#" class="btn btn-primary text-center">Location</a>
                   </div>
                 </div>
               </div>
@@ -70,3 +70,14 @@ export default {
   name: 'Banner',
 }
 </script>
+<style>
+
+.main-banner-content{
+  max-width: none !important;
+}
+
+.main-banner-content .btn-primary{
+  margin-left: 45% !important;
+  margin-right: 45% !important;
+}
+</style>

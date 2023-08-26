@@ -12,7 +12,6 @@
     <BestSellers :provData="products" />
     <Offer />
     <Testimonials></Testimonials>
-    <Subscribe></Subscribe>
     <Facility></Facility>
   </div>
 </template>
@@ -26,7 +25,7 @@ import Offer from '../components/diction-two/Offer'
 import Facility from '../components/common/Facility'
 import BestSellers from '../components/diction-two/BestSellers'
 import Testimonials from '../components/common/Testimonials'
-import Subscribe from '../components/common/Subscribe'
+// import Subscribe from '../components/common/Subscribe'
 import cacheControl from '../middleware/cacheControl'
 
 export default {
@@ -39,7 +38,7 @@ export default {
     Facility,
     Testimonials,
     BestSellers,
-    Subscribe,
+    // Subscribe,
   },
   head() {
     return {

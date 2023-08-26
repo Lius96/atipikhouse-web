@@ -9,10 +9,30 @@ export default {
         },
         validatePassword(password) {
             if (password.length < 8) {
-                return false
-            } else {
-                return true
+                return false;
             }
+        
+            // Vérifier la présence de chiffres
+            if (!/\d/.test(password)) {
+                return false;
+            }
+        
+            // Vérifier la présence de lettres minuscules
+            if (!/[a-z]/.test(password)) {
+                return false;
+            }
+        
+            // Vérifier la présence de lettres majuscules
+            if (!/[A-Z]/.test(password)) {
+                return false;
+            }
+        
+            // Vérifier la présence de caractères spéciaux
+            if (!/[!@#$%^&*]/.test(password)) {
+                return false;
+            }
+
+            return true
         },
         validatePhone(phone) {
             if (phone == '') {

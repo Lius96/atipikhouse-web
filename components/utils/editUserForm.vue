@@ -261,7 +261,7 @@
       <div class="col-md-12">
         <b-button
           v-if="
-            $store.state.authUser.grade == 'administrator' && provData.last_name
+            provData.last_name
           "
           v-b-tooltip.hover
           title="Appuyez pour supprimer définitivement cet utilisateur"
@@ -274,7 +274,7 @@
     </div>
     <Confirmation
       v-if="
-        $store.state.authUser.grade == 'administrator' && provData.last_name
+        provData.last_name
       "
       @confirmation="delUser"
     />
@@ -448,7 +448,7 @@ export default {
 
       if (!this.validatePassword(this.password.data.newPass)) {
         this.password.formError =
-          'Veuillez saisir un mot de passe valide de plus 8 caratères!'
+          'Mot de passe trop court! Veuillez entrer un mot de passe valide 8 caractères minimum qui ne contiennent que des caractères, des chiffres, des lettres majuscule et miniscule.'
         return
       }
 

@@ -17,7 +17,7 @@
       <div class="row">
         <Sidebar />
         <div class="col-md-12 ml-sm-auto col-lg-10 px-4">
-          <BookingDetails :provData="booking" />
+          <BookingDetails :provData="booking" :owner="true" />
         </div>
       </div>
     </div>

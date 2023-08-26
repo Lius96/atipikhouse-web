@@ -26,7 +26,7 @@
                   <th scope="col">Prix:</th>
                   <td>{{ provData.price }}€</td>
                 </tr>
-                <tr>
+                <tr v-if="owner == false">
                   <th scope="col">Réservé par:</th>
                   <td>{{ provData.first_name + ' ' + provData.last_name }}</td>
                 </tr>
@@ -44,7 +44,7 @@
             </div>
           </div>
 
-          <div class="col-md-12 row">
+          <div v-if="owner == false" class="col-md-12 row">
             <div class="col-md-6 justify-content-center">
               <button
                 class="btn btn-danger"
@@ -68,6 +68,20 @@
               </button>
             </div>
           </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <b-button
+                v-if="provData.last_name"
+                v-b-tooltip.hover
+                title="Appuyez pour annuler cet reservation"
+                class="float-left"
+                variant="danger"
+                @click="showConfirmation()"
+                >Annuler</b-button
+              >
+            </div>
+          </div>
+          <Confirmation v-if="provData.last_name" @confirmation="delUser" />
         </div>
       </div>
     </div>
@@ -90,6 +104,10 @@ export default {
       default: false,
     },
     admin: {
+      type: Boolean,
+      default: false,
+    },
+    owner: {
       type: Boolean,
       default: false,
     },
@@ -128,17 +146,40 @@ export default {
         )
       }
     },
+     showConfirmation() {
+      this.$bvModal.show('confirmation-modal')
+    },
+    async delUser(confirmation) {
+      if (!confirmation) {
+        return
+      }
+      const result = await this.delete(this.provData.id, 'canceled')
+      if (result) {
+        this.$toast.success('Réservation annuler avec succès')
+        if (this.$store.state.authUser.grade == 'administrator') {
+          this.$router.push('/admin')
+        } else if (this.$store.state.authUser.grade == 'owner') {
+          this.$router.push('/dashboard/bookings')
+        } else {
+          this.$router.push('/')
+        }
+      } else {
+        this.$toast.error(
+          'Une erreur est survenue. Veuillez réessayer plutard!'
+        )
+      }
+    },
   },
 }
 </script>
 <style scoped>
 .badge-success {
-    background-color: #28a745 !important;
+  background-color: #28a745 !important;
 }
 .badge-danger {
-    background-color: #dc3545 !important;
+  background-color: #dc3545 !important;
 }
 .badge-info {
-    background-color: #17a2b8;
+  background-color: #17a2b8;
 }
 </style>

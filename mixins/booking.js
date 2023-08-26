@@ -95,5 +95,22 @@ export default {
             }
 
         },
+        async delete(id){
+            const getTokken = this.$store.state.authUser.login_session_token
+            const result = await this.$axios.$delete(`${this.baseUrl}/api/v1/booking/${id}`, {
+                withCredentials: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    authorization: getTokken
+                }
+            })
+            
+            if (result.success) {
+                return result.data
+            }else{
+                return false
+            }
+
+        },
     }
 }

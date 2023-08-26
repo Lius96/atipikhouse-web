@@ -168,7 +168,7 @@ export default {
       this.formError = null
       if (!this.validatePassword(this.newPass)) {
         this.formError =
-          'Mot de passe trop court! Veuillez entrer un mot de passe valide!'
+          'Mot de passe trop court! Veuillez entrer un mot de passe valide 8 caractères minimum qui ne contiennent que des caractères, des chiffres, des lettres majuscule et miniscule.'
         return
       }
 

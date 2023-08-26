@@ -180,9 +180,12 @@ export default {
       }
 
       if (await result) {
-        this.listData = result.slice(0, 10)
-        this.allData = result
-        this.pagination.total = result.length
+        let reData = result.filter((item)=>{
+          return item.status != 'deleted'
+        })
+        this.listData = reData.slice(0, 10)
+        this.allData = reData
+        this.pagination.total = reData.length
         this.tableDataReady = true
         this.loading = false
       } else {

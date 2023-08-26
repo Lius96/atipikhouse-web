@@ -17,6 +17,10 @@ export default {
                 case 'approve':
                     return 'Approuvé'
                     break;
+                
+                case 'canceled':
+                    return 'Annuler'
+                    break;
             
                 default:
                     return '---'
@@ -38,6 +42,9 @@ export default {
                     return 'success'
                     break;
                 case 'pending':
+                    return 'info'
+                    break;
+                case 'canceled':
                     return 'info'
                     break;
             

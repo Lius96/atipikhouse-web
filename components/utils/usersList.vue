@@ -189,9 +189,12 @@ export default {
       result = await this.getUsers()
 
       if (result.success) {
-        this.listData = result.data.slice(0, 10)
-        this.allData = result.data
-        this.pagination.total = result.length
+        let reData = result.data.filter((item)=>{
+          return item.status != "deleted"
+        })
+        this.listData =reData.slice(0, 10)
+        this.allData = reData
+        this.pagination.total = reData.length
         this.tableDataReady = true
       }
     },

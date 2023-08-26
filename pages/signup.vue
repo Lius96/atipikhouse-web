@@ -298,7 +298,7 @@ export default {
 
       if (!this.validatePassword(this.user.password)) {
         this.formError =
-          'Mot de passe trop court! Veuillez entrer un mot de passe valide de 8 charactères minimum!'
+          'Mot de passe trop court! Veuillez entrer un mot de passe valide 8 caractères minimum qui ne contiennent que des caractères, des chiffres, des lettres majuscule et miniscule.'
         this.scrollToTop()
         return
       }
@@ -336,10 +336,6 @@ export default {
           confirmPass: '',
         }
         this.$toast.success(result.message)
-        const that = this
-        setTimeout(() => {
-          that.$route.push('/login')
-        }, 3500)
       } else {
         this.btnLoader = false
         this.$toast.error(result.message)

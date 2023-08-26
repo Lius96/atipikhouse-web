@@ -4,7 +4,7 @@
             <div class="product-image">
                 <nuxt-link :to="`/products-details/${product.id}`">
                     <img :src="product.photos[0]" :alt="product.title" />
-                    <img :src="product.photos[1]" :alt="product.title" />
+                    <img v-if="product.photos[1]" :src="product.photos[1]" :alt="product.title" />
                 </nuxt-link>
 
                 <ul>

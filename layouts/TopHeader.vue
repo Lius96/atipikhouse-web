@@ -9,7 +9,7 @@
                         <ul class="top-header-nav">
                             
                             <li><a href="https://www.facebook.com/atypikhouse.2i" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/AtypikHouse2" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://twitter.com/AtypikHouse2" target="_blank"> <img src="../assets/img/x.png" alt="" width="12px"> </a></li>
                             <li><a href="https://www.instagram.com/atypikhouse.2i/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>

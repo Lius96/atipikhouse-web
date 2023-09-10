@@ -41,7 +41,7 @@
                     <i class="far fa-star"></i>
                 </div> -->
 
-                <a
+                <!-- <a
                     v-if="getExistPId === product.id"
                     href="javascript:void(0)"
                     class="btn btn-light added-btn"
@@ -57,7 +57,7 @@
                     @click="addToCart(product)"
                 >
                     Ajouter au panier
-                </a>
+                </a> -->
             </div>
         </div>
     </div>

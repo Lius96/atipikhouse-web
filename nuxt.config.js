@@ -77,7 +77,9 @@ export default {
         // sitemap
         '@nuxtjs/sitemap',
         // recaptcha
-        '@nuxtjs/recaptcha'
+        '@nuxtjs/recaptcha',
+        // robots
+        '@nuxtjs/robots'
     ],
     /**
      * PWA config
@@ -130,6 +132,19 @@ export default {
           '/admin/**'
         ],
         // routes: []
+    },
+
+    /**
+     * 
+     * robots
+     * 
+    */
+    robots: {
+        Disallow: [
+          '/login',
+          '/admin',
+        ],
+        Sitemap: `${process.env.BASE_URL_SITEMAP}/sitemap.xml`
     },
     /**
      * recpatcha options

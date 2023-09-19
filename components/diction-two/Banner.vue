@@ -80,4 +80,18 @@ export default {
   margin-left: 45% !important;
   margin-right: 45% !important;
 }
+@media only screen and (max-width: 600px) {
+  .main-banner-content .btn-primary{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .home-slides.owl-theme:hover .VueCarousel-navigation .VueCarousel-navigation-prev, .home-slides.owl-theme:hover .VueCarousel-navigation .VueCarousel-navigation-next{
+    left: 10px;
+  }
+
+  .home-slides.owl-theme:hover .VueCarousel-navigation .VueCarousel-navigation-prev.VueCarousel-navigation-next, .home-slides.owl-theme:hover .VueCarousel-navigation .VueCarousel-navigation-next.VueCarousel-navigation-next{
+    right: 10px;
+  }
+}
 </style>

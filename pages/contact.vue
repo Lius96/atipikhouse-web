@@ -32,12 +32,12 @@
                 </li>
                 <li>
                   <i class="fas fa-phone"></i> Téléphone:
-                  <a href="tel:(+123) 456-7898">(+123) 456-7898</a>
+                  <a href="tel:+33 659503087">+33 659503087</a>
                 </li>
                 <li>
                   <i class="far fa-envelope"></i> Email:
-                  <a href="mailto:atypikhouse@f2i-dev26-dj.fr"
-                    >atypikhouse@f2i-dev26-dj.fr</a
+                  <a href="mailto:juliusdjossou@gmail.com"
+                    >juliusdjossou@gmail.com</a
                   >
                 </li>
               </ul>

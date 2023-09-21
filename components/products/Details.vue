@@ -4,7 +4,7 @@
       <h3>{{ house.title }}</h3>
 
       <div class="price">
-        <span class="new-price">${{ house.price }}</span>
+        <span class="new-price">{{ house.price }}€ / Nuit</span>
       </div>
 
       <div class="product-review">
@@ -18,7 +18,7 @@
                 <a href="#" class="rating-count">3 reviews</a> -->
       </div>
 
-      <ul class="product-info mb-5">
+      <ul class="product-info mb-5 inlined">
         <li><span>Type:</span> {{ house?.type }}</li>
         <li><span>Nombre de couchage:</span> {{ house?.nbr_couchage }}</li>
         <li><span>Capacité:</span> {{ house?.capacity }}</li>
@@ -27,7 +27,7 @@
         </li>
       </ul>
 
-      <div v-if="house?.equipements && house?.equipements.length > 0" class="product-info mb-5">
+      <div v-if="house?.equipements && house?.equipements.length > 0" class="product-info mb-5 inlined">
         <h5>Equipements</h5>
         <ul class="product-info">
           <li v-for="equip in house.equipements" :key="equip?.id">
@@ -67,21 +67,11 @@
 
       <div class="product-add-to-cart">
         <button
-          v-if="getExistPId"
-          type="submit"
-          class="btn btn-danger"
-          @click="addToCart()"
-        >
-          <i class="fas fa-cart-plus"></i> Déjà ajouté
-        </button>
-
-        <button
-          v-else
           type="submit"
           class="btn btn-primary"
           @click="addToCart()"
         >
-          <i class="fas fa-cart-plus"></i> Ajouter au panier
+          <i class="fas fa-cart-plus"></i> Réserver
         </button>
       </div>
 
@@ -138,35 +128,27 @@ export default {
           quantity: 1,
         },
       ]
-
-      if (this.cart.length > 0) {
-         this.$toast.info('Vous ne pouvez pas ajouter plus d\'un élément dans votre panier');
-        // let id = this.id
-        // let cartIndex = this.cart.findIndex((cart) => {
-        //   return cart.id == id
-        // })
-
-        // if (cartIndex == -1) {
-        //   this.$store.dispatch('addToCart', product)
-        //   this.$toast('Ajouté au panier', {
-        //     icon: 'fas fa-cart-plus',
-        //   })
-        // } else {
-        //   this.$store.dispatch('updateCart', {
-        //     id,
-        //     unit: 1,
-        //     cart: this.cart,
-        //   })
-        //   this.getExistPId = true
-        //   this.$toast.info('Déjà ajouté  au panier')
-        // }
-      } else {
-        this.$store.dispatch('addToCart', product)
-        this.$toast('Ajouté au panier', {
-          icon: 'fas fa-cart-plus',
-        })
-      }
+      this.$store.dispatch('addToCart', product)
+      this.$router.push("/checkout")
     },
   },
+  created(){
+    this.$store.dispatch('cartEmpty')
+  }
 }
 </script>
+<style>
+.inlined{
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+@media only screen and (max-width: 600px) {
+  .inlined{
+    display: block;
+     margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+</style>

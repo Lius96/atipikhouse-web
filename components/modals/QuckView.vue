@@ -24,7 +24,7 @@
                                 <div class="product-content">
                                     <h3><nuxt-link :to="`/products-details/${product.id}`">{{ product.title }}</nuxt-link></h3>
                                     <div class="price">
-                                        <span class="new-price">{{product.price}}€</span>
+                                        <span class="new-price">{{product.price}}€ / Nuit</span>
                                     </div>
                                     <div class="product-review">
                                         <!-- <div class="rating">
@@ -48,13 +48,13 @@
                                     <div class="product-size-wrapper mb-5">
                                     </div>
                                     <div class="product-add-to-cart">
-                                        <button 
+                                        <!-- <button 
                                             type="submit" 
                                             class="btn btn-primary"
                                             @click="addToCart(product)"
                                         >
                                             <i class="fas fa-cart-plus"></i> Ajouter au panier
-                                        </button>
+                                        </button> -->
                                     </div>
                                     <nuxt-link :to="`/products-details/${product.id}`" class="view-full-info">Voir plus</nuxt-link>
                                 </div>

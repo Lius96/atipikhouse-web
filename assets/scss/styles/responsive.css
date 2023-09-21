@@ -1508,4 +1508,8 @@
   .comero-nav .navbar{
     justify-content: space-around !important;
   }
+
+  .comero-nav .navbar .navbar-nav{
+    height: auto !important;
+  }
 }

@@ -32,23 +32,11 @@
                     <span class="new-price">{{ product.price }}€</span>
                 </div>
 
-                <a
-                    v-if="getExistPId === product.id"
-                    href="javascript:void(0)"
-                    class="btn btn-light added-btn"
-                    @click="addToCart(product)"
-                >
-                    Déjà ajouté!
-                </a>
+                
+                <nuxt-link :to="`/products-details/${product.id}`"  class="btn btn-light">
+                        Réserver
+                </nuxt-link>
 
-                <a
-                    v-else
-                    href="javascript:void(0)"
-                    class="btn btn-light"
-                    @click="addToCart(product)"
-                >
-                    Ajouter au panier
-                </a>
             </div>
         </div>
     </div>

@@ -485,11 +485,11 @@ export default {
         this.btnLoader = false
         this.formDisabled = false
         if (!this.provData.id) {
-          if (that.notify) {
-            that.sendmail(
+          if (this.notify) {
+            this.sendmail(
               process.env.ADMINEMAIL,
               `Nouveau bien`,
-              `Nouveau bien ajouter par ${that.$store.state.authUser.first_name} ${that.$store.state.authUser.last_name}`
+              `Nouveau bien ajouter par ${this.$store.state.authUser.first_name} ${this.$store.state.authUser.last_name}`
             )
           }
           this.$toast.success('Votre location a été créer avec succès.')

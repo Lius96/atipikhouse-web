@@ -18,7 +18,7 @@
           Type
           <i class="fas fa-angle-up"></i>
         </h3>
-        <b-collapse visible id="collapse-2">
+        <b-collapse id="collapse-2">
           <ul class="collections-list-row">
             <li :class="{ active: typeFilterSelected == 0 }">
               <a href="javascript:void(0)" @click="filterType('', 0)">Tout</a>
@@ -59,7 +59,7 @@
           <i class="fas fa-angle-up"></i>
         </h3>
 
-        <b-collapse visible id="collapse-5">
+        <b-collapse id="collapse-5">
           <ul class="price-list-row">
             <li :class="{ active: priceFilterSelected == 0 }">
               <a href="javascript:void(0)" @click="filterPrice({}, 0)">Tout</a>
@@ -109,7 +109,7 @@
           <i class="fas fa-angle-up"></i>
         </h3>
 
-        <b-collapse visible id="collapse-6" class="pt-4">
+        <b-collapse id="collapse-6" class="pt-4">
           <vc-date-picker
             color="green"
             :columns="$screens({ default: 1 })"

@@ -28,6 +28,11 @@
                   </nuxt-link>
                 </li>
                 <li class="nav-item">
+                  <nuxt-link to="/devenir-partenaire" class="nav-link">
+                    A propos
+                  </nuxt-link>
+                </li>
+                <li class="nav-item">
                   <nuxt-link to="/contact" class="nav-link">
                     Contact
                   </nuxt-link>
@@ -37,9 +42,9 @@
               <div class="others-option">
                 
                 <div class="option-item">
-                  <a @click.prevent="toggle" href="#">
+                  <!-- <a @click.prevent="toggle" href="#">
                     Panier({{ cart.length }}) <i class="fas fa-shopping-bag"></i>
-                  </a>
+                  </a> -->
                 </div>
               </div>
             </b-collapse>

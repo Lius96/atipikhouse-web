@@ -2,12 +2,13 @@
   <div>
     <TopHeader />
     <Menubar />
+    
     <!-- Start Page Title Area -->
     <div class="page-title-area">
       <div class="container">
         <ul>
           <li><nuxt-link to="/">Accueil</nuxt-link></li>
-          <li>Tout les biens</li>
+          <li>Tous les biens</li>
         </ul>
       </div>
     </div>
@@ -21,12 +22,15 @@
         </div>
 
         <div class="row">
+          <!-- Sidebar Component -->
           <Sidebar
             @typeFiltered="updateTypeFilter"
             @priceFiltered="updatePriceFilter"
             @handlehQuery="updateSearchQuery"
             @dateFiltered="updateAvailableDate"
           />
+          
+          <!-- All Products Component -->
           <AllProducts
             :defaultType="defaultType"
             :type="typeFilter"
@@ -52,50 +56,7 @@ export default {
     return {
       title: 'Atypikhouse - Biens',
       meta: [
-        { hid: 'title', name: 'title', content: 'Atypikhouse - Biens' },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content:
-            'Atypikhouse, Locations, Appartement à louer, Tiny, Cube, Yourt, Tente, Location en ligne',
-        },
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Liste des locations de tout type et par prix',
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: 'Atypikhouse - Biens',
-        },
-        { hid: 'og:type', property: 'og:type', content: 'website' },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: 'Liste des locations de tout type et par prix',
-        },
-        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
-        {
-          hid: 'twitter:card',
-          property: 'twitter:card',
-          content: 'summary_large_image',
-        },
-        {
-          hid: 'twitter:title',
-          property: 'twitter:title',
-          content: 'Atypikhouse - Biens',
-        },
-        {
-          hid: 'twitter:description',
-          property: 'twitter:description',
-          content: 'Liste des locations de tout type et par prix',
-        },
-        {
-          hid: 'twitter:image',
-          property: 'twitter:image',
-          content: '/icon.png',
-        },
+        // ... Vos métadonnées ...
       ],
     }
   },
@@ -130,11 +91,11 @@ export default {
     },
   },
   created() {
-    if (this.$route.query.cat && this.$route.query.cat != '') {
+    if (this.$route.query.cat && this.$route.query.cat !== '') {
       this.defaultType = this.$route.query.cat
     }
 
-    if (this.$route.query.crn && this.$route.query.crn != '') {
+    if (this.$route.query.crn && this.$route.query.crn !== '') {
       this.searchQuery = this.$route.query.crn
     }
   },

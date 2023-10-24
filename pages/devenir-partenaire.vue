@@ -37,7 +37,7 @@
         <img src="../assets/img/qui.jpg" alt="">
       </div>
       <div class="col-md-8"> <!-- Utilisation de 'col-md-8' pour définir la largeur de la colonne du texte sur les écrans larges -->
-        <h1 class="about-section ">QUI SOMMES-NOUS ?</h1> <!-- Utilisation de la classe 'green-text' pour appliquer la couleur verte -->
+        <h2 class="about-section ">QUI SOMMES-NOUS ?</h2> <!-- Utilisation de la classe 'green-text' pour appliquer la couleur verte -->
         <p>Basée dans le Sud de la France, Atypikhouse est leader sur le marché de l'insolite et référence des hébergements atypiques partout sur son territoire, et même à l'étranger !</p>
         <h6>NOS VALEURS</h6>
         <p>Chez Atypikhouse, nous plaçons la relation avec les propriétaires au cœur du partenariat. Notre collaboration avec les hébergeurs est basée sur le respect des intérêts de chacun, tout en laissant la liberté et l'indépendance nécessaires à leur activité. Une équipe de professionnels du tourisme, spécialisés dans le secteur de l'insolite, vous propose un service réactif et efficace qui se veut humain, qualitatif et adapté.</p>
@@ -50,7 +50,7 @@
     <!-- Section: Concept (Noir) -->
   <section class="concept-section black-bg " >
     <div class="container">
-      <h1 class="concept-title">LE CONCEPT</h1>
+      <h2 class="concept-title">LE CONCEPT</h2>
       <div class="row">
         <div class="col-md-4 text-center">
           <div class="concept-item">
@@ -80,7 +80,7 @@
     <!-- Section: Éligibilité (Noir clair) -->
 <section class="eligibility-section light-black-bg">
   <div class="container">
-    <h1 class="eligibility-titles text-center font-weight-bold" style="color: #33cc33;">VOTRE OFFRE EST-ELLE ÉLIGIBLE ?</h1>
+    <h2 class="eligibility-titles text-center font-weight-bold" style="color: #33cc33;">VOTRE OFFRE EST-ELLE ÉLIGIBLE ?</h2>
     <div class="eligibility-tests row">
       <!-- Premier test -->
       <div class="col-md-6">
@@ -126,7 +126,7 @@
     <!-- Section: Ce que l'on vous apporte (Noir) -->
     <section class="what-we-offer-section black-bg">
       <div class="container">
-        <h1 class="what-we-offer-title">CE QUE L'ON VOUS APPORTE</h1>
+        <h2 class="what-we-offer-title">CE QUE L'ON VOUS APPORTE</h2>
         <div class="row">
           <div class="col-md-4">
             <div class="what-we-offer-item">
@@ -190,7 +190,7 @@
       <!-- Section: Comment ça marche (Noir) -->
 
       <section class="how-it-works-section light-black-bg">
-      <h1>COMMENT ÇA MARCHE ?</h1>
+      <h2>COMMENT ÇA MARCHE ?</h2>
 
       <details>
         <summary>Système de recherche performant</summary>
@@ -313,13 +313,8 @@ export default {
       console.log(`Statistique "${statistic.label}" a atteint sa valeur finale.`);
 
       // Réinitialisez la statistique pour permettre une nouvelle animation
-      statistic.startVal = 0;
-
-      
-
-      
+      statistic.startVal = 0;            
     },
-
     
   },
 };

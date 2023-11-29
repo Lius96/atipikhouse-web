@@ -1,4 +1,6 @@
 module.exports = {
     preset: '@nuxt/test-utils',
-    verbose: true
+    verbose: true,
+    // runner: 'jest',
+    collectCoverage: true
 }

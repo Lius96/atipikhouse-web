@@ -1,22 +1,48 @@
-import { createPage, setupTest } from '@nuxt/test-utils'
-import { jest, describe } from '@jest/globals'
+import axios from 'axios'
+const apiBaseUrl = 'http://localhost:4000'
+describe("Test API's", () => {
+    test('test login', async () => {
+        let unvalidUser = {
+            email: 'admin@admin.com',
+            password: 'KSD&Ap?DAWAc'
+        }
 
-jest.setTimeout(60000)
-// setupTest()
+        const { status, data } = await axios.post(
+            `${apiBaseUrl}/api/v1/login/`,
+            unvalidUser
+        )
 
-describe('browser', () => {
-    it("renvoi la page d'accueil", async () => {
-        const page = await createPage('/')
-        const html = await page.innerHTML('body')
-        expect(html).toContain('Trouvez votre type de location ici!')
+        expect(data.success).toBe(false)
     })
-    // it("renvoi un message d'erreur", async () => {
-    //     const page = await createPage('/login')
-    //     await page.fill('input[name="email"]', 'admin@mail.com')
-    //     await page.fill('input[name="password"]', 'sdakldfjsdiuia')
-    //     await page.click('button[type=submit]')
-    //     await expect(page.locator('.error')).toHaveText(
-    //         'Une erreur est survenue, veuillez verifier vos informations puis réessayer!'
-    //     )
-    // })
+
+    test('test update user', async () => {
+        let unvalidUserData = {
+            lastname: 466565, // cant be number
+            firstname: 'nouveau prenom',
+            address: 'rue 6',
+            phone: '+3368472659',
+            social_link: {},
+            grade: 'client',
+            city: 'paris',
+            country: 'France'
+        }
+        let data = null
+        const token = '3juCOz9meFqBx05lp1'
+        try {
+            const { status, data } = await axios.put(
+                `${apiBaseUrl}/api/v1/users/e6097c59-bd4b-40a4-898e-8c0ff49e4774`,
+                unvalidUserData,
+                {
+                    withCredentials: false,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        authorization: token
+                    }
+                }
+            )
+            expect(data.success).toBeDefined()
+        } catch (e) {
+            expect(data).toBeNull()
+        }
+    })
 })

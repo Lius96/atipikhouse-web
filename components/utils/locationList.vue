@@ -176,7 +176,7 @@ export default {
       if (this.admin) {
         result = await this.getHouses()
       } else {
-        result = await this.getUserHouse()
+        result = await this.getUserHouses()
       }
 
       if (await result) {

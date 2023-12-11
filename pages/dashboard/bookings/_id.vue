@@ -17,7 +17,7 @@
       <div class="row">
         <Sidebar />
         <div class="col-md-12 ml-sm-auto col-lg-10 px-4">
-          <BookingDetails :provData="booking" :owner="true" />
+          <BookingDetails :provData="booking" :owner="this.$store.state.authUser.grade== 'owner' ? false : true" />
         </div>
       </div>
     </div>
@@ -72,7 +72,6 @@ export default {
         },
       }
     )
-    console.log(data)
     if (data.success) {
       return {
         booking: data.data[0],

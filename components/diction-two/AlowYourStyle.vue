@@ -36,7 +36,7 @@
           >
             <slide>
               <div class="single-offer-box">
-                <img src="../../assets/img/house-type/cube.jpg" alt="image" />
+                <img src="../../assets/img/house-type/cube.jpg" alt="cube" />
 
                 <div class="offer-content">
                   <h3>Cube</h3>
@@ -49,7 +49,7 @@
 
             <slide>
               <div class="single-offer-box">
-                <img src="../../assets/img/house-type/tente.jpg" alt="image" />
+                <img src="../../assets/img/house-type/tente.jpg" alt="tente" />
 
                 <div class="offer-content">
                   <h3>Tente</h3>
@@ -62,7 +62,7 @@
 
             <slide>
               <div class="single-offer-box">
-                <img src="../../assets/img/house-type/tiny.jpg" alt="image" />
+                <img src="../../assets/img/house-type/tiny.jpg" alt="tiny" />
 
                 <div class="offer-content">
                   <h3>Tiny House</h3>
@@ -75,7 +75,7 @@
 
             <slide>
               <div class="single-offer-box">
-                <img src="../../assets/img/house-type/yourt.jpg" alt="image" />
+                <img src="../../assets/img/house-type/yourt.jpg" alt="yourt" />
 
                 <div class="offer-content">
                   <h3>Yourt</h3>

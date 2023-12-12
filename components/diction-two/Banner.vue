@@ -17,7 +17,7 @@
                 <div class="container">
                   <div class="main-banner-content">
                     <span>Yourt</span>
-                    <h1 style="color: #fff;">Yourt à louer</h1>
+                    <h2 style="color: #fff;">Yourt à louer</h2>
 
                     <nuxt-link to="/products" class="btn btn-primary text-center">Location</nuxt-link>
                   </div>
@@ -34,7 +34,7 @@
                 <div class="container">
                   <div class="main-banner-content">
                     <span>Tente</span>
-                    <h1 style="color: #fff;">Tente à louer</h1>
+                    <h2 style="color: #fff;">Tente à louer</h2>
 
                     <nuxt-link to="/products" class="btn btn-primary text-center">Location</nuxt-link>
                   </div>

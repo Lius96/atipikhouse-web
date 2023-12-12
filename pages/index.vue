@@ -48,19 +48,19 @@ export default {
         {
           hid: 'keywords',
           name: 'keywords',
-          content: 'Atypikhouse, Locations, Habitation, En location',
+          content: 'Maison insolite, Habitation originale, Logement unique, Demeure singulière, Résidence hors du commun, Propriété distinctive, Architecture inhabituelle, Propriété atypique, Maison de rêve, Logement hors norme, Demeure exceptionnelle, Résidence remarquable, Lieu de vie original, Maison de charme, Maison fantastique, Propriété insolite , Résidence extraordinaire, Logement hors du commun, Maison à louer',
         },
         {
           hid: 'description',
           name: 'description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content: 'Trouvez la maison de vos rêves parmi notre sélection exclusive de propriétés atypiques. Notre site de localisation vous offre un accès à des habitats originaux, des demeures exceptionnelles et des résidences hors normes, pour un style de vie distinctif et unique.',
         },
         { hid: 'og:title', property: 'og:title', content: 'Atypikhouse' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content: 'Trouvez la maison de vos rêves parmi notre sélection exclusive de propriétés atypiques. Notre site de localisation vous offre un accès à des habitats originaux, des demeures exceptionnelles et des résidences hors normes, pour un style de vie distinctif et unique.',
         },
         { hid: 'og:image', property: 'og:image', content: '/icon.png' },
         {
@@ -76,7 +76,7 @@ export default {
         {
           hid: 'twitter:description',
           property: 'twitter:description',
-          content: 'Atypikhouse louez vos biens en ligne!',
+          content: 'Trouvez la maison de vos rêves parmi notre sélection exclusive de propriétés atypiques. Notre site de localisation vous offre un accès à des habitats originaux, des demeures exceptionnelles et des résidences hors normes, pour un style de vie distinctif et unique.',
         },
         {
           hid: 'twitter:image',

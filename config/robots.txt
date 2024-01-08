@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /products
+Allow: /contact
+Allow: /devenir-partenaire
+Allow: /products-details/
+Disallow: /admin/
+Disallow: /checkout
+Disallow: /cart
+Disallow: /signup
+Sitemap: https://f2i-dev26-jd.fr/sitemap.xml

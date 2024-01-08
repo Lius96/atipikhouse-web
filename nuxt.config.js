@@ -78,6 +78,7 @@ export default {
         '@nuxtjs/recaptcha',
         // robots
         process.env.ENV == 'production' ? '@nuxtjs/robots' : ''
+        { configPath: "~/config/robots.config" }
     ],
     /**
      * PWA config
@@ -122,22 +123,22 @@ export default {
      *
      * Sitemap config
      */
-    sitemap: {
-        hostname: process.env.BASE_URL_SITEMAP,
-        gzip: true,
-        exclude: ['/admin', '/admin/**']
-        // routes: []
-    },
+    // sitemap: {
+    //     hostname: process.env.BASE_URL_SITEMAP,
+    //     gzip: true,
+    //     exclude: ['/admin', '/admin/**']
+    //     // routes: []
+    // },
 
     /**
      *
      * robots
      *
      */
-    robots: {
-        Disallow: ['/login', '/admin'],
-        Sitemap: `${process.env.BASE_URL_SITEMAP}/sitemap.xml`
-    },
+    // robots: {
+    //     Disallow: ['/login', '/admin'],
+    //     Sitemap: `${process.env.BASE_URL_SITEMAP}/sitemap.xml`
+    // },
     /**
      * recpatcha options
      *

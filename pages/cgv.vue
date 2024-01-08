@@ -222,7 +222,7 @@ export default {
     return {
       title: 'Atypikhouse - CGV',
       meta: [
-        { hid: 'title', name: 'title', content: 'Atypikhouse - CGV' },
+        { hid: 'title', name: 'title', content: 'Découvrez l\'Originalité d\'Atypikhouse - CGV' },
         {
           hid: 'keywords',
           name: 'keywords',

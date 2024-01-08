@@ -166,7 +166,7 @@ import cacheControl from '../middleware/cacheControl'
 export default {
   head() {
     return {
-      title: 'Atypikhouse - Contactez-nous',
+      title: 'Découvrez l\'Originalité d\'Atypikhouse - - Contactez-nous',
       meta: [
         {
           hid: 'title',

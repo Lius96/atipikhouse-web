@@ -11,15 +11,32 @@
         :perPage="1"
       >
         <slide>
+          <div class="main-banner item-bg3">
+            <div class="d-table">
+              <div class="d-table-cell">
+                <div class="container">
+                  <div class="main-banner-content">
+                    <span>Le cude</span>
+                    <h1 style="color: #fff;">Atypique House</h1>
+
+                    <nuxt-link to="/products" class="btn btn-primary text-center">Découvrir</nuxt-link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </slide>
+
+        <slide>
           <div class="main-banner item-bg2">
             <div class="d-table">
               <div class="d-table-cell">
                 <div class="container">
                   <div class="main-banner-content">
                     <span>Yourt</span>
-                    <h2 style="color: #fff;">Yourt à louer</h2>
+                    <h2 style="color: #fff;">Séjournez dans une Atypique House</h2>
 
-                    <nuxt-link to="/products" class="btn btn-primary text-center">Location</nuxt-link>
+                    <nuxt-link to="/products" class="btn btn-primary text-center">Découvrir</nuxt-link>
                   </div>
                 </div>
               </div>
@@ -34,9 +51,9 @@
                 <div class="container">
                   <div class="main-banner-content">
                     <span>Tente</span>
-                    <h2 style="color: #fff;">Tente à louer</h2>
+                    <h2 style="color: #fff;">Expériences Uniques d'Hébergement</h2>
 
-                    <nuxt-link to="/products" class="btn btn-primary text-center">Location</nuxt-link>
+                    <nuxt-link to="/products" class="btn btn-primary text-center">Découvrir</nuxt-link>
                   </div>
                 </div>
               </div>
@@ -44,22 +61,7 @@
           </div>
         </slide>
 
-        <slide>
-          <div class="main-banner item-bg3">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="container">
-                  <div class="main-banner-content">
-                    <span>Le cude</span>
-                    <h1 style="color: #fff;">Maison à louer</h1>
-
-                    <nuxt-link to="/products" class="btn btn-primary text-center">Location</nuxt-link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </slide>
+        
       </carousel>
     </div>
   </ClientOnly>

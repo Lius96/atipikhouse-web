@@ -42,25 +42,43 @@ export default {
   },
   head() {
     return {
-      title: 'Atypikhouse',
+      title: "Découvrez l'Originalité d'Atypikhouse - Réservez Votre Séjour dans une Maison Insolite - Evadez-vous dans une cabane insolite - Profitez de bons moments sous des tentes - Dormez dans une cabane dans les arbres - Il est temps d'aller sur le yourte",
       meta: [
         { hid: 'title', name: 'title', content: 'Atypikhouse' },
         {
           hid: 'keywords',
           name: 'keywords',
-          content: 'Maison insolite, Habitation originale, Logement unique, Demeure singulière, Résidence hors du commun, Propriété distinctive, Architecture inhabituelle, Propriété atypique, Maison de rêve, Logement hors norme, Demeure exceptionnelle, Résidence remarquable, Lieu de vie original, Maison de charme, Maison fantastique, Propriété insolite , Résidence extraordinaire, Logement hors du commun, Maison à louer',
+          content: "maison atypique, hébergement original, séjour insolite, logement unique, vacances inédites, expérience de voyage hors du commun, hébergement hors normes, escapade originale, nuitée atypique, logement insolite, destination hors du commun, séjour inoubliable, hébergement distinctif, vacances extraordinaires",
         },
         {
           hid: 'description',
           name: 'description',
-          content: 'Trouvez la maison de vos rêves parmi notre sélection exclusive de propriétés atypiques. Notre site de localisation vous offre un accès à des habitats originaux, des demeures exceptionnelles et des résidences hors normes, pour un style de vie distinctif et unique.',
+          content: `Bienvenue dans l'Univers d'AtypiqueHouse.
+Découvrez un monde où le voyage devient une aventure unique et mémorable. Chez AtypiqueHouse, nous vous invitons à explorer des logements qui transcendent l'ordinaire, offrant une expérience d'hébergement incomparable. Chaque maison que nous proposons est soigneusement sélectionnée pour son caractère atypique, son charme distinctif et son ambiance exceptionnelle.
+Logements Uniques pour des Vacances Inoubliables
+Que vous recherchiez une escapade romantique, une retraite en famille ou une expérience solo inédite, nos maisons insolites offrent le cadre parfait pour des vacances extraordinaires. Plongez dans l'inattendu avec nos hébergements originaux, des cabanes perchées dans les arbres aux yourtes traditionnelles, en passant par des logements conçus pour émerveiller.
+Pourquoi Choisir Atypikhouse :
+Originalité Garantie : Chacun de nos logements est choisi pour son caractère unique, offrant une expérience que vous ne trouverez nulle part ailleurs.
+Confort et Authenticité : Profitez du confort moderne dans un cadre authentique, mariant l'insolite au bien-être.
+Séjours Personnalisés : Nous vous offrons la possibilité de personnaliser votre séjour pour qu'il réponde à toutes vos attentes.
+Service Exceptionnel : Notre équipe dévouée est là pour rendre votre séjour mémorable, de la réservation à votre départ.
+Réservez dès maintenant votre séjour atypique avec Atypikhouse et laissez-vous emporter par l'aventure.`,
         },
         { hid: 'og:title', property: 'og:title', content: 'Atypikhouse' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: 'Trouvez la maison de vos rêves parmi notre sélection exclusive de propriétés atypiques. Notre site de localisation vous offre un accès à des habitats originaux, des demeures exceptionnelles et des résidences hors normes, pour un style de vie distinctif et unique.',
+          content: `Bienvenue dans l'Univers d'AtypiqueHouse.
+Découvrez un monde où le voyage devient une aventure unique et mémorable. Chez AtypiqueHouse, nous vous invitons à explorer des logements qui transcendent l'ordinaire, offrant une expérience d'hébergement incomparable. Chaque maison que nous proposons est soigneusement sélectionnée pour son caractère atypique, son charme distinctif et son ambiance exceptionnelle.
+Logements Uniques pour des Vacances Inoubliables
+Que vous recherchiez une escapade romantique, une retraite en famille ou une expérience solo inédite, nos maisons insolites offrent le cadre parfait pour des vacances extraordinaires. Plongez dans l'inattendu avec nos hébergements originaux, des cabanes perchées dans les arbres aux yourtes traditionnelles, en passant par des logements conçus pour émerveiller.
+Pourquoi Choisir Atypikhouse :
+Originalité Garantie : Chacun de nos logements est choisi pour son caractère unique, offrant une expérience que vous ne trouverez nulle part ailleurs.
+Confort et Authenticité : Profitez du confort moderne dans un cadre authentique, mariant l'insolite au bien-être.
+Séjours Personnalisés : Nous vous offrons la possibilité de personnaliser votre séjour pour qu'il réponde à toutes vos attentes.
+Service Exceptionnel : Notre équipe dévouée est là pour rendre votre séjour mémorable, de la réservation à votre départ.
+Réservez dès maintenant votre séjour atypique avec Atypikhouse et laissez-vous emporter par l'aventure.`,
         },
         { hid: 'og:image', property: 'og:image', content: '/icon.png' },
         {
@@ -76,7 +94,16 @@ export default {
         {
           hid: 'twitter:description',
           property: 'twitter:description',
-          content: 'Trouvez la maison de vos rêves parmi notre sélection exclusive de propriétés atypiques. Notre site de localisation vous offre un accès à des habitats originaux, des demeures exceptionnelles et des résidences hors normes, pour un style de vie distinctif et unique.',
+          content: `Bienvenue dans l'Univers d'AtypiqueHouse.
+Découvrez un monde où le voyage devient une aventure unique et mémorable. Chez AtypiqueHouse, nous vous invitons à explorer des logements qui transcendent l'ordinaire, offrant une expérience d'hébergement incomparable. Chaque maison que nous proposons est soigneusement sélectionnée pour son caractère atypique, son charme distinctif et son ambiance exceptionnelle.
+Logements Uniques pour des Vacances Inoubliables
+Que vous recherchiez une escapade romantique, une retraite en famille ou une expérience solo inédite, nos maisons insolites offrent le cadre parfait pour des vacances extraordinaires. Plongez dans l'inattendu avec nos hébergements originaux, des cabanes perchées dans les arbres aux yourtes traditionnelles, en passant par des logements conçus pour émerveiller.
+Pourquoi Choisir Atypikhouse :
+Originalité Garantie : Chacun de nos logements est choisi pour son caractère unique, offrant une expérience que vous ne trouverez nulle part ailleurs.
+Confort et Authenticité : Profitez du confort moderne dans un cadre authentique, mariant l'insolite au bien-être.
+Séjours Personnalisés : Nous vous offrons la possibilité de personnaliser votre séjour pour qu'il réponde à toutes vos attentes.
+Service Exceptionnel : Notre équipe dévouée est là pour rendre votre séjour mémorable, de la réservation à votre départ.
+Réservez dès maintenant votre séjour atypique avec Atypikhouse et laissez-vous emporter par l'aventure.`,
         },
         {
           hid: 'twitter:image',

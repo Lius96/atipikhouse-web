@@ -77,8 +77,8 @@ export default {
         // recaptcha
         '@nuxtjs/recaptcha',
         // robots
-        process.env.ENV == 'production' ? '@nuxtjs/robots' : ''
-        { configPath: "~/config/robots.config" }
+        [process.env.ENV == 'production' ? '@nuxtjs/robots' : '',
+        { configPath: "~/config/robots.config" }]
     ],
     /**
      * PWA config

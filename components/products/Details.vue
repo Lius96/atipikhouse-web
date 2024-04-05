@@ -18,7 +18,7 @@
                 <a href="#" class="rating-count">3 reviews</a> -->
       </div>
 
-      <ul class="product-info mb-5 inlined">
+      <ul class="product-info mb-5">
         <li><span>Type:</span> {{ house?.type }}</li>
         <li><span>Nombre de couchage:</span> {{ house?.nbr_couchage }}</li>
         <li><span>Capacité:</span> {{ house?.capacity }}</li>
@@ -27,7 +27,7 @@
         </li>
       </ul>
 
-      <div v-if="house?.equipements && house?.equipements.length > 0" class="product-info mb-5 inlined">
+      <div v-if="house?.equipements && house?.equipements.length > 0" class="product-info mb-5">
         <h5>Equipements</h5>
         <ul class="product-info">
           <li v-for="equip in house.equipements" :key="equip?.id">
@@ -36,7 +36,7 @@
         </ul>
       </div>
 
-      <div class="product-info mb-5">
+      <div class="product-info mb-5 d-none">
         <h5>Propriétaire:</h5>
 
         <ul class="product-info">
@@ -44,13 +44,6 @@
           <span>Noms:</span> {{ house.first_name }}
           {{ house.last_name }}
         </li>
-        <!-- <li v-if="house?.social_link && Object.keys(house.social_link).length > 0">
-            <span>Reseaux sociaux:</span> 
-            <a v-if="house.social_link[0] != ''" :href="house.social_link[0]" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook"></i></a>
-            <a v-if="house.social_link[1] != undefined && house.social_link[1] != ''" :href="house.social_link[1]" target="_blank" rel="noopener noreferrer"><i class="fa fa-instagram"></i></a>
-            <a v-if="house.social_link[2] != undefined && house.social_link[2] != ''" :href="house.social_link[2]" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a>
-            <a v-if="house.social_link[3] != undefined && house.social_link[3] != ''" :href="house.social_link[3]" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter"></i></a>
-        </li> -->
         <li>
           <span>Téléphone:</span> <a :href="`tel:${house?.phone}`">{{ house?.phone }}</a>
         </li>
@@ -142,6 +135,9 @@ export default {
   display: inline-block;
   margin-left: 8px;
   margin-right: 8px;
+}
+.d-none{
+  display: none !important;
 }
 @media only screen and (max-width: 600px) {
   .inlined{

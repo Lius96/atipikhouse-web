@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <TopHeader />
+  <div class="legal-notice">
     <Menubar />
     <div class="page-title-area">
       <div class="container">
@@ -19,40 +18,66 @@
 
         <div class="row">
           <div class="col-12">
+            <h3 class="sub-title">Mention légale</h3>
             <p>
-              Mention légale
+              <strong>Nom :</strong> Atypikhouse<br>
+              <strong>Adresse :</strong> Rue Napoléon, 60350 Pierrefonds<br>
+              <strong>Capital social :</strong> 10 000 EUR<br>
+              <strong>Numéro RCS :</strong> Compiègne A 359 733 770<br>
+              <strong>Statut :</strong> SARL<br>
+              <strong>Code NAF :</strong> 5520Z<br>
+              <strong>Date de création :</strong> 03 Septembre 2021
+            </p>
 
-Nom : Atypikhouse
-Adresse : Rue Napoléon, 60350 Pierrefonds
-Capital social : 10 000 EUR
-Numéro RCS : Compiègne A 359 733 770
-Statut : SARL
-Code NAF : 5520Z
-Date de création : 03 Septembre 2021
+            <h3 class="sub-title">Domaine d’expertise</h3>
+            <p>
+              Hébergement touristique et autre hébergement de courte durée de type insolite
+            </p>
 
-Domaine d’expertise : Hébergement touristique et autre hébergement de courte durée de type insolite
+            <h3 class="sub-title">Hébergement du site</h3>
+            <p>
+              Ce site web est hébergé par OVH.<br>
+              Siège social : OVH, 2 rue Kellermann - 59100 Roubaix - France.
+            </p>
 
-Hébergement du site :
-Ce site web est hébergé par OVH.
-Siège social : OVH, 2 rue Kellermann - 59100 Roubaix - France.
+            <h3 class="sub-title">Responsabilité</h3>
+            <p>
+              Atypikhouse met tout en œuvre pour fournir des informations précises et à jour sur ce site, mais ne peut
+              garantir l'exactitude ou l'exhaustivité des informations fournies. Les utilisateurs de ce site sont
+              responsables de l'utilisation des informations fournies.
+            </p>
 
-Responsabilité :
-Atypikhouse met tout en œuvre pour fournir des informations précises et à jour sur ce site, mais ne peut garantir l'exactitude ou l'exhaustivité des informations fournies. Les utilisateurs de ce site sont responsables de l'utilisation des informations fournies.
+            <h3 class="sub-title">Droits d'auteur</h3>
+            <p>
+              Tous les contenus de ce site web, y compris mais sans s'y limiter, les textes, les images, les graphiques
+              et les logos, sont la propriété exclusive d'Atypikhouse, sauf indication contraire. Toute reproduction,
+              distribution, modification ou utilisation de ces contenus sans autorisation préalable écrite est
+              strictement interdite.
+            </p>
 
-Droits d'auteur :
-Tous les contenus de ce site web, y compris mais sans s'y limiter, les textes, les images, les graphiques et les logos, sont la propriété exclusive d'Atypikhouse, sauf indication contraire. Toute reproduction, distribution, modification ou utilisation de ces contenus sans autorisation préalable écrite est strictement interdite.
+            <h3 class="sub-title">Protection des données personnelles</h3>
+            <p>
+              Atypikhouse s'engage à protéger la vie privée de ses utilisateurs. Les données personnelles collectées sur
+              ce site sont traitées conformément à notre politique de confidentialité. En utilisant ce site, vous
+              consentez à la collecte et à l'utilisation de vos données personnelles conformément à cette politique.
+            </p>
 
-Protection des données personnelles :
-Atypikhouse s'engage à protéger la vie privée de ses utilisateurs. Les données personnelles collectées sur ce site sont traitées conformément à notre politique de confidentialité. En utilisant ce site, vous consentez à la collecte et à l'utilisation de vos données personnelles conformément à cette politique.
+            <h3 class="sub-title">Cookies</h3>
+            <p>
+              Ce site web utilise des cookies pour améliorer l'expérience de l'utilisateur. En utilisant ce site, vous
+              consentez à l'utilisation de cookies conformément à notre politique en matière de cookies.
+            </p>
 
-Cookies :
-Ce site web utilise des cookies pour améliorer l'expérience de l'utilisateur. En utilisant ce site, vous consentez à l'utilisation de cookies conformément à notre politique en matière de cookies.
+            <h3 class="sub-title">Contact</h3>
+            <p>
+              Pour toute question ou préoccupation concernant cette mention légale, veuillez nous contacter à l'adresse
+              suivante :<br>
+              Adresse e-mail : juliusdjossou@gmail.com
+            </p>
 
-Pour toute question ou préoccupation concernant cette mention légale, veuillez nous contacter à l'adresse suivante :
-Adresse e-mail : juliusdjossou@gmail.com
-
-Nous nous réservons le droit de modifier cette mention légale à tout moment. Veuillez consulter régulièrement cette page pour vous tenir informé des mises à jour.
-
+            <h3 class="sub-title">Mises à jour</h3>
+            <p class="update">
+              Nous nous réservons le droit de modifier cette mention légale à tout moment. Veuillez consulter régulièrement cette page pour vous tenir informé des mises à jour.
             </p>
           </div>
         </div>
@@ -60,6 +85,7 @@ Nous nous réservons le droit de modifier cette mention légale à tout moment. 
     </div>
   </div>
 </template>
+
 
 <script>
 import TopHeader from '../layouts/TopHeader'
@@ -134,86 +160,47 @@ export default {
 </script>
 
 
-
 <style scoped>
-/* Ajoutez le CSS ici */
-/* Style pour la section des mentions légales */
-p {
+/* Style pour la mention légale */
+.legal-notice {
   font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-/* Style pour le titre "Mention légale" */
-p:first-child {
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: underline;
+  line-height: 1.6;
   margin-bottom: 30px;
 }
 
-/* Style pour les éléments clés de la mention légale */
-p strong {
+/* Style pour les sections principales */
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+/* Style pour les sous-titres */
+.sub-title {
+  color:#8bc34a; /* Couleur des sous-titres */
+}
+
+/* Style pour les éléments clés */
+.legal-notice strong {
   font-weight: bold;
 }
 
-/* Style pour les informations spécifiques (nom, adresse, etc.) */
-p em {
+/* Style pour les informations spécifiques */
+.legal-notice em {
   font-style: italic;
 }
 
-/* Style pour l'hébergement du site */
-p:nth-of-type(5) {
-  margin-top: 30px;
-  font-weight: bold;
-}
-
-/* Style pour les responsabilités */
-p:nth-of-type(6) {
-  margin-top: 30px;
-  font-weight: bold;
-}
-
-/* Style pour les droits d'auteur */
-p:nth-of-type(7) {
-  margin-top: 30px;
-  font-weight: bold;
-}
-
-/* Style pour la protection des données personnelles */
-p:nth-of-type(8) {
-  margin-top: 30px;
-  font-weight: bold;
-}
-
-/* Style pour les cookies */
-p:nth-of-type(9) {
-  margin-top: 30px;
-  font-weight: bold;
-}
-
-/* Style pour la section de contact */
-p:last-child {
-  margin-top: 30px;
-}
-
-/* Style pour les liens de contact */
-p:last-child a {
+/* Style pour les liens */
+.legal-notice a {
+  color: #007BFF; /* Couleur des liens (personnalisez selon votre choix) */
   text-decoration: underline;
-  color: #007BFF; /* Couleur du lien (personnalisez selon votre choix) */
 }
 
 /* Style pour les mises à jour */
-p:last-child + p {
-  margin-top: 20px;
+.legal-notice .update {
   font-size: 14px;
   font-style: italic;
+  margin-top: 20px;
 }
-
-
-/* ... Autres styles ... */
 </style>
-
-
-
-

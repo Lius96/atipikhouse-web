@@ -48,7 +48,7 @@ export default {
         let { success, data } = await this.$axios.$get(`${this.$store.state.apiBaseUrl}/api/v1/houses/`)
         if (success) {
             this.relatedProducts = data.filter((item) => {
-                return item.status == 'publish' && item.type.toLowerCase().includes(this.type) 
+                return item.status == 'publish' && item.type.toLowerCase().includes(this.type) && item.id != params.id
             })
         }
     }

@@ -56,11 +56,11 @@
                 </button>
 
                 <nuxt-link to="/update-password" class="forgot-password"
-                  >Mot de passe oublier?</nuxt-link
+                  >Mot de passe oublié?</nuxt-link
                 >
               </form>
               <div v-else class="col-md-12 text-center">
-                <p>Vous etes deja connecté</p>
+                <p>Vous êtes deja connecté</p>
                 <nuxt-link
                   v-if="authUser.grade == 'administrator'"
                   to="/admin"
@@ -82,7 +82,7 @@
 
               <span>Créer un compte</span>
               <p>
-                Creer un compte pour avoir accès au logement, les commentés ou
+                Créer un compte pour avoir accès aux logements, les commentés ou
                 les reservés
               </p>
               <nuxt-link v-if="!authUser" to="/signup" class="btn btn-light"
@@ -127,7 +127,7 @@ export default {
           hid: 'description',
           name: 'description',
           content:
-            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
+            'Atypikhouse louez vos biens en ligne! Connectez vous et réservez.',
         },
         {
           hid: 'og:title',
@@ -139,7 +139,7 @@ export default {
           hid: 'og:description',
           property: 'og:description',
           content:
-            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
+            'Atypikhouse louez vos biens en ligne! Connectez vous et réservez.',
         },
         { hid: 'og:image', property: 'og:image', content: '/icon.png' },
         {
@@ -156,7 +156,7 @@ export default {
           hid: 'twitter:description',
           property: 'twitter:description',
           content:
-            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
+            'Atypikhouse louez vos biens en ligne! Connectez vous et réservez.',
         },
         {
           hid: 'twitter:image',

@@ -3,6 +3,7 @@
     <Nuxt />
     <Footer></Footer>
     <BackToTop></BackToTop>
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/20009e195768e575f56832b499d71b3c.js"></script>
   </div>
 </template>
 

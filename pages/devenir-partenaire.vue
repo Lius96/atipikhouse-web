@@ -4,122 +4,130 @@
     <Menubar />
 
     <!-- Section: Bannière -->
-      <Banner class="banner-section"/>
-    
+    <Banner class="banner-section" />
+
     <!-- Section: Statistiques -->
     <section class="statistics-section black-bg large-number-plus">
       <div class="container">
         <div class="row justify-content-center ">
           <div v-for="(statistic, index) in statistics" :key="index" class="col-md-4">
             <div class="statistic col-md-4">
-              <count-up
-                :start-val="0"
-                :end-val="statistic.value"
-                :duration="10"
-                @ready="onCountUpReady(statistic)"
-                @end="onCountUpEnd(statistic)"
-              >
+              <count-up :start-val="0" :end-val="statistic.value" :duration="10" @ready="onCountUpReady(statistic)"
+                @end="onCountUpEnd(statistic)">
                 <!-- La valeur animée -->
-                <h1 :class="{ 'large-number-plus':value }">+{{ none }}</h1>
-                </count-up>
-                <p class="exist">{{ statistic.label }}</p>
+                <h1 :class="{ string }" >{{  }}</h1>
+              </count-up>
+              <p class="exist">{{ statistic.label }}</p>
             </div>
           </div>
         </div>
       </div>
-      </section>
+    </section>
 
-      <!-- Section: À Propos (Noir clair) -->
-<section class="about-section light-black-bg">
-  <div class="container">
-    <div class="row align-items-center"> <!-- Utilisation de 'align-items-center' pour aligner verticalement les éléments -->
-      <div class="col-md-4">
-        <img src="../assets/img/qui.jpg" alt="">
+    <!-- Section: À Propos (Noir clair) -->
+    <section class="about-section light-black-bg">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Utilisation de 'align-items-center' pour aligner verticalement les éléments -->
+          <div class="col-md-4">
+            <img src="../assets/img/qui.jpg" alt="">
+          </div>
+          <div class="col-md-8">
+            <!-- Utilisation de 'col-md-8' pour définir la largeur de la colonne du texte sur les écrans larges -->
+            <h2 class="about-section  " style="color:#33cc33" font-weight: bold>QUI SOMMES-NOUS ?</h2>
+            <!-- Utilisation de la classe 'green-text' pour appliquer la couleur verte -->
+            <p>Basée dans le Sud de la France, Atypikhouse est leader sur le marché de l'insolite et référence des
+              hébergements atypiques partout sur son territoire, et même à l'étranger !</p>
+            <h6>NOS VALEURS</h6>
+            <p>Chez Atypikhouse, nous plaçons la relation avec les propriétaires au cœur du partenariat. Notre
+              collaboration avec les hébergeurs est basée sur le respect des intérêts de chacun, tout en laissant la
+              liberté et l'indépendance nécessaires à leur activité. Une équipe de professionnels du tourisme,
+              spécialisés dans le secteur de l'insolite, vous propose un service réactif et efficace qui se veut humain,
+              qualitatif et adapté.</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-8"> <!-- Utilisation de 'col-md-8' pour définir la largeur de la colonne du texte sur les écrans larges -->
-        <h2 class="about-section ">QUI SOMMES-NOUS ?</h2> <!-- Utilisation de la classe 'green-text' pour appliquer la couleur verte -->
-        <p>Basée dans le Sud de la France, Atypikhouse est leader sur le marché de l'insolite et référence des hébergements atypiques partout sur son territoire, et même à l'étranger !</p>
-        <h6>NOS VALEURS</h6>
-        <p>Chez Atypikhouse, nous plaçons la relation avec les propriétaires au cœur du partenariat. Notre collaboration avec les hébergeurs est basée sur le respect des intérêts de chacun, tout en laissant la liberté et l'indépendance nécessaires à leur activité. Une équipe de professionnels du tourisme, spécialisés dans le secteur de l'insolite, vous propose un service réactif et efficace qui se veut humain, qualitatif et adapté.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
     <!-- Section: Concept (Noir) -->
-  <section class="concept-section black-bg " >
-    <div class="container">
-      <h2 class="concept-title">LE CONCEPT</h2>
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <div class="concept-item">
-            <i class="fas fa-home concept-icon"></i>
-            <h3 class="concept-subtitle">Place de marché</h3>
-            <p>Une offre centralisée et spécialisée dans les logements atypiques.</p>
+    <section class="concept-section black-bg ">
+      <div class="container">
+        <h2 class="concept-title">LE CONCEPT</h2>
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <div class="concept-item">
+              <i class="fas fa-home concept-icon"></i>
+              <h3 class="concept-subtitle">Place de marché</h3>
+              <p>Une offre centralisée et spécialisée dans les logements atypiques.</p>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4 text-center">
-          <div class="concept-item">
-            <i class="fas fa-percent concept-icon"></i>
-            <h3 class="concept-subtitle">Modèle à la performance</h3>
-            <p>Sans abonnement, ni frais de mise en service, uniquement une commission sur les ventes.</p>
+          <div class="col-md-4 text-center">
+            <div class="concept-item">
+              <i class="fas fa-percent concept-icon"></i>
+              <h3 class="concept-subtitle">Modèle à la performance</h3>
+              <p>Sans abonnement, ni frais de mise en service, uniquement une commission sur les ventes.</p>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4 text-center">
-          <div class="concept-item">
-            <i class="fas fa-calendar-check concept-icon"></i>
-            <h3 class="concept-subtitle">Réservation instantanée</h3>
-            <p>Une réservation ferme et payée à 100% en ligne par le client.</p>
+          <div class="col-md-4 text-center">
+            <div class="concept-item">
+              <i class="fas fa-calendar-check concept-icon"></i>
+              <h3 class="concept-subtitle">Réservation instantanée</h3>
+              <p>Une réservation ferme et payée à 100% en ligne par le client.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
     <!-- Section: Éligibilité (Noir clair) -->
-<section class="eligibility-section light-black-bg">
-  <div class="container">
-    <h2 class="eligibility-titles text-center font-weight-bold" style="color: #33cc33;">VOTRE OFFRE EST-ELLE ÉLIGIBLE ?</h2>
-    <div class="eligibility-tests row">
-      <!-- Premier test -->
-      <div class="col-md-6">
-        <div class="eligibility-test">
-          <img src="../assets/img/dimension.png" alt="Dimension insolite" class="test-image">
-          <h3 style="color: #8bc34a;">Dimension insolite</h3>
-          <p>Votre hébergement doit être privatif et proposer une expérience atypique grâce à sa typologie et/ou son concept. Les internautes recherchent un séjour unique avec des services et activités de qualité !</p>
-        </div>
-      </div>
+    <section class="eligibility-section light-black-bg">
+      <div class="container">
+        <h2 class="eligibility-titles text-center font-weight-bold" style="color: #33cc33;">VOTRE OFFRE EST-ELLE
+          ÉLIGIBLE ?</h2>
+        <div class="eligibility-tests row">
+          <!-- Premier test -->
+          <div class="col-md-6">
+            <div class="eligibility-test">
+              <img src="../assets/img/dimension.png" alt="Dimension insolite" class="test-image">
+              <h3 style="color: #8bc34a;">Dimension insolite</h3>
+              <p style="color: #fff;">Votre hébergement doit être privatif et proposer une expérience atypique grâce à sa typologie et/ou son
+                concept. Les internautes recherchent un séjour unique avec des services et activités de qualité !</p>
+            </div>
+          </div>
 
-      <!-- Deuxième test -->
-      <div class="col-md-6">
-        <div class="eligibility-test">
-          <img src="../assets/img/environnement.png" alt="Environnement privilégié" class="test-image">
-          <h3 style="color: #8bc34a;">Environnement privilégié</h3>
-          <p>Loin des sentiers battus, l'hébergement proposé doit être implanté dans un cadre préservé. Il s'agit de partager avec les voyageurs un cadre hors du commun ou un site d'exception !</p>
-        </div>
-      </div>
+          <!-- Deuxième test -->
+          <div class="col-md-6">
+            <div class="eligibility-test">
+              <img src="../assets/img/environnement.png" alt="Environnement privilégié" class="test-image">
+              <h3 style="color: #8bc34a;">Environnement privilégié</h3>
+              <p style="color: #fff;">Loin des sentiers battus, l'hébergement proposé doit être implanté dans un cadre préservé. Il s'agit de
+                partager avec les voyageurs un cadre hors du commun ou un site d'exception !</p>
+            </div>
+          </div>
 
-      <!-- Troisième test -->
-      <div class="col-md-6">
-        <div class="eligibility-test">
-          <img src="../assets/img/offre.png" alt="Une offre et des tarifs cohérents" class="test-image">
-          <h3 style="color: #8bc34a;">Une offre et des tarifs cohérents</h3>
-          <p>Les tarifs et conditions doivent être en adéquation avec le marché et notre cible de clientèle. Il s’agit de présenter une offre et des prestations cohérentes et justes pour le client.</p>
-        </div>
-      </div>
+          <!-- Troisième test -->
+          <div class="col-md-6">
+            <div class="eligibility-test">
+              <img src="../assets/img/offre.png" alt="Une offre et des tarifs cohérents" class="test-image">
+              <h3 style="color: #8bc34a;">Une offre et des tarifs cohérents</h3>
+              <p style="color: #fff;">Les tarifs et conditions doivent être en adéquation avec le marché et notre cible de clientèle. Il
+                s’agit de présenter une offre et des prestations cohérentes et justes pour le client.</p>
+            </div>
+          </div>
 
-      <!-- Quatrième test -->
-      <div class="col-md-6">
-        <div class="eligibility-test">
-          <img src="../assets/img/qualite.png" alt="Qualité de la collaboration" class="test-image">
-          <h3 style="color: #8bc34a;">Qualité de la collaboration</h3>
-          <p>L'hébergeur doit témoigner d'une réelle envie d'être partenaire de notre réseau : un bon contact, de la réactivité et du professionnalisme sont des éléments primordiaux à la collaboration !</p>
+          <!-- Quatrième test -->
+          <div class="col-md-6">
+            <div class="eligibility-test">
+              <img src="../assets/img/qualite.png" alt="Qualité de la collaboration" class="test-image">
+              <h3 style="color: #8bc34a;">Qualité de la collaboration</h3>
+              <p style="color: #fff;">L'hébergeur doit témoigner d'une réelle envie d'être partenaire de notre réseau : un bon contact, de la
+                réactivité et du professionnalisme sont des éléments primordiaux à la collaboration !</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
 
@@ -132,8 +140,8 @@
             <div class="what-we-offer-item">
               <i class="fas fa-calendar-check what-we-offer-icon"></i>
               <p class="what-we-offer-description">
-                <p class="what-we-description-title">RÉSERVATIONS INSTANTANÉES</p>
-                Une réservation ferme avec un règlement de 100% du séjour à la réservation.
+              <p class="what-we-description-title">RÉSERVATIONS INSTANTANÉES</p>
+              Une réservation ferme avec un règlement de 100% du séjour à la réservation.
               </p>
             </div>
           </div>
@@ -141,8 +149,8 @@
             <div class="what-we-offer-item">
               <i class="fas fa-users what-we-offer-icon"></i>
               <p class="what-we-offer-description">
-                <p class="what-we-description-title">AUDIENCE CIBLÉE</p>
-                Des clients en recherche d'une expérience unique.
+              <p class="what-we-description-title">AUDIENCE CIBLÉE</p>
+              Des clients en recherche d'une expérience unique.
               </p>
             </div>
           </div>
@@ -150,8 +158,8 @@
             <div class="what-we-offer-item">
               <i class="fas fa-chart-bar what-we-offer-icon"></i>
               <p class="what-we-offer-description">
-                <p class="what-we-description-title">FORTE VISIBILITÉ</p>
-                Une notoriété et une visibilité grâce à un référencement pertinent et ciblé.
+              <p class="what-we-description-title">FORTE VISIBILITÉ</p>
+              Une notoriété et une visibilité grâce à un référencement pertinent et ciblé.
               </p>
             </div>
           </div>
@@ -161,8 +169,9 @@
             <div class="what-we-offer-item">
               <i class="fas fa-gift what-we-offer-icon"></i>
               <p class="what-we-offer-description">
-                <p class="what-we-description-title">BOUTIQUE CADEAU</p>
-                La possibilité pour le client d'offrir un séjour sans date. Un levier de vente supplémentaire en toute saison.
+              <p class="what-we-description-title">BOUTIQUE CADEAU</p>
+              La possibilité pour le client d'offrir un séjour sans date. Un levier de vente supplémentaire en toute
+              saison.
               </p>
             </div>
           </div>
@@ -170,8 +179,8 @@
             <div class="what-we-offer-item">
               <i class="fas fa-hands-helping what-we-offer-icon"></i>
               <p class="what-we-offer-description">
-                <p class="what-we-description-title">ACCOMPAGNEMENT ET CONSEILS</p>
-                Une équipe à votre écoute pour répondre à vos demandes et une aide en ligne accessible 24/7.
+              <p class="what-we-description-title">ACCOMPAGNEMENT ET CONSEILS</p>
+              Une équipe à votre écoute pour répondre à vos demandes et une aide en ligne accessible 24/7.
               </p>
             </div>
           </div>
@@ -179,49 +188,54 @@
             <div class="what-we-offer-item">
               <i class="fas fa-bullhorn what-we-offer-icon"></i>
               <p class="what-we-offer-description">
-                <p class="what-we-description-title">SERVICE MARKETING ET PRESSE*</p>
-                Une communauté de 150 000 followers sur nos réseaux sociaux. * Sous conditions
+              <p class="what-we-description-title">SERVICE MARKETING ET PRESSE*</p>
+              Une communauté de 150 000 followers sur nos réseaux sociaux. * Sous conditions
               </p>
             </div>
           </div>
         </div>
       </div>
-      </section>
-      <!-- Section: Comment ça marche (Noir) -->
+    </section>
+    <!-- Section: Comment ça marche (Noir) -->
 
-      <section class="how-it-works-section light-black-bg">
+    <section class="how-it-works-section light-black-bg">
       <h2>COMMENT ÇA MARCHE ?</h2>
 
       <details>
         <summary>Système de recherche performant</summary>
-        <p>
+        <p style="color: #fff;">
           Un moteur de recherche adapté au contenu insolite.
-          Le moteur de recherche propose des champs pertinents et adaptés à l'offre insolite pour une expérience client optimale. Il est possible de sélectionner une destination, une typologie de l'hébergement, une thématique ou encore de filtrer selon des critères de confort (eau, électricité, sanitaires…).
+          Le moteur de recherche propose des champs pertinents et adaptés à l'offre insolite pour une expérience client
+          optimale. Il est possible de sélectionner une destination, une typologie de l'hébergement, une thématique ou
+          encore de filtrer selon des critères de confort (eau, électricité, sanitaires…).
         </p>
         <i class="fas fa-search fa-3x"></i>
       </details>
 
       <details>
         <summary>Interface hébergeur dédiée</summary>
-        <p>
+        <p style="color: #fff;">
           Un espace administrateur pratique.
-          Un compte hébergeur adapté aux établissements insolites et répondant à toutes les exigences de leur utilisateur : un outil de mise à jour des offres, l’accès à vos réservations, et votre fichier clients ainsi qu’une aide en ligne.
+          Un compte hébergeur adapté aux établissements insolites et répondant à toutes les exigences de leur
+          utilisateur : un outil de mise à jour des offres, l’accès à vos réservations, et votre fichier clients ainsi
+          qu’une aide en ligne.
         </p>
         <i class="fas fa-cog fa-3x"></i>
       </details>
 
       <details>
         <summary>SYNCHRONISATION DES CALENDRIERS</summary>
-        <p>
+        <p style="color: #fff;">
           Mise à jour des disponibilités.
-          Afin d’éviter la double gestion de planning, nous vous proposons de synchroniser automatiquement vos calendriers de disponibilités avec notre système.
+          Afin d’éviter la double gestion de planning, nous vous proposons de synchroniser automatiquement vos
+          calendriers de disponibilités avec notre système.
         </p>
         <i class="fas fa-calendar fa-3x"></i>
       </details>
 
       <details>
         <summary>DÉROULEMENT D'UNE RÉSERVATION</summary>
-        <p>
+        <p style="color: #fff;">
           Les étapes d'une réservation.
           Nous vous proposons une réservation clé-en-main avec un paiement 100% en ligne.
           <br />
@@ -238,14 +252,44 @@
 
       <details>
         <summary>PORTE-MONNAIE VIRTUEL</summary>
-        <p>
+        <p style="color: #fff;">
           Utilisation d'un compte tiers.
-          Un compte d’attente dédié à votre établissement est ouvert afin de recevoir les règlements des clients et assurer le suivi des virements sur votre compte bancaire.
+          Un compte d’attente dédié à votre établissement est ouvert afin de recevoir les règlements des clients et
+          assurer le suivi des virements sur votre compte bancaire.
         </p>
         <i class="fas fa-wallet fa-3x"></i>
       </details>
-     </section>
-   </div>
+    </section>
+
+    <!-- Section: Nous rejoindre -->
+    <section class="join-us-section light-black-bg">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Div avec l'image -->
+          <div class="col-md-6">
+            <img src="../assets/img/house-type/yourt.jpg" alt="Image de rejoindre" class="join-us-image">
+          </div>
+          <!-- Div avec le texte -->
+          <div class="col-md-6">
+            <div class="join-us-content">
+              <h2 class="join-us-title">NOUS REJOINDRE</h2>
+              <p>Rejoignez l'aventure ! Vous souhaitez en savoir plus ? Soumettez votre demande à notre service
+                partenaires ! Après étude de votre offre, notre équipe se chargera de revenir vers vous afin de vous
+                présenter les conditions de la collaboration et échanger avec vous au sujet de notre partenariat.</p>
+              
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMt24isuRQhQL7Aven7J4yjI-Xx4zRUbWhkovl2GfFA5FacQ/viewform" target="_blank" class="btn btn-primary">En savoir plus</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+
+
 
 </template>
 
@@ -275,7 +319,7 @@ export default {
   data() {
     return {
       statistics: [
-        { label: "établissements référencés partout en France", value : 500 },
+        { label: "établissements référencés partout en France", value: 500 },
         { label: "hébergements insolites présentés sur notre centrale", value: 900 },
         { label: "millions de pages vues", value: 50 },
       ],
@@ -286,8 +330,8 @@ export default {
 
 
     formatNumber(number) {
-    return Number(number).toLocaleString('fr-FR', { minimumFractionDigits: 0 });
-  },
+      return Number(number).toLocaleString('fr-FR', { minimumFractionDigits: 0 });
+    },
 
     onScroll() {
       // Vérifiez si la section "Statistiques" est au milieu de la page
@@ -313,16 +357,15 @@ export default {
       console.log(`Statistique "${statistic.label}" a atteint sa valeur finale.`);
 
       // Réinitialisez la statistique pour permettre une nouvelle animation
-      statistic.startVal = 0;            
+      statistic.startVal = 0;
     },
-    
+
   },
 };
 </script>
 
 
 <style scoped>
-
 /* Styles spécifiques à la section "Concept" */
 .concept-section {
   padding: 40px 0;
@@ -333,7 +376,8 @@ export default {
 .concept-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #33cc33; /* Couleur verte pour le titre principal */
+  color: #33cc33;
+  /* Couleur verte pour le titre principal */
   margin-bottom: 20px;
 }
 
@@ -345,7 +389,8 @@ export default {
 /* Style pour les icônes */
 .concept-icon {
   font-size: 4rem;
-  color: #f3f6f3; /* Couleur pour les icônes */
+  color: #f3f6f3;
+  /* Couleur pour les icônes */
   margin-bottom: 10px;
 }
 
@@ -353,14 +398,15 @@ export default {
 .concept-subtitle {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #8bc34a; /* Couleur verte pâle pour les sous-titres */
+  color: #8bc34a;
+  /* Couleur verte pâle pour les sous-titres */
   margin-bottom: 10px;
 }
 
 /* Style pour les descriptions */
 .concept-item p {
   font-size: none;
-  color: #555;
+  color: #fff;
 }
 
 /* Styles spécifiques aux sections (Noir et Noir clair) */
@@ -383,12 +429,14 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  
 }
 
 .eligibility-test {
   flex: 1;
   text-align: left;
   padding: 20px;
+  
 }
 
 .test-image {
@@ -421,60 +469,80 @@ export default {
 
 /* Style pour le grand titre */
 .what-we-offer-title {
-  font-size: 2.5rem; /* Taille de la police du grand titre agrandie */
+  font-size: 2.5rem;
+  /* Taille de la police du grand titre agrandie */
   font-weight: bold;
-  color: #33cc33; /* Couleur verte pour le grand titre */
-  margin-bottom: 20px; /* Espacement en bas du grand titre */
-  text-align: center; /* Centrer le grand titre */
+  color: #33cc33;
+  /* Couleur verte pour le grand titre */
+  margin-bottom: 20px;
+  /* Espacement en bas du grand titre */
+  text-align: center;
+  /* Centrer le grand titre */
 }
 
 .what-we-description-title {
-  font-size: 1,5rem;
+  font-size: 1, 5rem;
   font-weight: bold;
-  color: #8bc34a; /* Couleur verte pale */
+  color: #8bc34a;
+  /* Couleur verte pale */
 }
 
 /* Style pour les éléments individuels */
 .what-we-offer-item {
-  margin-bottom: 20px; /* Espacement entre les éléments */
-  text-align: left; /* Aligner le texte à gauche */
+  margin-bottom: 20px;
+  /* Espacement entre les éléments */
+  text-align: left;
+  /* Aligner le texte à gauche */
   color: none;
-  
+
 }
 
 /* Style pour les icônes (utilisez une police d'icônes ou des images) */
 .what-we-offer-icon {
-  font-size: 4rem; /* Taille de la police de l'icône agrandie */
-  color: #f5fbf5; /* Couleur blanche pour les icônes */
-  margin-bottom: 10px; /* Espacement en bas de l'icône */
+  font-size: 4rem;
+  /* Taille de la police de l'icône agrandie */
+  color: #f5fbf5;
+  /* Couleur blanche pour les icônes */
+  margin-bottom: 10px;
+  /* Espacement en bas de l'icône */
 }
 
 /* Style pour la section des statistiques */
 .statistics-section {
-  background-color: #000; /* Couleur de fond noir */
-  color: #fff; /* Couleur du texte blanc */
-  padding: 50px 0; /* Ajustez la hauteur de la section en ajoutant du padding */
-  text-align: center; /* Centrez le contenu horizontalement */
-  overflow: hidden; /* Masque tout contenu débordant de la section */
+  background-color: #000;
+  /* Couleur de fond noir */
+  color: #fff;
+  /* Couleur du texte blanc */
+  padding: 50px 0;
+  /* Ajustez la hauteur de la section en ajoutant du padding */
+  text-align: center;
+  /* Centrez le contenu horizontalement */
+  overflow: hidden;
+  /* Masque tout contenu débordant de la section */
 }
 
 /* Ajustez la taille des nombres */
-.large-number-plus  {
-  font-size: 3rem; /* Taille de la police pour les chiffres */
-  font-weight: bold; /* Texte en gras */
-  color: #33cc33; /* Couleur verte ou votre choix */
-  margin-bottom: none; /* Espacement en bas des nombres */
+.large-number-plus {
+  font-size: 3rem;
+  /* Taille de la police pour les chiffres */
+  font-weight: bold;
+  /* Texte en gras */
+  color: #33cc33;
+  /* Couleur verte ou votre choix */
+  margin-bottom: none;
+  /* Espacement en bas des nombres */
 }
 
-.exist{
-  font-size:none;
-  font-weight:none;
+.exist {
+  font-size: none;
+  font-weight: none;
 }
 
 
 /* Style général pour la section */
 .how-it-works-section {
-  background-color: #111; /* Noir clair */
+  background-color: #111;
+  /* Noir clair */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -482,7 +550,7 @@ export default {
   text-align: center;
 }
 
-.how-it-works-section h1{
+.how-it-works-section h1 {
   font-size: 2.5rem;
   font-weight: bold;
 }
@@ -496,34 +564,39 @@ details {
   transition: background-color 0.3s;
   margin-bottom: 10px;
   width: 100%;
-  max-width: 400px; /* Largeur maximale des éléments cliquables */
+  max-width: 400px;
+  /* Largeur maximale des éléments cliquables */
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
 details:hover {
-  background-color: #3f6d2b; /* Vert pâle plus foncé au survol */
+  background-color: #3f6d2b;
+  /* Vert pâle plus foncé au survol */
 }
 
 /* Style pour le texte à l'intérieur de details */
 details p {
   margin: 0;
-  flex-grow: 1; /* Permet au texte de prendre tout l'espace vertical disponible */
+  flex-grow: 1;
+  /* Permet au texte de prendre tout l'espace vertical disponible */
 }
 
 /* Style pour les icônes */
 i {
   color: rgb(247, 244, 244);
-  margin: 10px; /* Espacement autour de l'icône */
-  flex-shrink: 0; /* Empêche les icônes de rétrécir */
+  margin: 10px;
+  /* Espacement autour de l'icône */
+  flex-shrink: 0;
+  /* Empêche les icônes de rétrécir */
 }
 
 /* Centrer le titre principal */
 h1 {
   text-align: center;
   margin-top: 0;
-  color:#33cc33;
+  color: #33cc33;
   font-size: 2.5;
 }
 
@@ -534,24 +607,30 @@ details[open] {
 
 /* Style pour les détails ouverts */
 details[open] {
-  background-color: #111; 
+  background-color: #111;
 }
 
 /* Ajoutez des media queries pour la mise en page responsive */
 
 @media (max-width: 768px) {
+
   /* Styles pour les écrans de largeur maximale 768px */
   .col-md-4 {
-    width: 100%; /* Largeur de 100% pour les colonnes sur les petits écrans */
-    margin-bottom: 20px; /* Espacement entre les colonnes */
+    width: 100%;
+    /* Largeur de 100% pour les colonnes sur les petits écrans */
+    margin-bottom: 20px;
+    /* Espacement entre les colonnes */
   }
 }
 
 @media (max-width: 992px) {
+
   /* Styles pour les écrans de largeur maximale 992px */
   .about-section .row {
-    flex-direction: column-reverse; /* Inverser l'ordre des colonnes */
-    align-items: center; /* Centrer les éléments */
+    flex-direction: column-reverse;
+    /* Inverser l'ordre des colonnes */
+    align-items: center;
+    /* Centrer les éléments */
   }
 }
 
@@ -559,30 +638,68 @@ details[open] {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Cela assure que la section occupe au moins toute la hauteur de la fenêtre */
+  min-height: 100vh;
+  /* Cela assure que la section occupe au moins toute la hauteur de la fenêtre */
 }
 
 
 
-.about-section h1{
+.about-section h1 {
   font-weight: bold;
   font-size: 2.5rem;
-  color: #33cc33;;
+  color: #33cc33;
+  ;
   margin-top: 10px;
 }
 
-.about-section h6{
+.about-section h6 {
   font-weight: bold;
-  font-size: 1,5rem;
-  color: #33cc33;;
+  font-size: 1, 5rem;
+  color: #33cc33;
+  ;
   margin-top: 10px;
 }
 
-.about-section p{
-  font-weight:none;
-  font-size:none;
-  color:none;
-  margin-top:none;
+.about-section p {
+  font-weight: none;
+  font-size: none;
+  color: #fff;
+  margin-top: none;
+
 }
 
+/* Style pour la section "NOUS REJOINDRE" */
+.join-us-section {
+  padding: 0px 0;
+  background-color:#000;
+  
+}
+
+/* Style pour le titre */
+.join-us-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color:#33cc33;
+  margin-bottom: 20px;
+}
+
+/* Style pour l'image */
+.join-us-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display:flex;
+  margin-bottom: 0px;
+  
+  
+ 
+  
+}
+
+/* Style pour le texte */
+.join-us-content {
+  text-align: left;
+  color: #fff;
+  /* Aligner le texte à gauche */
+}
 </style>

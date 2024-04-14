@@ -24,131 +24,74 @@
             </p>
             <div class="form-group">
               <label class="grade-checkbox-wrapper float-right">
-                <input
-                  class="grade-checkbox"
-                  type="radio"
-                  value="customer"
-                  name="grade"
-                  v-model="user.grade"
-                />
+                <input class="grade-checkbox" type="radio" value="customer" name="grade" v-model="user.grade" />
                 <div class="checked-value">Client</div>
               </label>
               <label class="grade-checkbox-wrapper">
-                <input
-                  class="grade-checkbox"
-                  type="radio"
-                  value="owner"
-                  name="grade"
-                  checked
-                  v-model="user.grade"
-                />
+                <input class="grade-checkbox" type="radio" value="owner" name="grade" checked v-model="user.grade" />
                 <div class="checked-value">Propriétaire</div>
               </label>
             </div>
+            <div v-if="user.grade === 'owner'" class="form-group">
+              <div>
+              <p>Veuillez rempplire le formulaire de partenariat avant toute inscription</p>
+            </div>
+
+              <a @click.prevent="openEligibilityForm"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdMt24isuRQhQL7Aven7J4yjI-Xx4zRUbWhkovl2GfFA5FacQ/viewform"
+                target="_blank" class="btn btn-primary">c'est parti!</a>
+            </div>
+
             <div class="form-group">
               <label>Nom</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Entrer votre nom"
-                id="fname"
-                name="fname"
-                v-model="user.lastname"
-              />
+              <input type="text" class="form-control" placeholder="Entrer votre nom" id="fname" name="fname"
+                v-model="user.lastname" />
             </div>
 
             <div class="form-group">
               <label>Prénom</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Entrer votre prénom"
-                id="lname"
-                name="lname"
-                v-model="user.firstname"
-              />
+              <input type="text" class="form-control" placeholder="Entrer votre prénom" id="lname" name="lname"
+                v-model="user.firstname" />
             </div>
 
             <div class="form-group">
               <label>Email</label>
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Entrer votre email"
-                id="email"
-                name="email"
-                v-model="user.email"
-              />
+              <input type="email" class="form-control" placeholder="Entrer votre email" id="email" name="email"
+                v-model="user.email" />
             </div>
 
             <div class="form-group" v-if="user.grade == 'owner'">
               <label>Ville</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Entrer votre ville"
-                id="city"
-                name="city"
-                v-model="user.city"
-              />
+              <input type="text" class="form-control" placeholder="Entrer votre ville" id="city" name="city"
+                v-model="user.city" />
             </div>
             <div class="form-group" v-if="user.grade == 'owner'">
               <label>Pays</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Entrer votre adresse"
-                id="country"
-                name="country"
-                v-model="user.country"
-              />
+              <input type="text" class="form-control" placeholder="Entrer votre adresse" id="country" name="country"
+                v-model="user.country" />
             </div>
             <div class="form-group">
               <label>Adresse</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Entrer votre adresse"
-                id="address"
-                name="address"
-                v-model="user.address"
-              />
+              <input type="text" class="form-control" placeholder="Entrer votre adresse" id="address" name="address"
+                v-model="user.address" />
             </div>
 
             <div class="form-group">
               <label>Téléphone</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Téléphone"
-                id="phone"
-                name="phone"
-                v-model="user.phone"
-              />
+              <input type="text" class="form-control" placeholder="Téléphone" id="phone" name="phone"
+                v-model="user.phone" />
             </div>
 
             <div class="form-group">
               <label>Mot de passe</label>
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Mot de passe"
-                id="password"
-                name="password"
-                v-model="user.password"
-              />
+              <input type="password" class="form-control" placeholder="Mot de passe" id="password" name="password"
+                v-model="user.password" />
             </div>
 
             <div class="form-group">
               <label>Confirmation du mot de passe</label>
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Confirmation du mot de passe"
-                id="Cpassword"
-                name="Cpassword"
-                v-model="user.confirmPass"
-              />
+              <input type="password" class="form-control" placeholder="Confirmation du mot de passe" id="Cpassword"
+                name="Cpassword" v-model="user.confirmPass" />
             </div>
 
             <div class="pl-4p pr-4p form-group">
@@ -156,13 +99,11 @@
             </div>
 
             <button type="submit" class="btn btn-primary">
-              <span v-if="!btnLoader">S'inscrire</span
-              ><BLoader v-else loaderColor="#fff" />
+              <span v-if="!btnLoader">S'inscrire</span>
+              <BLoader v-else loaderColor="#fff" />
             </button>
 
-            <nuxt-link to="/login" class="return-store"
-              >Avez-vous déjà un compte ?</nuxt-link
-            >
+            <nuxt-link to="/login" class="return-store">Avez-vous déjà un compte ?</nuxt-link>
           </form>
         </div>
       </div>
@@ -256,6 +197,8 @@ export default {
         confirmPass: '',
         city: '',
         country: '',
+        eligibility: '',
+
       },
       formError: null,
       btnLoader: false,
@@ -272,7 +215,7 @@ export default {
         this.scrollToTop()
         return
       }
-      
+
       if (!this.validateEmail(this.user.email)) {
         this.formError = 'Veuillez entrer une adresse email valide!'
         this.scrollToTop()
@@ -312,7 +255,7 @@ export default {
       }
 
       const validcp = await this.validateCaptcha()
-      if (validcp == false){
+      if (validcp == false) {
         this.formError = 'Captcha invalide'
         this.scrollToTop()
         return
@@ -340,18 +283,24 @@ export default {
         this.btnLoader = false
         this.$toast.error(result.message)
       }
+
+      
+
     },
+
+    openEligibilityForm() {
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSdMt24isuRQhQL7Aven7J4yjI-Xx4zRUbWhkovl2GfFA5FacQ/viewform', '_blank');
+    }
   },
 }
 </script>
 
 <style scope>
-  .pl-4p { 
-    padding-left: 20%; 
-  }
+.pl-4p {
+  padding-left: 20%;
+}
 
-  .pr-4p {
-    padding-right: 20%;
-  }
-
+.pr-4p {
+  padding-right: 20%;
+}
 </style>

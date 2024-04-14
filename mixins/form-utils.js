@@ -161,8 +161,8 @@ export default {
                         secret: process.env.RECPATCHA_SK,
                         response: token
                     },
-                    withCredentials: true,
                     headers: {
+                        'withCredentials': false,
                         'Access-Control-Allow-Origin': '*',
                     }
                 })

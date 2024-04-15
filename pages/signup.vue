@@ -34,7 +34,7 @@
             </div>
             <div v-if="user.grade === 'owner'" class="form-group">
               <div>
-              <p>Veuillez rempplire le formulaire de partenariat avant toute inscription</p>
+              <p>Veuillez remplire le formulaire de partenariat avant toute inscription</p>
             </div>
 
               <a @click.prevent="openEligibilityForm"

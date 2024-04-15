@@ -1,4 +1,9 @@
 export default {
+    data() {
+        return {
+            baseUrl: process.env.APIBASEURI
+        }
+    },
     methods: {
         validateEmail(email) {
             if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
@@ -156,9 +161,8 @@ export default {
         async validateCaptcha(){
             try {
                 const token = await this.$recaptcha.getResponse()
-                const verifiedStatus = await this.$axios.$get(`https://www.google.com/recaptcha/api/siteverify`, {
+                const verifiedStatus = await this.$axios.$get(`${this.baseUrl}/api/v1/mail/recaptcha`, {
                     params: {
-                        secret: process.env.RECPATCHA_SK,
                         response: token
                     },
                     headers: {
